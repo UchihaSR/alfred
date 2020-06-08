@@ -1,6 +1,6 @@
-# Alfred: The butler you need to best manage your GNU/Linux
+## Alfred: POSIX compliant shell scripts that do everything for you like butler
 
-This is a collection of scripts that I use on a daily basis,
+This is a collection of shell scripts that I use on a daily basis,
 most of which I have written myself in order to indulge my laziness and/or in order to escape doing something actually worth while.
 
 Hopefully you will get some use out of these 
