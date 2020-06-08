@@ -2,8 +2,8 @@
 A collection of POSIX compliant shell scripts that do everything for you, just like a butler
 
 # Why does it exist?
-This is a collection of shell scripts that I use on a daily basis,
-most of which I have written myself in order to indulge my laziness and/or in order to escape doing something actually worth while.
+Most of these are written by myself in order to indulge my laziness 
+(i.e. automating stuff) and/or in order for me to escape doing something actually worth while.
 
 Hopefully you will get some use out of these 
 and in return, I, some gratification.
