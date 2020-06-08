@@ -1,16 +1,30 @@
 #!/usr/bin/env sh
 
-ignore="node_modules\
-|\.icons\
-|voidrice\
-|\.git\
-|\.themes\
-|LICENSE\
-|README.md\
-|wallpapers\
+whitelist="\
+/home/git \
+/disk/Career \
+/disk/Media \
+~/Downloads \
 "
 
-grep -v "^#" ~/.config/shortcutrc |
-   xargs -I% find -L % -maxdepth 5 |
-   grep -Ev "$ignore" \
-   > "$SEARCH_LIST"
+blacklist="node_modules\
+|/package.json\
+|/\.git\
+|/\.gitignore\
+|LICENSE\
+|README.md\
+|\.icons\
+|\.themes\
+|wallpapers/\
+|fonts/\
+|voidrice/\
+|Career/\
+|Downloads/\
+|Media/\
+"
+
+maxDepth=7
+
+find -L $whitelist -maxdepth $maxDepth |
+   grep -Ev $blacklist \
+      > "$SEARCH_LIST"

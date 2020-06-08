@@ -11,7 +11,7 @@ path=~/.local/bin
 
 notify-send -t 3000 -i $ICONS/gitlab.png "Time to sync with Git"
 
-for dir in /home/git/own/*/; do
+for dir in "$GIT"/own/*/; do
    [ -d "$dir" ] && {
       cd "$dir" || exit 1
       # git pull

@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-notify-send -t 3000 -i "$ICONS"/transmission.png \
+notify-send -t 3000 -i $ICONS/transmission.png \
    "Transmission" "$TR_TORRENT_NAME Downloaded"
 
