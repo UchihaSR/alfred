@@ -1,4 +1,4 @@
-# Daily Driver POSIX Compliant Shell Scripts
+# Alfred: The butler you need to best manage your GNU/Linux
 
 This is a collection of scripts that I use on a daily basis,
 most of which I have written myself in order to indulge my laziness and/or in order to escape doing something actually worth while.
