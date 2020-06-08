@@ -1,6 +1,16 @@
 #!/usr/bin/env sh
 
-maxDepth=2
-grep -v "^#" ~/.config/shortcutrc |
-   xargs -I% find -L % -maxdepth $maxDepth > "$SEARCH_LIST"
+ignore="node_modules\
+|\.icons\
+|voidrice\
+|\.git\
+|\.themes\
+|LICENSE\
+|README.md\
+|wallpapers\
+"
 
+grep -v "^#" ~/.config/shortcutrc |
+   xargs -I% find -L % -maxdepth 5 |
+   grep -Ev "$ignore" \
+   > "$SEARCH_LIST"
