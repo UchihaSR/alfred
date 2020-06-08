@@ -1,5 +1,7 @@
-## Alfred: POSIX compliant shell scripts that do everything for you like butler
+# Alfred
+A collection of POSIX compliant shell scripts that do everything for you, just like a butler
 
+# Why does it exist?
 This is a collection of shell scripts that I use on a daily basis,
 most of which I have written myself in order to indulge my laziness and/or in order to escape doing something actually worth while.
 
