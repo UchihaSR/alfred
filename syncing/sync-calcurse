@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+CALCURSE_CALDAV_PASSWORD=$(gpg -d --batch --passphrase asdlkj ~/.local/share/passwords/salmanabedin@disroot.org.gpg) calcurse-caldav
+

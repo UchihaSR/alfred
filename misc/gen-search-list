@@ -1,10 +1,11 @@
 #!/usr/bin/env sh
 
 whitelist="\
+/home/$USER/Downloads \
 /home/git \
 /disk/Career \
 /disk/Media \
-~/Downloads \
+/disk/Phone \
 "
 
 blacklist="node_modules\
@@ -21,6 +22,7 @@ blacklist="node_modules\
 |Career/\
 |Downloads/\
 |Media/\
+|Linux/\
 "
 
 maxDepth=7

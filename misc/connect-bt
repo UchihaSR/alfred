@@ -23,5 +23,5 @@ bluetoothctl connect "$device"
 
 # bluetoothctl scan off
 
-sleep 3
+sleep 2
 ref-block 1
