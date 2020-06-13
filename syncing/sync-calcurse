@@ -5,10 +5,11 @@ ICONS=~/.icons/system
 path=~/.local/bin
 "$path"/misc/connected ||
    {
-      notify-send -t 3000 -i $ICONS/disconnected.png "Disconnected"
+      notify-send -i $ICONS/disconnected.png "Disconnected"
       exit 1
    }
 
-CALCURSE_CALDAV_PASSWORD=$(gpg -d --batch --passphrase asdlkj ~/.local/share/passwords/salmanabedin@disroot.org.gpg) calcurse-caldav
+CALCURSE_CALDAV_PASSWORD=$(gpg -d --batch --passphrase asdlkj ~/.local/share/passwords/salmanabedin@disroot.org.gpg) calcurse-caldav \
+   # --init=keep-remote
 
-notify-send -t 3000 -i "$ICONS"/calendar.png "Done syncing calcurse"
+notify-send -i "$ICONS"/calendar.png "Done syncing calcurse"

@@ -11,14 +11,23 @@ path=~/.local/bin
 
 # notify-send -t 3000 -i $ICONS/gitlab.png "Time to sync with Git"
 
-for dir in "$GIT"/own/*/; do
-   [ -d "$dir" ] && {
-      cd "$dir" || exit 1
+# for dir in "$GIT"/own/*/; do
+#    [ -d "$dir" ] && {
+#       cd "$dir" || exit 1
+#       # git pull
+#       git add .
+#       git commit -m "update" &&
+#          git push
+#    }
+# done
+
+du -d 1 "$GIT"/own | cut -f 2 |
+   while read -r repo; do
+      cd "$repo" || exit 1
       # git pull
       git add .
-      git commit -m "update" &&
-         git push
-   }
-done
+      git commit -m "update"
+      git push
+   done
 
 notify-send -t 3000 -i $ICONS/gitlab.png "Done syncing git repos"
