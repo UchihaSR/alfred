@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+# notify-send "$(bspc query -N -n .tiled -d )"
+
+bspc query -N -n .tiled.!focused -d | xargs -I% bspc node % -g hidden
+
+bspc desktop -l next
+

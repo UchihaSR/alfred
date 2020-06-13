@@ -14,7 +14,7 @@ case $ext in
    tex) xelatex "$path" ;;
    sh) sh "$path" ;;
    c)  cc "$path" -o "$name" && "$name" ;;
-   ms) groff -m ms -T ps "$path" > "$name".ps ;;
+   ms) groff -ms -ept "$path" > "$name".ps ;;
    # ms) groff -m ms -T pdf "$path" > "$name".pdf ;;
    # ms) groff -m ms -T ps "$path" > "$name".ps ;;
    # ms) eqn "$path" -T pdf | groff -ms -T pdf > "$name".pdf ;;

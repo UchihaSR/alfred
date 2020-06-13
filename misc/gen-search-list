@@ -2,8 +2,8 @@
 
 whitelist="\
 /home/$USER/Downloads \
-/home/git \
-/disk/Career \
+/home/git/own \
+/disk/Career/FE_Exam/practice \
 /disk/Media \
 /disk/Phone \
 "
@@ -18,11 +18,12 @@ blacklist="node_modules\
 |\.themes\
 |wallpapers/\
 |fonts/\
-|voidrice/\
-|Career/\
 |Downloads/\
 |Media/\
 |Linux/\
+|Phone/\
+|dwm/\
+|sent/\
 "
 
 maxDepth=7
