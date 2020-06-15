@@ -2,10 +2,10 @@
 
 whitelist="\
 /home/$USER/Downloads \
-/home/git/own \
+$GIT/own \
 /disk/Career/FE_Exam/practice \
 /disk/Media \
-/disk/Phone \
+/disk/Phone/Notes \
 "
 
 blacklist="node_modules\
@@ -21,13 +21,22 @@ blacklist="node_modules\
 |Downloads/\
 |Media/\
 |Linux/\
-|Phone/\
 |dwm/\
 |sent/\
 "
 
 maxDepth=7
 
-find -L $whitelist -maxdepth $maxDepth |
-   grep -Ev $blacklist \
-      > "$SEARCH_LIST"
+genList(){
+   find -L $whitelist -maxdepth $maxDepth |
+      grep -Ev $blacklist \
+         > "$SEARCH_LIST"
+}
+
+genList
+
+inotifywait -m -r -e create,delete,move --format "%e" $whitelist |
+   while read -r event; do
+      genList
+   done
+

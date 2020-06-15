@@ -3,16 +3,17 @@
 toggleOn(){
    doas killall yabar
    bspc config top_padding	0
-   bspc desktop -l monocle
+   # bspc desktop -l monocle
 }
 
 toggleOff(){
    yabar &
    bspc config top_padding	35
-   bspc desktop -l tiled
+   # bspc desktop -l tiled
 }
 
 pidof yabar && toggleOn || toggleOff
+tog-trans-moncl
 
 # pidof yabar && doas killall yabar || yabar &
 # bspc node -t \~fullscreen

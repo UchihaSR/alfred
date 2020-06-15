@@ -1,19 +1,20 @@
 #!/usr/bin/env sh
 
 ICONS=~/.icons/system
-path=~/.local/bin
 
-"$path"/misc/connected ||
+connected ||
    {
       notify-send -t 3000 -i $ICONS/disconnected.png "Disconnected"
       exit 1
    }
 
-mbsync -c ~/.config/isync/mbsyncrc -a 2> /dev/null
+notify-send -i "$ICONS/mail.png" "Syncing mail"
+
+mbsync -c ~/.config/isync/mbsyncrc -a
 
 unread=$(find ~/.local/share/mail/gmail/INBOX/new/* -type f 2> /dev/null | wc -l)
 
 # [ "$unread" -gt 0 ] && notify-send -t 0 -i "$ICONS/mail.png" "Mail" "You've got $unread new mail!"
 
-[ "$unread" -gt 0 ] && /usr/bin/"$TERMINAL" -e /usr/bin/neomutt &
+[ "$unread" -gt 0 ] && $TERMINAL -e neomutt &
 

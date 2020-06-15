@@ -30,6 +30,11 @@ and in return, I, some gratification.
       * Audio
       * Webacm
 
+   * BSPWM
+      * Transparent Monocle
+      * Transparent Fullscreen
+      * Swallow Terminal
+
    * Universal compiler for all kinds of files
    * Custom launch script (xdg-open replacement)
    * Custom search script (For Super Fast Work Flow)

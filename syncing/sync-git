@@ -1,15 +1,12 @@
 #!/usr/bin/env sh
 
-ICONS=~/.icons/system
-
-path=~/.local/bin
-"$path"/misc/connected ||
+connected ||
    {
       notify-send -t 3000 -i $ICONS/disconnected.png "Disconnected"
       exit 1
    }
 
-# notify-send -t 3000 -i $ICONS/gitlab.png "Time to sync with Git"
+notify-send -t 3000 -i $ICONS/gitlab.png "Syncing git repos"
 
 for dir in "$GIT"/own/*/; do
    [ -d "$dir" ] && {
@@ -20,14 +17,5 @@ for dir in "$GIT"/own/*/; do
          git push
    }
 done
-
-# du -d 1 "$GIT"/own | cut -f 2 |
-#    while read -r repo; do
-#       cd "$repo" || exit 1
-#       # git pull
-#       git add .
-#       git commit -m "update"
-#       git push
-#    done
 
 notify-send -t 3000 -i $ICONS/gitlab.png "Done syncing git repos"
