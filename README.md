@@ -43,6 +43,7 @@ and in return, I, some gratification.
    * Update local git repos
    * Make bootable USB (linux & windows (for normies!))
    * Correct DPI setter
+   * Terminal Preview
    * And much more
 
 
