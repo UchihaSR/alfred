@@ -10,32 +10,32 @@ and in return, I, some gratification.
 
 # Highlights
 
-   * Syncing
+   * **Syncing**
       * Phone (via wifi)
       * Google drive
       * Git
       * Arch & AUR packages
       * IMAP mail server
 
-   * FFmpeg scripts
+   * **FFmpeg scripts**
       * Trim videos
       * Join vdeos
       * Reduce volume
       * Add music to video
       * Make gifs
 
-   * Recording
+   * **Recording**
       * Screenshot
       * Screencast
       * Audio
       * Webacm
 
-   * BSPWM
+   * **BSPWM**
       * Transparent monocle
       * Transparent full screen
       * Swallowing feature
 
-   * Battery
+   * **Battery**
        * Periodic checking
        * Charge blocking (for battery longevity)
 
