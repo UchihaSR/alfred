@@ -5,10 +5,10 @@ if ! connected; then
    exit 1
 fi
 
-notify-send -i "$ICONS"/update.png "Syncing now"
+notify-send -i "$ICONS/sync.png" "Syncing now"
 
 sync-git
 sync-calcurse
 sync-mail
 
-notify-send -i "$ICONS"/update.png "Done syncing"
+notify-send -i "$ICONS/sync.png" "Done syncing"
