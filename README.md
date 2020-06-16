@@ -14,7 +14,7 @@ and in return, I, some gratification.
       * Phone (via wifi)
       * Google drive
       * Git
-      * Arch & aur repositories
+      * Arch & AUR packages
       * IMAP mail server
 
    * FFmpeg scripts
@@ -31,9 +31,13 @@ and in return, I, some gratification.
       * Webacm
 
    * BSPWM
-      * Transparent Monocle
-      * Transparent Fullscreen
-      * Swallow Terminal
+      * Transparent monocle
+      * Transparent full screen
+      * Swallowing feature
+
+   * Battery
+       * Periodic checking
+       * Charge blocking (for battery longevity)
 
    * Universal compiler for all kinds of files
    * Custom launch script (xdg-open replacement)

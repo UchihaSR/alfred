@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# path=$(readlink -f "$0")
+# dir="${path%/*}"
+
 whitelist="\
 /home/$USER/Downloads \
 $GIT/own \

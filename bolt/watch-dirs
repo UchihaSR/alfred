@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+inotifywait -m -r -e create,delete,move --format "%e" "$1" |
+   while read -r event; do
+      sh -c "$2"
+   done
+
