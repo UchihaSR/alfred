@@ -6,15 +6,11 @@ $GIT/own/private \
 "
 
 sync() {
-
    cp -frs -t ~ \
       "$GIT"/own/magpie/. \
       "$GIT"/own/private/. \
-
-   # cp -frs -t ~/.local/bin "$GIT"/alfred/* "$GIT"/uniblocks/*
    # doas -- find ~ -xtype l -delete
    # doas -- find ~ -type d -empty -delete
-
 }
 
 inotifywait -m -r -e create,moved_to $dirs |
