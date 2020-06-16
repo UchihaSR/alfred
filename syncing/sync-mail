@@ -1,14 +1,12 @@
 #!/usr/bin/env sh
 
-ICONS=~/.icons/system
+# connected ||
+#    {
+#       notify-send -t 3000 -i $ICONS/disconnected.png "Disconnected"
+#       exit 1
+#    }
 
-connected ||
-   {
-      notify-send -t 3000 -i $ICONS/disconnected.png "Disconnected"
-      exit 1
-   }
-
-notify-send -i "$ICONS/mail.png" "Syncing mail"
+# notify-send -i "$ICONS/mail.png" "Syncing mail"
 
 mbsync -c ~/.config/isync/mbsyncrc -a
 
