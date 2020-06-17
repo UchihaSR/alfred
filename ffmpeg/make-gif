@@ -24,3 +24,4 @@ ffmpeg \
 #    -s 1280x720 \
 #    "${1%.*}"-"$(date +'%Y%b%d-%H%M%S')".gif
 
+rm -f $palette
