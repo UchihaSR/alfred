@@ -1,8 +1,20 @@
 #!/usr/bin/env sh
 
-ffmpeg -y -i "$1" \
+ffmpeg -y -i "$1" -vf palettegen palette.png
+
+ffmpeg -y \
+   -i "$1" -i pallette.png\
+   -filter_complex paletteuse \
    -r 5 \
-   -s 1280x720 \
+   -s 640x480 \
    "${1%.*}"-"$(date +'%Y%b%d-%H%M%S')".gif
 
--vf scale=1000:-1 \
+rm -f pallete.png
+
+# ffmpeg -y -i "$1" \
+#    -r 5 \
+#    -s 1280x720 \
+#    "${1%.*}"-"$(date +'%Y%b%d-%H%M%S')".gif
+
+# -vf scale=1000:-1 \
+
