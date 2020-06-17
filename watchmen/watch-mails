@@ -4,5 +4,6 @@ path=~/.local/share/mail/gmail/INBOX/new
 
 inotifywait -m -e move $path |
    while read -r event; do
-      refresh-block -m
+      refresh-block 2
+      # refresh-block -m
    done
