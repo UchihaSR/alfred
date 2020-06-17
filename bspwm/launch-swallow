@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
 echo "$1" | grep "\.ar\." && {
-   swallow "$TERMINAL \
+   swallow alacritty \
       --config-file ~/.config/alacritty/alacritty_ar.yml \
-      -e $EDITOR" "$1" &
+      -e "$EDITOR" "$1" &
    exit
 }
 
