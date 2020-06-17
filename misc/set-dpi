@@ -5,7 +5,7 @@
 
 file=~/.config/X11/Xresources
 
-grep 'Xft.dpi' "$file" && xrdb -merge "$file" && exit
+grep 'Xft.dpi' "$file" && xrdb -merge "$file" && exit 1
 
 info=$(xrandr | grep ' connected')
 
