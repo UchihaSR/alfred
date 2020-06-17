@@ -1,19 +1,44 @@
 #!/usr/bin/env sh
 
+[ "$1" = "-h" ] && cat << eof
+Usage:
+
+   mono-trans --toggle [monocle,fullscreen]  toggle transparent monocle
+
+   mono-trans --navigate [next,prev]         navigate to next/prev hidden nodes
+
+   mono-trans --close                        closes current node and unhides the previous one
+
+eof
+
 nodeList=/tmp/$(bspc query -D -d)
 [ "$STATUS_BAR" ] || export STATUS_BAR=polybar
+bspc config borderless_monocle true
+bspc config gapless_monocle    true
+
+
+hide_nodes(){
+   bspc query -N -n .local.leaf.!focused.!hidden | tee "$nodeList"
+   cat "$nodeList" | xargs -I% bspc node % -g hidden
+}
+
+unhide_nodes(){
+   cat "$nodeList" | xargs -I% bspc node % -g hidden
+   : > "$nodeList"
+}
 
 toggle_fs_on() {
    killall $STATUS_BAR
    bspc config top_padding 0
-   bspc query -N -n .local.leaf.!focused.!hidden | tee "$nodeList"
    bspc desktop -l monocle
+   hide_nodes
 }
 
 toggle_fs_off() {
    $STATUS_BAR &
    bspc config top_padding 35
    bspc desktop -l tiled
+   unhide_nodes
 }
 
 case $1 in
@@ -45,14 +70,22 @@ case $1 in
 
       if [ "$2" = "fullscreen" ]; then
          if pidof yabar; then toggle_fs_on; else toggle_fs_off; fi
-         bspc node -n biggest.local
-         cat "$nodeList" | xargs -I% bspc node % -g hidden
+         # bspc node -n biggest.local
+         # cat "$nodeList" | xargs -I% bspc node % -g hidden
       else
 
-         [ "$(bspc wm -g | cut -d: -f7)" = "LT" ] &&
-            bspc query -N -n .local.leaf.!focused.!hidden | tee "$nodeList"
+         # [ "$(bspc wm -g | cut -d: -f7)" = "LT" ] &&
+         #    bspc query -N -n .local.leaf.!focused.!hidden | tee "$nodeList"
 
-         bspc desktop -l next
+         if [ "$(bspc wm -g | cut -d: -f7)" = "LT" ]; then
+            bspc desktop -l monocle
+            hide_nodes
+         else
+            bspc desktop -l tiled
+            unhide_nodes
+         fi
+
+         # bspc desktop -l next
          bspc node -n biggest.local
          cat "$nodeList" | xargs -I% bspc node % -g hidden
 
@@ -71,3 +104,4 @@ case $1 in
    *) : ;;
 
 esac
+
