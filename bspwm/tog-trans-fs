@@ -1,17 +1,17 @@
 #!/usr/bin/env sh
 
 nodeList=/tmp/$(bspc query -D -d)
-statusbar=yabar
+[ "$STATUS_BAR" ] || export STATUS_BAR=polybar
 
 toggleOn(){
-   doas killall $statusbar
+   doas killall $STATUS_BAR
    bspc config top_padding 0
    bspc query -N -n .local.leaf.!focused.!hidden | tee "$nodeList"
    bspc node -t fullscreen
 }
 
 toggleOff(){
-   $statusbar &
+   $STATUS_BAR &
    bspc config top_padding 35
    bspc node -t tiled
 }
