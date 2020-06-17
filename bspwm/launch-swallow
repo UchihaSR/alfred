@@ -21,6 +21,10 @@ case $(file --mime-type "$1" -bL) in
       pidof zathura || swallow zathura "$1"
       ;;
 
+   image/gif)
+      pgrep mpv || swallow "mpv --loop" "$1"
+      ;;
+
    image/*)
       pidof feh ||
          swallow \
