@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
 ffmpeg -y -i "$1" \
+   -r 15 \
    "${1%.*}"-"$(date +'%Y%b%d-%H%M%S')".gif
 

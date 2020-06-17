@@ -11,8 +11,10 @@ Usage:
 
 eof
 
-nodeList=/tmp/$(bspc query -D -d)
 [ "$STATUS_BAR" ] || export STATUS_BAR=polybar
+top_padding=35
+
+nodeList=/tmp/$(bspc query -D -d)
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 
@@ -35,12 +37,13 @@ toggle_fs_on() {
 
 toggle_fs_off() {
    $STATUS_BAR &
-   bspc config top_padding 35
+   bspc config top_padding $top_padding
    bspc desktop -l tiled
    unhide_nodes
 }
 
 case $1 in
+
    --navigate)
       if [ "$2" = "next" ]; then
          bspc node -f next.local && exit 1
@@ -54,13 +57,12 @@ case $1 in
       if [ "$2" = "next" ]; then
          head -1 "$nodeList" | xargs -I% bspc node % -g hidden
          sed -i '1d' "$nodeList"
-         bspc query -N -n >> "$nodeList"
       else
          tail -1 "$nodeList" | xargs -I% bspc node % -g hidden
          sed -i '$d' "$nodeList"
-         bspc query -N -n >> "$nodeList"
       fi
 
+      bspc query -N -n >> "$nodeList"
       bspc node -g hidden
 
       ;;
