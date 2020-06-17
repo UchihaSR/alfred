@@ -1,5 +1,6 @@
 # Alfred
-A collection of POSIX compliant shell scripts that do everything for you, just like a butler
+A collection of POSIX compliant shell scripts that do everything for me
+, just like a butler
 
 # Why does it exist?
 Most of these are written by myself in order to indulge my laziness 
@@ -19,10 +20,10 @@ and in return, I, some gratification.
 
    * **FFmpeg scripts**
       * Trim videos
-      * Join vdeos
+      * Join videos
       * Reduce volume
       * Add music to video
-      * Make gifs
+      * Make GIFs
 
    * **Recording**
       * Screenshot
@@ -32,7 +33,6 @@ and in return, I, some gratification.
 
    * **BSPWM**
       * Transparent monocle & fullscreen mode
-      * Swallowing feature
 
    * **Battery**
        * Periodic checking
@@ -40,13 +40,13 @@ and in return, I, some gratification.
 
    * Universal compiler for all kinds of files
    * Custom launch script (xdg-open replacement)
-   * Custom search script (For Super Fast Work Flow)
    * Instant googleing
    * Bluetooth headset connect
    * Update local git repos
    * Make bootable USB (linux & windows (for normies!))
    * Correct DPI setter
    * Terminal Preview
+   * BSPWM Swallowing
    * And much more
 
 
