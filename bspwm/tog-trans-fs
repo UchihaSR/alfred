@@ -1,20 +1,21 @@
 #!/usr/bin/env sh
 
+nodeList=/tmp/$(bspc query -D -d)
+statusbar=yabar
+
 toggleOn(){
-   doas killall yabar
-   bspc config top_padding	0
-   # bspc desktop -l monocle
+   doas killall $statusbar
+   bspc config top_padding 0
+   bspc query -N -n .local.leaf.!focused.!hidden | tee "$nodeList"
 }
 
 toggleOff(){
-   yabar &
-   bspc config top_padding	35
-   # bspc desktop -l tiled
+   $statusbar &
+   bspc config top_padding 35
 }
 
 pidof yabar && toggleOn || toggleOff
-tog-trans-moncl
 
-# pidof yabar && doas killall yabar || yabar &
-# bspc node -t \~fullscreen
-
+bspc node -t ~fullscreen
+bspc node -n biggest.local
+cat "$nodeList" | xargs -I% bspc node % -g hidden
