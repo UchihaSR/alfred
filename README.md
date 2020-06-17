@@ -31,8 +31,7 @@ and in return, I, some gratification.
       * Webacm
 
    * **BSPWM**
-      * Transparent monocle
-      * Transparent full screen
+      * Transparent monocle & fullscreen mode
       * Swallowing feature
 
    * **Battery**
