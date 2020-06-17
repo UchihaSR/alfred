@@ -3,22 +3,17 @@
 nodeList=/tmp/$(bspc query -D -d)
 
 [ ! -f "$nodeList" ] && exit 1
-[ "$(wc -l "$nodeList")" = 0 ] || notify-send "$(wc -l "$nodeList")"
-# [ "$(wc -l "$nodeList")" = 0 ] && notify-send "no nodes"
+[ "$(wc -l < "$nodeList")" = 0 ] && exit 2
 
-[ ! -f "$nodeList" ] && exit 1
-[ "$(wc -l "$nodeList")" = 0 ] && exit 2
+if [ "$1" = "next" ]; then
+   head -1 "$nodeList" | xargs -I% bspc node % -g hidden
+   sed -i '1d' "$nodeList"
+   bspc query -N -n >> "$nodeList"
+else
+   tail -1 "$nodeList" | xargs -I% bspc node % -g hidden
+   sed -i '$d' "$nodeList"
+   bspc query -N -n >> "$nodeList"
+fi
 
-# if [ "$1" = "next" ]; then
-#    head -1 "$nodeList" | xargs -I% bspc node % -g hidden
-#    sed -i '1d' "$nodeList"
-#    bspc query -N -n >> "$nodeList"
-# else
-#    tail -1 "$nodeList" | xargs -I% bspc node % -g hidden
-#    sed -i '$d' "$nodeList"
-#    bspc query -N -n >> "$nodeList"
-# fi
-
-# bspc node -g hidden
+bspc node -g hidden
 # bspc node -t fullscreen
-

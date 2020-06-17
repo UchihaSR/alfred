@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+
+nodeList=/tmp/$(bspc query -D -d)
+[ "$STATUS_BAR" ] || export STATUS_BAR=polybar
+
+toggle_fs_on(){
+   doas killall $STATUS_BAR
+   bspc config top_padding 0
+   bspc query -N -n .local.leaf.!focused.!hidden | tee "$nodeList"
+   bspc desktop -l monocle
+   # bspc node -t fullscreen
+}
+
+toggle_fs_off(){
+   $STATUS_BAR &
+   bspc config top_padding 35
+   # bspc node -t tiled
+   bspc desktop -l tiled
+}
+
+case $1 in
+   --navigate)
+      if [ "$2" = "next" ]; then
+         bspc node -f next.local && exit 1
+      else
+         bspc node -f prev.local && exit 1
+      fi
+      ;;
+   --toggle)
+      if [ "$2" = "fullscreen" ]; then
+         if pidof yabar; then toggle_fs_on; else toggle_fs_off; fi
+         # bspc node -t ~fullscreen
+         bspc node -n biggest.local
+         cat "$nodeList" | xargs -I% bspc node % -g hidden
+      else
+         :
+      fi
+      ;;
+   *) : ;;
+esac
