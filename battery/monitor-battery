@@ -4,9 +4,15 @@
 
 cap=$(cat /sys/class/power_supply/BAT?/capacity)
 
-[ "$cap" -lt 10 ] && doas systemctl poweroff
-[ "$cap" -lt 20 ] && notify-send -t 0 -i "$ICONS"/critical.png 'Low Battery!'
-[ "$cap" -lt 60 ] && block-charge -f || block-charge -t
+if [ "$cap" -lt 10 ]; then
+   doas systemctl poweroff
+elif [ "$cap" -lt 20 ]; then
+   notify-send -t 0 -i "$ICONS"/critical.png 'Low Battery!'
+elif [ "$cap" -lt 90 ]; then
+   block-charge -f
+else
+   block-charge -t
+fi
 
 # notify-send -t 1000 -i $ICONS/discharging.png "Battery at $cap%"
 
