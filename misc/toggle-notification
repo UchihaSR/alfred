@@ -12,7 +12,7 @@ else
    killall -SIGUSR1 dunst
 fi
 
-refresh-block 3
+refresh-block -n
 
 # pidof notification-daemon &&
 #    notify-send -t 1000 -i ~/.icons/system/dnd.png 'Do not disturb' &&

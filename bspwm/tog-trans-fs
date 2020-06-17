@@ -7,15 +7,17 @@ toggleOn(){
    doas killall $statusbar
    bspc config top_padding 0
    bspc query -N -n .local.leaf.!focused.!hidden | tee "$nodeList"
+   bspc node -t fullscreen
 }
 
 toggleOff(){
    $statusbar &
    bspc config top_padding 35
+   bspc node -t tiled
 }
 
 pidof yabar && toggleOn || toggleOff
 
-bspc node -t ~fullscreen
+# bspc node -t ~fullscreen
 bspc node -n biggest.local
 cat "$nodeList" | xargs -I% bspc node % -g hidden
