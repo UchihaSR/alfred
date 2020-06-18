@@ -1,56 +1,61 @@
 # Alfred
+
 A collection of POSIX compliant shell scripts that do everything for me
 , just like a butler
 
 # Why does it exist?
-Most of these are written by myself in order to indulge my laziness 
+
+Most of these are written by myself in order to indulge my laziness
 (i.e. automating stuff) and/or in order for me to escape doing something actually worth while.
 
-Hopefully you will get some use out of these 
+Hopefully you will get some use out of these
 and in return, I, some gratification.
 
 # Highlights
 
-   * **Syncing**
-      * Phone (via wifi)
-      * Google drive
-      * Git
-      * Arch & AUR packages
-      * IMAP mail server
+-  **Syncing**
 
-   * **FFmpeg scripts**
-      * Trim videos
-      * Join videos
-      * Reduce volume
-      * Add music to video
-      * Make GIFs
+   -  Phone (via wifi)
+   -  Google drive
+   -  Git
+   -  Arch & AUR packages
+   -  IMAP mail server
 
-   * **Recording**
-      * Screenshot
-      * Screencast
-      * Audio
-      * Webacm
+-  **FFmpeg scripts**
 
-   * **BSPWM**
-      * Transparent monocle & fullscreen mode
+   -  Trim videos
+   -  Join videos
+   -  Reduce volume
+   -  Add music to video
+   -  Make GIFs
 
-   * **Battery**
-       * Periodic checking
-       * Charge blocking (for battery longevity)
+-  **Recording**
 
-   * Universal compiler for all kinds of files
-   * Custom launch script (xdg-open replacement)
-   * Instant googleing
-   * Bluetooth headset connect
-   * Update local git repos
-   * Make bootable USB (linux & windows (for normies!))
-   * Correct DPI setter
-   * Terminal Preview
-   * BSPWM Swallowing
-   * And much more
+   -  Screenshot
+   -  Screencast
+   -  Audio
+   -  Webacm
 
+-  **BSPWM**
+
+   -  Transparent monocle & fullscreen mode
+
+-  **Battery**
+
+   -  Periodic checking
+   -  Charge blocking (for battery longevity)
+
+-  Universal compiler for all kinds of files
+-  Custom launch script (xdg-open replacement)
+-  Instant googleing
+-  Bluetooth headset connect
+-  Update local git repos
+-  Make bootable USB (linux & windows (for normies!))
+-  Correct DPI setter
+-  Terminal Preview
+-  BSPWM Swallowing
+-  And much more
 
 # How do these damn things work!
 
 If you have no clue how the scripts are functioning but are interested to learn, let me know and I will comment the hell out of them so that you can gather some precious shell scripting knowledge.
-
