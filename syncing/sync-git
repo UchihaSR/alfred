@@ -6,7 +6,7 @@
 #       exit 1
 #    }
 
-# notify-send -t 3000 -i $ICONS/gitlab.png "Syncing git repos"
+notify-send -t 3000 -i $ICONS/gitlab.png "Syncing git repos"
 
 for dir in "$GIT"/own/*/; do
    [ -d "$dir" ] && {
