@@ -1,12 +1,14 @@
 #!/usr/bin/env sh
 
-if [ -f "$DONT_DISTURB_MODE" ]; then
-   rm -f "$DONT_DISTURB_MODE"
+ddm=/tmp/ddm
+
+if [ -f "$ddm" ]; then
+   rm -f "$ddm"
    killall -SIGUSR2 dunst
    sleep 1
    notify-send -t 1000 -i "$ICONS"/bell.png 'Disturb all you want'
 else
-   touch "$DONT_DISTURB_MODE"
+   touch "$ddm"
    notify-send -t 1000 -i "$ICONS"/dnd.png 'Do not disturb'
    sleep 2
    killall -SIGUSR1 dunst
