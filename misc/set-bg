@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 [ "$1" = -s ] &&
-   cp "$(find -L ~/.local/share/wallpapers -type f | shuf -n1)" "$WALL" ||
-   cp "$1" "$WALL" && cp "$1" "$GIT"/own/magpie/wallpapers
+   cp "$(find $WALLPAPERS -name "*.jpg" -o -name "*.png" | shuf -n1)" "$WALL" ||
+   cp "$1" "$WALL" && cp "$1" "$WALLPAPERS"
 
 feh --no-fehbg --bg-scale "$WALL"
