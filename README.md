@@ -2,7 +2,7 @@
 
 My daily driver shell scripts
 
-# Why does it exist?
+## Why does it exist?
 
 Most of these are written by myself in order to indulge my laziness
 (i.e. automating stuff) and/or in order for me to escape doing something actually worth while.
@@ -10,7 +10,7 @@ Most of these are written by myself in order to indulge my laziness
 Hopefully you will get some use out of these
 and in return, I, some gratification.
 
-# Highlights
+## Highlights
 
 -  **Syncing**
 
@@ -50,6 +50,6 @@ and in return, I, some gratification.
 -  Terminal Preview
 -  And much more
 
-# How do these damn things work!
+## How do these damn things work!
 
 If you have no clue how the scripts are functioning but are interested to learn, let me know and I will comment the hell out of them so that you can gather some precious shell scripting knowledge.
