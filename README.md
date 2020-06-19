@@ -35,10 +35,6 @@ and in return, I, some gratification.
    -  Audio
    -  Webacm
 
--  **BSPWM**
-
-   -  Transparent monocle & fullscreen mode
-
 -  **Battery**
 
    -  Periodic checking
@@ -52,7 +48,6 @@ and in return, I, some gratification.
 -  Make bootable USB (linux & windows (for normies!))
 -  Correct DPI setter
 -  Terminal Preview
--  BSPWM Swallowing
 -  And much more
 
 # How do these damn things work!
