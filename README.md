@@ -1,7 +1,6 @@
 # Alfred
 
-A collection of POSIX compliant shell scripts that do everything for me
-, just like a butler
+My daily driver shell scripts
 
 # Why does it exist?
 
