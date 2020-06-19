@@ -31,7 +31,7 @@ diagonal_px=$(awk -v w="$width_px" -v h="$height_px" \
 dpi=$(awk -v dp="$diagonal_px" -v di="$diagonal_in" \
    'BEGIN{print dp / di}')
 
-echo "Xft.dpi: $dpi"
+# echo "Xft.dpi: $dpi"
 
-# echo "Xft.dpi: $dpi" >> "$file"
-# xrdb -merge "$file"
+echo "Xft.dpi: $dpi" >> "$file"
+xrdb -merge "$file"
