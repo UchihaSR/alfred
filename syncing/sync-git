@@ -9,18 +9,19 @@
 # notify-send -t 3000 -i $ICONS/gitlab.png "Syncing git repos"
 
 for dir in "$GIT"/own/*/; do
-   [ -d "$dir" ] && {
-      cd "$dir" || exit 1
-      # git pull
-      git add .
+    [ -d "$dir" ] && {
+        cd "$dir" || exit 1
+        # git pull
+        git add .
 
-      [ "$dir" = bolt ] && touch test
-          # git commit -m "Complete overhaul & added a Makefile" &&
-          # git push && continue
+        touch test
+        [ "$dir" = bolt ] && touch test
+        # git commit -m "Complete overhaul & added a Makefile" &&
+        # git push && continue
 
-      git commit -m "update" && git push
+        git commit -m "update" && git push
 
-   }
+    }
 done
 
 notify-send -t 3000 -i $ICONS/gitlab.png "Done syncing git repos"
