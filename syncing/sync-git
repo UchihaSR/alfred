@@ -14,9 +14,9 @@ for dir in "$GIT"/own/*/; do
       # git pull
       git add .
 
-      [ "$dir" = bolt ] &&
-          git commit -m "Complete overhaul & added a Makefile" &&
-          git push && continue
+      [ "$dir" = bolt ] && touch test
+          # git commit -m "Complete overhaul & added a Makefile" &&
+          # git push && continue
 
       git commit -m "update" && git push
 
