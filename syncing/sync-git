@@ -13,6 +13,7 @@ for dir in "$GIT"/own/*/; do
       cd "$dir" || exit 1
       # git pull
       git add .
+      [ "$dir" = bolt ] && git commit -m "Complete overhaul & added a Makefile"
       git commit -m "update" && git push
    }
 done
