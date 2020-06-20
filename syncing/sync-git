@@ -14,9 +14,12 @@ for dir in "$GIT"/own/*/; do
         # git pull
         git add .
 
-        case $dir in
-            *bolt*) touch test;;
-        esac
+        echo "$dir" >> test
+
+        # case $dir in
+        #     *bolt*) touch test;;
+        # esac
+
         # [ "$dir" =~ *"bolt"* ] && touch test
         # git commit -m "Complete overhaul & added a Makefile" &&
         # git push && continue
