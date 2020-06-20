@@ -16,7 +16,7 @@ for dir in "$GIT"/own/*/; do
 
       [ "$dir" = bolt ] &&
           git commit -m "Complete overhaul & added a Makefile" &&
-          git push && exit
+          git push && continue
 
       git commit -m "update" && git push
 
