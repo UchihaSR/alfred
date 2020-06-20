@@ -9,7 +9,7 @@ ext="${path##*.}"
 
 case $ext in
    c)  cc "$path" -o "$name" && "$name" ;;
-   h) doas make install ;;
+   h|sh) doas make install ;;
    js) node "$path" ;;
    ms) groff -ms -ept "$path" > "$name".ps ;;
    py)  python "$path" ;;
