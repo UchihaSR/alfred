@@ -16,7 +16,7 @@ for dir in "$GIT"/own/*/; do
         [ -z "$(git status --porcelain)" ] && continue
         message=$(timeout 10 rofi -dmenu -i -p "$(pwd | rev | cut -d/ -f1 | rev)")
         [ "$message" ] || message=$(git log -1 | tail -1)
-        git commit -m "$message" && git push
+        git commit -m "$message" && git push &
     }
 done
 
