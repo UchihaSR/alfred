@@ -9,7 +9,7 @@
 # notify-send -t 3000 -i $ICONS/gitlab.png "Syncing git repos"
 
 for dir in "$GIT"/own/*/; do
-    [ -d "$dir" ] && {
+    if [ -d "$dir" ]; then
         cd "$dir" || exit 1
         # git pull
         git add .
@@ -17,7 +17,7 @@ for dir in "$GIT"/own/*/; do
         message=$(timeout 10 rofi -dmenu -i -p "$(pwd | rev | cut -d/ -f1 | rev)")
         [ "$message" ] || message=$(git log -1 | tail -1)
         git commit -m "$message" && git push &
-    }
+    fi
 done
 
-notify-send -t 3000 -i $ICONS/gitlab.png "Done syncing git repos"
+notify-send -t 3000 -i "$ICONS"/gitlab.png "Done syncing git repos"
