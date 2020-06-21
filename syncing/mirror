@@ -1,5 +1,12 @@
 #!/usr/bin/env sh
 
+if ! connected; then
+   notify-send -t 3000 -i "$ICONS"/disconnected.png "Disconnected"
+   exit 1
+fi
+
+notify-send -i "$ICONS/update.png" "Syncing now"
+
 while :; do
     case $1 in
         --git)
@@ -15,7 +22,6 @@ while :; do
                 fi
             done
             wait
-            notify-send -t 3000 -i "$ICONS"/gitlab.png "Done syncing git repos"
             ;;
         --mail)
             mbsync -c ~/.config/isync/mbsyncrc -a
@@ -32,3 +38,7 @@ while :; do
     esac
     shift
 done
+
+wait
+notify-send -i "$ICONS/update.png" "Done syncing"
+exit 0
