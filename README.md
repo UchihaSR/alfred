@@ -53,3 +53,7 @@ and in return, I, some gratification.
 ## How do these damn things work!
 
 If you have no clue how the scripts are functioning but are interested to learn, let me know and I will comment the hell out of them so that you can gather some precious shell scripting knowledge.
+
+## Documentation
+
+Coming soon, lol.
