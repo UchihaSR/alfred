@@ -10,10 +10,10 @@ while :; do
             ;;
         --wifi)
             if connected; then
-                echo ❗ 000%
-            else
                 printf "🌏 %s" \
-                    awk "FNR == 3 { printf "%03d", $3*100/70 }" /proc/net/wireless
+                    "$(awk 'FNR == 3 { printf "%03d", $3*100/70 }' /proc/net/wireless)"
+            else
+                echo ❗ 000%
             fi
             ;;
         --sys-stat)
@@ -27,7 +27,7 @@ while :; do
             temp="$(sensors | awk '(/Core 0/){printf $3}' | sed 's/\.0//; s/+//')"
             echo "🌡 $temp   🐎 $cpu%   🧠 $mem"
             ;;
-        --volume-stat)
+        --vol-stat)
             volstat="$(amixer get Master)"
             echo "$volstat" | grep -o -m 1 "off" > /dev/null && echo 🔇 000% ||
                 printf "🔊 %03d%%" "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%")"

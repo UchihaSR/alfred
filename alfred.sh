@@ -51,7 +51,6 @@ setdpi() {
 while :; do
     case $1 in
         --background)
-            notify-send "here"
             shift
             setbg "$1"
             ;;
