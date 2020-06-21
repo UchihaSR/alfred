@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 if ! connected; then
-   notify-send -t 3000 -i "$ICONS"/disconnected.png "Disconnected"
-   exit 1
+    notify-send -t 3000 -i "$ICONS"/disconnected.png "Disconnected"
+    exit 1
 fi
-notify-send -i "$ICONS/update.png" "Syncing now"
+# notify-send -i "$ICONS/update.png" "Syncing now"
 while :; do
     case $1 in
         --git)
@@ -20,6 +20,7 @@ while :; do
                 fi
             done
             wait
+            notify-send -t 3000 -i "$ICONS"/gitlab.png "Done syncing git repos"
             ;;
         --mail)
             mbsync -c ~/.config/isync/mbsyncrc -a
@@ -31,12 +32,12 @@ while :; do
         --calcurse)
             CALCURSE_CALDAV_PASSWORD=$(gpg -d --batch --passphrase asdlkj ~/.local/share/passwords/salmanabedin@disroot.org.gpg) calcurse-caldav
             # --init=keep-remote
+            notify-send -i "$ICONS"/calendar.png "Done syncing calcurse"
             ;;
         *) break ;;
     esac
     shift
 done
-
 wait
-notify-send -i "$ICONS/update.png" "Done syncing"
+# notify-send -i "$ICONS/update.png" "Done syncing"
 exit 0
