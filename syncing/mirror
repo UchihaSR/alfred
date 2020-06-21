@@ -19,8 +19,8 @@ while :; do
                     git commit -m "$message" && git push &
                 fi
             done
-            wait &
-            notify-send -t 3000 -i "$ICONS"/gitlab.png "Done syncing git repos"
+            # wait &
+            # notify-send -t 3000 -i "$ICONS"/gitlab.png "Done syncing git repos"
             ;;
         --mail)
             mbsync -c ~/.config/isync/mbsyncrc -a
