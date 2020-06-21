@@ -4,7 +4,7 @@ if ! connected; then
     notify-send -t 3000 -i "$ICONS"/disconnected.png "Disconnected"
     exit 1
 fi
-# notify-send -i "$ICONS/update.png" "Syncing now"
+notify-send -i "$ICONS/update.png" "Syncing now"
 while :; do
     case $1 in
         --git)
