@@ -4,8 +4,8 @@ My daily driver shell scripts
 
 ## Why does it exist?
 
-Most of these are written by myself in order to indulge my laziness
-(i.e. automating stuff) and/or in order for me to escape doing something actually worth while.
+Most of these are written by myself in order to indulge my laziness 
+and/or in order for me to escape doing something actually worth while.
 
 Hopefully you will get some use out of these
 and in return, I, some gratification.
