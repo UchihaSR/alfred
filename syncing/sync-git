@@ -13,21 +13,10 @@ for dir in "$GIT"/own/*/; do
         cd "$dir" || exit 1
         # git pull
         git add .
-
-        # case $dir in
-        #     *bolt*) touch test;;
-        # esac
-
-        # [ "$dir" =~ *"bolt"* ] && touch test
-        # git commit -m "Complete overhaul & added a Makefile" &&
-        # git push && continue
-
-        # git status --porcelain &&
-        #     git commit -m "$(rofi -dmenu -i -p "$(pwd | rev | cut -d/ -f1 | rev)")" &&
-        #     git push
-
-        git commit -m "update" && git push
-
+        [ -z "$(git status --porcelain)" ] && exit 1
+        git commit -m "$(rofi -dmenu -i -p "$(pwd | rev | cut -d/ -f1 | rev)")" &&
+            git push
+        # git commit -m "update" && git push
     }
 done
 
