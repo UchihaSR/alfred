@@ -14,9 +14,9 @@ for dir in "$GIT"/own/*/; do
         # git pull
         git add .
         [ -z "$(git status --porcelain)" ] && continue
-        git commit -m "$(rofi -dmenu -i -p "$(pwd | rev | cut -d/ -f1 | rev)")" &&
-            git push
-        # git commit -m "update" && git push
+        message=$(rofi -dmenu -i -p "$(pwd | rev | cut -d/ -f1 | rev)")
+        [ "$message" ] || message=update
+        git commit -m "$message" && git push
     }
 done
 
