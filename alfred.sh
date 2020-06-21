@@ -18,7 +18,7 @@ setbg() {
 setdpi() {
     file=~/.config/X11/Xresources
 
-    grep 'Xft.dpi' "$file" && xrdb -merge "$file" && exit 1
+    grep 'Xft.dpi' "$file" && xrdb -merge "$file" && return
 
     info=$(xrandr | grep ' connected')
 
@@ -51,9 +51,9 @@ setdpi() {
 while :; do
     case $1 in
         --background)
+            notify-send "here"
             shift
             setbg "$1"
-            notify-send "$1"
             ;;
         --dpi) setdpi ;;
         *) break ;;
