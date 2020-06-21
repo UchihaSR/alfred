@@ -16,7 +16,7 @@ while :; do
                     [ -z "$(git status --porcelain)" ] && continue
                     message=$(timeout 15 rofi -dmenu -i -p "$(pwd | rev | cut -d/ -f1 | rev)")
                     [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
-                    git commit -m "$message" && git push &
+                    git commit -m "$message" && git push
                 fi
             done
             # wait &
