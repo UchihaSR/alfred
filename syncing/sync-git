@@ -20,4 +20,5 @@ for dir in "$GIT"/own/*/; do
     fi
 done
 
+wait
 notify-send -t 3000 -i "$ICONS"/gitlab.png "Done syncing git repos"
