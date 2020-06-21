@@ -39,5 +39,5 @@ while :; do
     shift
 done
 # wait
-notify-send -i "$ICONS/update.png" "Done syncing"
-exit 0
+# notify-send -i "$ICONS/update.png" "Done syncing"
+# exit 0
