@@ -22,9 +22,11 @@ for dir in "$GIT"/own/*/; do
         # git commit -m "Complete overhaul & added a Makefile" &&
         # git push && continue
 
-        git commit -m "$(rofi -dmenu -i -p "$(pwd | rev | cut -d/ -f1 | rev)")" && git push
+        git status --porcelain &&
+            git commit -m "$(rofi -dmenu -i -p "$(pwd | rev | cut -d/ -f1 | rev)")" &&
+            git push
 
-        git commit -m "update" && git push
+        # git commit -m "update" && git push
 
     }
 done
