@@ -19,7 +19,7 @@ while :; do
                     git commit -m "$message" && git push &
                 fi
             done
-            wait
+            wait &
             notify-send -t 3000 -i "$ICONS"/gitlab.png "Done syncing git repos"
             ;;
         --mail)
