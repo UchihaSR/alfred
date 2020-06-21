@@ -38,6 +38,6 @@ while :; do
     esac
     shift
 done
-wait
-# notify-send -i "$ICONS/update.png" "Done syncing"
+# wait
+notify-send -i "$ICONS/update.png" "Done syncing"
 exit 0
