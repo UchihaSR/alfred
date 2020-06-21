@@ -15,7 +15,7 @@ while :; do
                     git add .
                     [ -z "$(git status --porcelain)" ] && continue
                     message=$(timeout 15 rofi -dmenu -i -p "$(pwd | rev | cut -d/ -f1 | rev)")
-                    [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
+                    [ "$message" ] || message=$(git log -1 | awk -F / '{print $NF}')
                     git commit -m "$message" && git push
                 fi
             done
