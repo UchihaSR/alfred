@@ -9,7 +9,6 @@
 # notify-send -t 3000 -i $ICONS/gitlab.png "Syncing git repos"
 
 for dir in "$GIT"/own/*/; do
-    echo "$dir" >> test
     [ -d "$dir" ] && {
         cd "$dir" || exit 1
         # git pull
