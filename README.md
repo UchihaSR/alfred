@@ -50,10 +50,18 @@ and in return, I, some gratification.
 -  Terminal Preview
 -  And much more
 
-## How do these damn things work!
+## Installation
 
-If you have no clue how the scripts are functioning but are interested to learn, let me know and I will comment the hell out of them so that you can gather some precious shell scripting knowledge.
+```sh
+git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make install
+```
 
 ## Documentation
 
 Coming soon, lol.
+
+## Uninstallation
+
+```sh
+sudo make uninstall
+```
