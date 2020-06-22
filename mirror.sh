@@ -43,6 +43,17 @@ while :; do
             yay -Syyu --noconfirm
             npm update -g
             ;;
+        --phone)
+            android=/mnt/android
+            disk=/disk/Phone
+            # notify-send -t 3000 -i "$ICONS"/phone.png "Phone Sync" "Time to sync"
+            if ! timeout 3 sshfs -p "$PORT" "$CARD" $android; then
+                notify-send -t 3000 -i "$ICONS"/critical.png "Phone Sync" "Couldn't sync phone!" && exit 1
+            fi
+            unison -batch -fat $android $disk
+            fusermount -u $android
+            # notify-send -t 3000 -i "$ICONS"/phone.png "Phone Sync" "Done Syncing"
+            ;;
         *) break ;;
     esac
     shift
