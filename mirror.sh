@@ -41,6 +41,7 @@ while :; do
         --arch)
             doas -- pacman -Syyu --noconfirm
             yay -Syyu --noconfirm
+            npm update -g
             ;;
         *) break ;;
     esac
