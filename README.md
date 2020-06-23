@@ -18,11 +18,11 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 | `launch-devour`               | xdg-open alternative combined with terminal swallowing                          |
 | `watchmen --dots`             | Makes symbolic links to my home directory when there is a change in my dotfiles |
 | `watchmen --mail`             | Refreshes my statusbar module on changes in inbox                               |
-| `battery --block-charge`      | Blocks charge for battery longevity                                             |
-| `battery --monitor`           | Cron script to monitor battery level act accordingly                            |
-| `battery --plugged`           | Udev script to notify plugging state                                           |
+| `battery --block-charge`      | Blocks charge at high capacity for battery longevity                            |
+| `battery --monitor`           | Cron script to monitor battery level & act accordingly                          |
+| `battery --plugged`           | Udev script to notify plugging state                                            |
 | `alfred --dpi`                | Sets the correct dpi for my display resolution                                  |
-| `alfred --background shuffle` | Shuffles up my background                                                       |
+| `alfred --background shuffle` | Shuffles my background                                                          |
 | `alfred --background reel 1m` | Changes background each minute                                                  |
 | `mirror --phone`              | Syncs my phone & local files via wifi                                           |
 | `mirror --arch`               | Syncs all my packages                                                           |
@@ -59,6 +59,7 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 -  Bluetooth headset connect
 -  Update local git repos
 -  Make bootable USB (linux & windows (for normies!))
+-  TTF to Groff font converter
 -  And much more
 
 ## Uninstallation
