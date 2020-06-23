@@ -69,17 +69,17 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 | `alfred --background shuffle` | Shuffles up my background                                                       |
 | `alfred --background reel 1m` | Changes background each minute                                                  |
 | `mirror --phone`              | Syncs my phone & local files                                                    |
-| `mirror --arch`               | Syncs all of my packages                                                        |
-| `mirror --git`                | Syncs all of my repositories                                                    |
+| `mirror --arch`               | Syncs all my packages                                                        |
+| `mirror --git`                | Syncs all my repositories                                                    |
 | `mirror --mail`               | Syncs my mails                                                                  |
 | `panel --date-time`           | Generates date & time panel module                                              |
-| `panel --wifi`                | Generates wifi link strength panel module                         |
-| `panel --mailbox`             | Generates unread mail count panel module module                                 |
-| `panel --noti-stat`           | Generates notification on/off status panel module module                        |
-| `panel --vol-stat`            | Generates volume level panel module module                                      |
-| `panel --sys-stat`            | Generates system temperature, cpu load & memory status panel module module      |
+| `panel --wifi`                | Generates wifi link strength panel module                                       |
+| `panel --mailbox`             | Generates unread mail count panel module                                        |
+| `panel --noti-stat`           | Generates notification on/off status panel module                               |
+| `panel --vol-stat`            | Generates volume level panele module                                            |
+| `panel --sys-stat`            | Generates system temperature, cpu load & memory status panel module             |
 | `torrent --add`               | Adds torrent to transmission and notifies instantly                             |
-| `torrent --downloaded`        | Notfies when a torrent is downloaded                                            |
+| `torrent --downloaded`        | Notfies when a torrent gets downloaded                                               |
 
 ## Uninstallation
 
