@@ -58,7 +58,7 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 
 ## Usage
 
-| Command                       | Action                                                                          |
+| Command                       | Effect                                                                          |
 | ----------------------------- | ------------------------------------------------------------------------------- |
 | `connected`                   | Checks if wifi & internet is up or not                                          |
 | `preview`                     | Previewer script for lf                                                         |
@@ -73,8 +73,8 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 | `mirror --git`                | Syncs all of my repositories                                                    |
 | `mirror --mail`               | Syncs my mails                                                                  |
 | `panel --date-time`           | Generates date & time panel module                                              |
-| `panel --wifi`                | Generates wifi link strength panel module module                                |
-| `panel --mailbox`             | Generates unread mail panel module module                                       |
+| `panel --wifi`                | Generates wifi link strength panel module                         |
+| `panel --mailbox`             | Generates unread mail count panel module module                                 |
 | `panel --noti-stat`           | Generates notification on/off status panel module module                        |
 | `panel --vol-stat`            | Generates volume level panel module module                                      |
 | `panel --sys-stat`            | Generates system temperature, cpu load & memory status panel module module      |
