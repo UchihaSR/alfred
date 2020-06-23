@@ -56,11 +56,31 @@ and in return, I, some gratification.
 git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make install
 ```
 
-## Documentation
+## Usage
 
-Coming soon, lol.
+| Command                       | Action                                                                       |
+|-------------------------------|------------------------------------------------------------------------------|
+| `torrent --add`               | Adds torrent to transmission and notifies instantly                          |
+| `torrent --downloaded`        | Notfies when a torrent is downloaded                                         |
+| `watchmen --dots`             | Makes symbolic links to my home directory when there is a change in my repos |
+| `watchmen --mail`             | Refreshes my statusbar module on changes in inbox                            |
+| `preview`                     | Previwer script for lf                                                       |
+| `launch-devour`               | xdg-open alternative combined with my terminal swallowing                    |
+| `mirror --phone`              | Syncs my phone pc                                                            |
+| `mirror --arch`               | Syncs all of my packages                                                     |
+| `mirror --git`                | Syncs all of my repositories                                                 |
+| `mirror --mail`               | Syncs my mails                                                               |
+| `alfred --dpi`                | Sets the correct dpi for my display resolution                               |
+| `alfred --background shuffle` | Shuffles up my background                                                    |
+| `alfred --background reel 1m` | Changes background each minute                                               |
+| `connected`                   | Checks if wifi & internet is up or not                                       |
+| `panel --date-time`           | Generates date & time panel module                                           |
+| `panel --wifi`                | Generates wifi link strength panel module module                             |
+| `panel --mailbox`             | Generates unread mail panel module module                                    |
+| `panel --noti-stat`           | Generates notification on/off status panel module module                     |
+| `panel --vol-stat`            | Generates volume level panel module module                                   |
+| `panel --sys-stat`            | Generates system temperature, cpu load & memory status panel module module                                   |
 
-<!--- | Command | Action | -->
 
 ## Uninstallation
 
