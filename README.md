@@ -60,6 +60,9 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 
 Coming soon, lol.
 
+| Command | Action |
+<!--- |---------|--------| -->
+
 ## Uninstallation
 
 ```sh
