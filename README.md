@@ -16,6 +16,8 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 | `connected`                   | Checks if wifi & internet is up or not                                          |
 | `preview`                     | Previewer script for lf                                                         |
 | `launch-devour`               | xdg-open alternative combined with terminal swallowing                          |
+| `toggle --wifi`               | Toggles wifi using **iwd** daemon                                               |
+| `toggle --noti`               | Toggles do not disturb mode using **dunst**                                     |
 | `watchmen --dots`             | Makes symbolic links to my home directory when there is a change in my dotfiles |
 | `watchmen --mail`             | Refreshes my statusbar module on changes in inbox                               |
 | `battery --block-charge`      | Blocks charge at high capacity for battery longevity                            |
