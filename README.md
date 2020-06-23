@@ -10,15 +10,38 @@ and/or in order for me to escape doing something actually worth while.
 Hopefully you will get some use out of these
 and in return, I, some gratification.
 
-## Highlights
+## Installation
 
--  **Syncing**
+```sh
+git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make install
+```
 
-   -  Phone (via wifi)
-   -  Google drive
-   -  Git
-   -  Arch & AUR packages
-   -  IMAP mail server
+## Usage
+
+| Command                       | Effect                                                                          |
+| ----------------------------- | ------------------------------------------------------------------------------- |
+| `connected`                   | Checks if wifi & internet is up or not                                          |
+| `preview`                     | Previewer script for lf                                                         |
+| `launch-devour`               | xdg-open alternative combined with terminal swallowing                          |
+| `watchmen --dots`             | Makes symbolic links to my home directory when there is a change in my dotfiles |
+| `watchmen --mail`             | Refreshes my statusbar module on changes in inbox                               |
+| `alfred --dpi`                | Sets the correct dpi for my display resolution                                  |
+| `alfred --background shuffle` | Shuffles up my background                                                       |
+| `alfred --background reel 1m` | Changes background each minute                                                  |
+| `mirror --phone`              | Syncs my phone & local files via wifi                                           |
+| `mirror --arch`               | Syncs all my packages                                                           |
+| `mirror --git`                | Syncs all my repositories                                                       |
+| `mirror --mail`               | Syncs my mails                                                                  |
+| `panel --date-time`           | Generates date & time panel module                                              |
+| `panel --wifi`                | Generates wifi link strength panel module                                       |
+| `panel --mailbox`             | Generates unread mail count panel module                                        |
+| `panel --noti-stat`           | Generates notification on/off status panel module                               |
+| `panel --vol-stat`            | Generates volume level panele module                                            |
+| `panel --sys-stat`            | Generates system temperature, cpu load & memory status panel module             |
+| `torrent --add`               | Adds torrent to transmission and notifies instantly                             |
+| `torrent --downloaded`        | Notfies when a torrent gets downloaded                                          |
+
+## More highlights
 
 -  **FFmpeg scripts**
 
@@ -40,6 +63,7 @@ and in return, I, some gratification.
    -  Periodic checking
    -  Charge blocking (for battery longevity)
 
+-  Google drive syncing
 -  Universal compiler for all kinds of files
 -  Custom launch script (xdg-open replacement)
 -  Instant googleing
@@ -49,37 +73,6 @@ and in return, I, some gratification.
 -  Correct DPI setter
 -  Terminal Preview
 -  And much more
-
-## Installation
-
-```sh
-git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make install
-```
-
-## Usage
-
-| Command                       | Effect                                                                          |
-| ----------------------------- | ------------------------------------------------------------------------------- |
-| `connected`                   | Checks if wifi & internet is up or not                                          |
-| `preview`                     | Previewer script for lf                                                         |
-| `launch-devour`               | xdg-open alternative combined with terminal swallowing                          |
-| `watchmen --dots`             | Makes symbolic links to my home directory when there is a change in my dotfiles |
-| `watchmen --mail`             | Refreshes my statusbar module on changes in inbox                               |
-| `alfred --dpi`                | Sets the correct dpi for my display resolution                                  |
-| `alfred --background shuffle` | Shuffles up my background                                                       |
-| `alfred --background reel 1m` | Changes background each minute                                                  |
-| `mirror --phone`              | Syncs my phone & local files                                                    |
-| `mirror --arch`               | Syncs all my packages                                                        |
-| `mirror --git`                | Syncs all my repositories                                                    |
-| `mirror --mail`               | Syncs my mails                                                                  |
-| `panel --date-time`           | Generates date & time panel module                                              |
-| `panel --wifi`                | Generates wifi link strength panel module                                       |
-| `panel --mailbox`             | Generates unread mail count panel module                                        |
-| `panel --noti-stat`           | Generates notification on/off status panel module                               |
-| `panel --vol-stat`            | Generates volume level panele module                                            |
-| `panel --sys-stat`            | Generates system temperature, cpu load & memory status panel module             |
-| `torrent --add`               | Adds torrent to transmission and notifies instantly                             |
-| `torrent --downloaded`        | Notfies when a torrent gets downloaded                                               |
 
 ## Uninstallation
 
