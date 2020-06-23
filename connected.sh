@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# Checks if internet is available or not
+
 grep "up" /sys/class/net/w*/operstate > /dev/null &&
    wget -q --spider http://google.com
 

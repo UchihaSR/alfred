@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# Previewer for LF
+
 FILE="$1"
 HEIGHT="$2"
 HIGHLIGHT_SIZE_MAX=262143 # 256KiB

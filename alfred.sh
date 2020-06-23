@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# Misc script piled together for ease of calling
+
 setbg() {
     wall=/tmp/wall
     setpic() { feh --no-fehbg --bg-scale "$1"; }

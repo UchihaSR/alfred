@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# Panel Module Generator
+
 while :; do
     case $1 in
         --date-time)
