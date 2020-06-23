@@ -38,7 +38,7 @@ while :; do
         --calcurse)
             CALCURSE_CALDAV_PASSWORD=$(gpg -d --batch --passphrase asdlkj ~/.local/share/passwords/salmanabedin@disroot.org.gpg) calcurse-caldav
             # --init=keep-remote
-            notify-send -i "$ICONS"/calendar.png "Done syncing calcurse"
+            # notify-send -i "$ICONS"/calendar.png "Done syncing calcurse"
             ;;
         --arch)
             doas -- pacman -Syyu --noconfirm
