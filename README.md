@@ -20,7 +20,7 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 | `watchmen --mail`             | Refreshes my statusbar module on changes in inbox                               |
 | `battery --block-charge`      | Blocks charge for battery longevity                                             |
 | `battery --monitor`           | Cron script to monitor battery level act accordingly                            |
-| `battery --plugged`           | Udevl script to notify plugging state                                           |
+| `battery --plugged`           | Udev script to notify plugging state                                           |
 | `alfred --dpi`                | Sets the correct dpi for my display resolution                                  |
 | `alfred --background shuffle` | Shuffles up my background                                                       |
 | `alfred --background reel 1m` | Changes background each minute                                                  |
