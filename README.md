@@ -60,10 +60,11 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 
 | Command                       | Action                                                                          |
 | ----------------------------- | ------------------------------------------------------------------------------- |
+| `connected`                   | Checks if wifi & internet is up or not                                          |
+| `preview`                     | Previewer script for lf                                                         |
 | `launch-devour`               | xdg-open alternative combined with terminal swallowing                          |
 | `watchmen --dots`             | Makes symbolic links to my home directory when there is a change in my dotfiles |
 | `watchmen --mail`             | Refreshes my statusbar module on changes in inbox                               |
-| `preview`                     | Previewer script for lf                                                         |
 | `alfred --dpi`                | Sets the correct dpi for my display resolution                                  |
 | `alfred --background shuffle` | Shuffles up my background                                                       |
 | `alfred --background reel 1m` | Changes background each minute                                                  |
@@ -71,7 +72,6 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 | `mirror --arch`               | Syncs all of my packages                                                        |
 | `mirror --git`                | Syncs all of my repositories                                                    |
 | `mirror --mail`               | Syncs my mails                                                                  |
-| `connected`                   | Checks if wifi & internet is up or not                                          |
 | `panel --date-time`           | Generates date & time panel module                                              |
 | `panel --wifi`                | Generates wifi link strength panel module module                                |
 | `panel --mailbox`             | Generates unread mail panel module module                                       |
