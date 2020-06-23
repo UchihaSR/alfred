@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# Monitors a directory and runs script on particular changes
+# Monitors a directory and runs scripts on particular changes
 
 while :; do
     case $1 in
@@ -21,7 +21,7 @@ while :; do
             inotifywait -m -e move $path |
                 while read -r event; do
                     refresh-block 2
-                done
+                done &
             ;;
         *) break ;;
     esac

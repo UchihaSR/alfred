@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
 # Misc script piled together for ease of calling
+# setbg sets backwallpapers
+# setdpi sets the correct dpi
 
 setbg() {
     wall=/tmp/wall
