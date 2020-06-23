@@ -2,14 +2,6 @@
 
 My daily driver shell scripts
 
-## Why does it exist?
-
-Most of these are written by myself in order to indulge my laziness
-and/or in order for me to escape doing something actually worth while.
-
-Hopefully you will get some use out of these
-and in return, I, some gratification.
-
 ## Installation
 
 ```sh
@@ -20,6 +12,7 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 
 | Command                       | Effect                                                                          |
 | ----------------------------- | ------------------------------------------------------------------------------- |
+| `compile`                     | Compiles a file based on its extension                                          |
 | `connected`                   | Checks if wifi & internet is up or not                                          |
 | `preview`                     | Previewer script for lf                                                         |
 | `launch-devour`               | xdg-open alternative combined with terminal swallowing                          |
@@ -64,14 +57,10 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
    -  Charge blocking (for battery longevity)
 
 -  Google drive syncing
--  Universal compiler for all kinds of files
--  Custom launch script (xdg-open replacement)
 -  Instant googleing
 -  Bluetooth headset connect
 -  Update local git repos
 -  Make bootable USB (linux & windows (for normies!))
--  Correct DPI setter
--  Terminal Preview
 -  And much more
 
 ## Uninstallation

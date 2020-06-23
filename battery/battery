@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+while :; do
+    case $1 in
+        --monitor)
+            :
+            ;;
+        --block-charge)
+            :
+            ;;
+        *) break ;;
+    esac
+    shift
+done
