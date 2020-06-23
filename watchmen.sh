@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-# Watches directory and runs script on particular changes
+# Monitors a directory and runs script on particular changes
 
 while :; do
     case $1 in
