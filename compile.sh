@@ -7,17 +7,18 @@ name="${path%.*}"
 ext="${path##*.}"
 # dir="${path%/*}"
 
+ns "$path"
+
 case $ext in
    c)  cc "$path" -o "$name" && "$name" ;;
    h|sh) doas make install ;;
    js) node "$path" ;;
-   ms) groff -ms -ept "$path" > "$name".ps ;;
+   ms) groff -ms -ept -K utf8 "$path" > "$name".ps ;;
    py)  python "$path" ;;
    sass) sassc -a "$path" "$name.css" ;;
    tex) xelatex "$path" ;;
    # sh) sh "$path" ;;
    # ms) groff -m ms -T pdf "$path" > "$name".pdf ;;
-   # ms) groff -m ms -T ps "$path" > "$name".ps ;;
    # ms) eqn "$path" -T pdf | groff -ms -T pdf > "$name".pdf ;;
    # c)  tcc "$path" -o "$name" && "$TERMINAL" -e sh -c "$name; read -r line" ;;
       # scss) sassc "$path" "$name.css" ;;

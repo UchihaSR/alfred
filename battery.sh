@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# Misc battery scripts
+
 case $1 in
     --block-charge)
         config="/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
