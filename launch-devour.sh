@@ -32,7 +32,7 @@ case $(file --mime-type "$*" -bL) in
     image/*)
         pidof feh ||
             devour \
-                "feh -A 'set-bg %f' -B 'black' -F -d --edit --keep-zoom-vp --start-at" "$*"
+                "feh -A 'alfred --bg %f' -B 'black' -F -d --edit --keep-zoom-vp --start-at" "$*"
         ;;
     application/zip)
         unzip "$*" -d "${1%.*}"
