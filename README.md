@@ -12,7 +12,8 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 
 | Command                   | Effect                                                                          |
 | ------------------------- | ------------------------------------------------------------------------------- |
-| `compile`                 | Compiles & cleans leftovers of a file based on its extension                    |
+| `compile`                 | Compiles a file based on its extension                                          |
+| `compile --clean`         | Cleans development leftovers of a file based on its extension                   |
 | `connected`               | Checks if wifi & internet is up or not                                          |
 | `preview`                 | Previewer script for lf                                                         |
 | `launch-devour`           | xdg-open alternative combined with terminal swallowing                          |
