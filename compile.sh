@@ -11,7 +11,7 @@ dir="${path%/*}"
 cd "$dir" || exit 1
 [ "$clean" ] &&
     case $ext in
-        tex) rm -f ./*.out ./*.log ./*.aux ;;
+        tex) rm -f ./*.out ./*.log ./*.aux ./*.toc ;;
             # c) rm -f "$name" ;;
     esac && exit
 case $ext in
