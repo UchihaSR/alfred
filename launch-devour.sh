@@ -39,4 +39,3 @@ case $(file --mime-type "$*" -bL) in
         unzip "$*" -d "${1%.*}"
         ;;
 esac
-
