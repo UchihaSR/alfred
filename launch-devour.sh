@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
-# XDG Killer
+# Launch-devour: The XDG Killer with Devouring feature
 # Launches files based on their mimetype
+# Usage: launch-devour [FILE...]
 # If you are overwhelmed by all this gibberish,
 #   just ignore the sections before the case statements
 
