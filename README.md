@@ -20,7 +20,7 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 | `toggle --noti`               | Toggles do not disturb mode using **dunst**                                     |
 | `watchmen --dots`             | Makes symbolic links to my home directory when there is a change in my dotfiles |
 | `watchmen --mail`             | Refreshes my statusbar module on changes in inbox                               |
-| `battery --block-charge`      | Blocks charge at high capacity for battery longevity                            |
+| `battery --block-charge`      | Blocks charging at high capacity for battery longevity                            |
 | `battery --monitor`           | Cron script to monitor battery level & act accordingly                          |
 | `battery --plugged`           | Udev script to notify on plugging/unplugging
 | `alfred --dpi`                | Sets the correct dpi for my display resolution                                  |
