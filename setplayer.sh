@@ -1,18 +1,9 @@
 #!/usr/bin/env sh
 
-setplayer() {
-    if pidof spotify; then
-        playerctl "$1"
-    else
-        mpc "$1"
-    fi
-}
+setplayer() { playerctl "$1" || mpc "$1"; }
 case $1 in
     next) setplayer next ;;
     prev) setplayer prev ;;
-    toggle)
-        setplayer toggle
-        setplayer play-pause
-        ;;
+    toggle) setplayer play-pause || setplayer toggle ;;
     *) : ;;
 esac
