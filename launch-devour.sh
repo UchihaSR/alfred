@@ -25,7 +25,7 @@ case $(file --mime-type "$*" -bL) in
         pidof mpv || devour mpv "$*"
         ;;
     application/pdf | application/postscript)
-        pidof zathura || devour zathura "$*"
+        devour zathura "$*"
         ;;
     image/gif)
         pgrep mpv || devour "mpv --loop" "$*"
