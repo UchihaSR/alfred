@@ -7,14 +7,14 @@ while :; do
         --noti)
             if [ -s "$DONT_DISTURB_MODE" ]; then
                 : > "$DONT_DISTURB_MODE"
-                notify-send -t 1000 -i "$ICONS"/dnd.png 'Do not disturb'
-                sleep 2
-                killall -SIGUSR1 dunst
-            else
-                echo on > "$DONT_DISTURB_MODE"
                 killall -SIGUSR2 dunst
                 sleep 1
                 notify-send -t 1000 -i "$ICONS"/bell.png 'Disturb all you want'
+            else
+                echo on > "$DONT_DISTURB_MODE"
+                notify-send -t 1000 -i "$ICONS"/dnd.png 'Do not disturb'
+                sleep 2
+                killall -SIGUSR1 dunst
             fi
             refresh-block 3
             ;;
