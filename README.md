@@ -16,7 +16,7 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 | `compile --clean`         | Cleans development leftovers of a file based on its extension                   |
 | `connected`               | Checks if wifi & internet is up or not                                          |
 | `preview`                 | Previewer script for lf                                                         |
-| `launch-devour`           | xdg-open alternative combined with terminal swallowing                          |
+| `launch --devour`         | xdg-open alternative combined with terminal swallowing                          |
 | `toggle --wifi`           | Toggles wifi using **iwd** daemon                                               |
 | `toggle --noti`           | Toggles do not disturb mode using **dunst**                                     |
 | `watchmen --dots`         | Makes symbolic links to my home directory when there is a change in my dotfiles |
