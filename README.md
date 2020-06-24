@@ -10,7 +10,7 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 
 ## Usage
 
-| Command                        | Effect                                                                          |
+| Command                        | Effects                                                                         |
 | ------------------------------ | ------------------------------------------------------------------------------- |
 | `compile`                      | Compiles a file based on its extension                                          |
 | `compile --clean`              | Cleans development leftovers of a file based on its extension                   |
