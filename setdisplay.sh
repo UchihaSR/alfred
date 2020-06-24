@@ -1,36 +1,41 @@
 #!/usr/bin/env sh
 
-# Misc script piled together for ease of calling
-# alfred --dg sets wallpapers (options: shuffle,reel,delete)
-# alfred --dpi sets the correct dpi
+# Display related scripts
+# setdisplay --dg sets wallpapers (options: shuffle,reel,delete)
+#   Requires an Environment variable name WALLPAPERS that has the path to your wallpapers
+# setdisplay --dpi sets the correct dpi
 
-setbg() {
+setwall() {
     WALL=/tmp/wall
     REELPID=/tmp/reelpid
     case $1 in
         shuffle)
             find "$WALLPAPERS" -name "*.jpg" -o -name "*.png" | shuf -n1 | tee "$WALL"
+            feh --no-fehbg --bg-scale "$(cat $WALL)"
             ;;
-        reel)
-            shift
-            [ "$1" = stop ] && kill -9 "$REELPID" && exit
-            while :; do
-                setbg shuffle
-                sleep "$1"
-            done
-            echo $! > $REELPID
-            shift
+        toggle-reel)
+            if [ -s $REELPID ]; then
+                kill -9 "$(cat $REELPID)"
+                : > $REELPID
+                notify-send -i "$ICONS"/wall.png "Stopped reeling wallpapers"
+            else
+                notify-send -i "$ICONS"/wall.png "Started reeling wallpapers"
+                while :; do
+                    setwall shuffle
+                    sleep 5m
+                done &
+                echo $! > $REELPID
+            fi
             ;;
         delete)
             find "$WALLPAPERS" -name "$(cat $WALL)" -delete
             setbg shuffle
-            return
             ;;
         *)
             echo "$1" > $WALL
+            feh --no-fehbg --bg-scale "$(cat $WALL)"
             ;;
     esac
-    feh --no-fehbg --bg-scale "$(cat $WALL)"
 }
 
 setdpi() {
@@ -70,7 +75,7 @@ while :; do
     case $1 in
         --bg)
             shift
-            setbg "$@"
+            setwall "$1"
             ;;
         --dpi) setdpi ;;
         *) break ;;
