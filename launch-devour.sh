@@ -2,6 +2,8 @@
 
 # XDG Killer
 # Launches files based on their mimetype
+# If you are overwhelmed by all this gibberish,
+#   just ignore the sections before the case statement
 
 echo "$*" | grep "\.ar\." && {
     devour alacritty \
@@ -14,7 +16,9 @@ echo "$1" | grep "\.sent$" && {
     exit
 }
 case $(file --mime-type "$*" -bL) in
+    # Check for the mimetype of your file
     text/* | inode/x-empty | application/json | application/octet-stream)
+        # Launch using your favorite application
         "$EDITOR" "$*"
         ;;
     video/*)
