@@ -5,6 +5,7 @@
 case $1 in
     --devour)
         shift
+
         if echo "$*" | grep "\.ar\."; then
             devour alacritty \
                 --config-file ~/.config/alacritty/alacritty_ar.yml \
@@ -14,18 +15,16 @@ case $1 in
             devour sent "$1" &
             exit
         fi
+
         case $(file --mime-type "$*" -bL) in
             text/* | inode/x-empty | application/json | application/octet-stream)
                 $EDITOR "$*"
                 ;;
-            video/* | audio/*)
+            video/* | audio/* | image/gif)
                 pidof mpv || devour mpv "$*"
                 ;;
             application/pdf | application/postscript)
                 pidof zathura || devour zathura "$*"
-                ;;
-            image/gif)
-                pgrep mpv || devour mpv --loop "$*"
                 ;;
             image/*)
                 pidof feh ||
@@ -43,10 +42,10 @@ case $1 in
             rofi -dmenu -i -p "Open with" | sed "s/\W//g")
         [ ! "$choice" ] && exit
         case "$choice" in
-            FoxitReader) swallow foxitreader "$*" ;;
-            MasterPDFEditor) swallow masterpdfeditor4 "$*" ;;
-            Code) code "$*" ;;
-            MPV) mpv --shuffle "$*" ;;
+            FoxitReader) devour foxitreader "$*" ;;
+            MasterPDFEditor) devour masterpdfeditor4 "$*" ;;
+            Code) devour code "$*" ;;
+            MPV) devour mpv --shuffle "$*" ;;
         esac
         ;;
     *)
