@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# Stole from https://github.com/dylanaraps
+
 scr_dir=~
 
 date=$(date +%F)

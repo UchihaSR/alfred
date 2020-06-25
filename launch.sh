@@ -18,7 +18,7 @@ case $1 in
             text/* | inode/x-empty | application/json | application/octet-stream)
                 $EDITOR "$*"
                 ;;
-            video/*)
+            video/* | audio/*)
                 pidof mpv || devour mpv "$*"
                 ;;
             application/pdf | application/postscript)
