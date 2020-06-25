@@ -11,7 +11,7 @@ while :; do
             "
             inotifywait -m -r -e create,moved_to $dirs |
                 while read -r; do
-                    cp -frs -t ~ \
+                    cp -frsu -t ~ \
                         "$GIT"/own/magpie/. \
                         "$GIT"/own/private/.
                 done &
