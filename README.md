@@ -45,11 +45,11 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 
 -  **FFmpeg scripts**
 
-   -  Trim videos
-   -  Join videos
-   -  Reduce volume
-   -  Add music to video
-   -  Make GIFs
+   -  Videos joiner & trimmer
+   -  Volume reducer
+   -  Music adder
+   -  GIF maker
+   -  Screenshotter
 
 -  **Recording**
 
