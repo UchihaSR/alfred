@@ -39,13 +39,14 @@ case $1 in
         ;;
     --choose)
         shift
-        choice=$(printf "📖 Foxit Reader\n📚 Master PDF Editor\n💻 Code" |
+        choice=$(printf "📖 Foxit Reader\n📚 Master PDF Editor\n💻 Code\n🎥 MPV" |
             rofi -dmenu -i -p "Open with" | sed "s/\W//g")
         [ ! "$choice" ] && exit
         case "$choice" in
             FoxitReader) swallow foxitreader "$*" ;;
             MasterPDFEditor) swallow masterpdfeditor4 "$*" ;;
-            Code) swallow code "$1" ;;
+            Code) code "$*" ;;
+            MPV) mpv --shuffle "$*" ;;
         esac
         ;;
     *)
