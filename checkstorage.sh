@@ -2,7 +2,6 @@
 
 # checkstorage <PATH1> <THRESHOLD1> <PATH2> <THRESHOLD2> ...
 # Notifies on low storage level
-# The first arg is the
 
 while [ "$1" ]; do
     LOCATION=$1
