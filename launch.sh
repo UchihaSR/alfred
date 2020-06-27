@@ -34,6 +34,12 @@ case $1 in
             application/zip)
                 unzip "$*" -d "${1%.*}"
                 ;;
+            application/x-tar)
+                tar -xvf "$1"
+                ;;
+            application/gzip)
+                gunzip "$1"
+                ;;
         esac
         ;;
     --choose)
