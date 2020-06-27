@@ -5,14 +5,14 @@
 
 [ "$1" = --clean ] && shift && clean=true
 path=$(readlink -f "$1")
-name="${path%.*}"
 ext="${path##*.}"
+# name="${path%.*}"
 
 case $ext in
-    zip) : ;;
-    tar) : ;;
-    rar) : ;;
+    zip) unzip "$path" -d "${1%.*}" ;;
+    tar) tar -xvf "$path" ;;
+    gzip) gunzip "$path" ;;
+    rar) unrar "$path" ;;
 esac
 
-[ "$clean" ] &&
-    :
+[ "$clean" ] && rm -f "$1"
