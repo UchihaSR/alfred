@@ -20,7 +20,7 @@ case $ext in
     h | sh) doas make install ;;
     py) python "$path" ;;
     tex) xelatex "$path" ;;
-    c) cc "$path" ;;
+        # c) cc "$path" ;;
         # c) cc "$path" -o "$name" && "$name" ;;
         # ms) groff -ms -ept -K utf8 "$path" > "$name".ps ;;
         # js) node "$path" ;;
