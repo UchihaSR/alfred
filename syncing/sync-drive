@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-notify-send -t 3000 -i "$ICONS"/drive.png "Time to Mirror Drive"
+dir="Audio Books"
 
 sync() {
     for i in "$@"; do
@@ -12,6 +12,6 @@ sync() {
     done
 }
 
-dir="Audio Books"
-[ "$1" ] && sync "$@" || sync "$dir"
-notify-send -t 3000 -i $ICONS/drive.png "Done Mirroring Drive"
+notify-send -t 3000 -i "$ICONS"/drive.png "Time to Mirror Drive"
+sync "$dir"
+notify-send -t 3000 -i "$ICONS"/drive.png "Done Mirroring Drive"
