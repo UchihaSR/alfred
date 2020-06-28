@@ -3,15 +3,19 @@
 # All purpose syncing script
 # mirror --[git,mail,calcurse,phone,arch,firefox]
 
+FIREFOXPROFILE=zmzk0pef
+
 if ! connected; then
     notify-send -t 3000 -i "$ICONS"/disconnected.png "Disconnected"
     exit 1
 fi
+
 notify-send -i "$ICONS/mirror.png" "Mirroring now"
+
 while :; do
     case $1 in
         --firefox)
-            rsync -a --delete ~/.mozilla/firefox/zmzk0pef.default-release \
+            rsync -a --delete ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release \
                 "$GIT"/own/firefox/.mozilla/firefox
             ;;
         --git)
