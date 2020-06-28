@@ -20,6 +20,7 @@ while :; do
                     git add .
                     [ -z "$(git status --porcelain)" ] && continue
 
+                    ns "$PWD"
                     message=$(timeout 15 rofi -dmenu -i -p "$(echo $PWD | awk -F / '{print $NF}')")
                     [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
 
