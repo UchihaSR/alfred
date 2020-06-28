@@ -19,7 +19,7 @@ while :; do
                     # git pull
                     git add .
                     [ -z "$(git status --porcelain)" ] && continue
-                    # [ "$PWD" = /home/git/own/private ] ||
+                    # [ "$PWD" = /home/git/own/firefox ] ||
                     message=$(timeout 15 rofi -dmenu -i -p "$(echo "$PWD" | awk -F / '{print $NF}')")
                     [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
 
