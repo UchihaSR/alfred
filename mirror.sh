@@ -11,6 +11,8 @@ notify-send -i "$ICONS/mirror.png" "Mirroring now"
 while :; do
     case $1 in
         --git)
+            rsync -a --delete ~/.mozilla/firefox/zmzk0pef.default-release \
+                "$GIT"/own/private/.mozilla/firefox
             for dir in "$GIT"/own/*/; do
                 if [ -d "$dir" ]; then
                     cd "$dir" || exit 1

@@ -6,16 +6,18 @@
 
 [ "$1" = --clean ] && shift && clean=true
 path=$(readlink -f "$1")
-name="${path%.*}"
+# name="${path%.*}"
 ext="${path##*.}"
 dir="${path%/*}"
 
 cd "$dir" || exit 1
+
 [ "$clean" ] &&
     case $ext in
         tex) rm -f ./*.out ./*.log ./*.aux ./*.toc ;;
             # c) rm -f "$name" ;;
     esac && exit
+
 case $ext in
     h | sh) doas make install ;;
     py) python "$path" ;;
