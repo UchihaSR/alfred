@@ -22,6 +22,7 @@ while :; do
                     git add .
                     [ -z "$(git status --porcelain)" ] && continue
                     [ "$PWD" = /home/git/own/firefox ] ||
+                        [ "$PWD" = /home/git/own/private ] ||
                         message=$(timeout 15 rofi -dmenu -i -p "$(echo "$PWD" | awk -F / '{print $NF}')")
                     [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
                     git commit -m "$message" && git push
