@@ -19,6 +19,7 @@ cd "$dir" || exit 1
     esac && exit
 
 case $ext in
+    c) make && doas make install ;;
     h | sh) doas make install ;;
     py) python "$path" ;;
     tex) xelatex "$path" ;;
