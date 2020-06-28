@@ -2,7 +2,7 @@
 
 # Monitors Battery level,
 # Blocks Charging on High battery level
-# Notifies on Plug and Unplug (Udev Script)
+# Notifies on Plug and Unplug (Using a supplimental udev rule)
 
 case $1 in
     --block-charge)

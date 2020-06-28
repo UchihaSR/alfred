@@ -1,10 +1,25 @@
 #!/usr/bin/env sh
 
 # Toggles Wifi & Notification
-# toggle --[noti,wifi]
+# toggle --[noti,wifi,wall-reel]
 
 while :; do
     case $1 in
+        --wall-reel)
+            REELPID=/tmp/reelpid
+            if [ -s $REELPID ]; then
+                kill -9 "$(cat $REELPID)"
+                : > $REELPID
+                notify-send -i "$ICONS"/wall.png "Wallpaper Reeling Stopped"
+            else
+                notify-send -i "$ICONS"/wall.png "Wallpaper Reeling Started"
+                while :; do
+                    setdisplay --bg shuffle
+                    sleep 5m
+                done &
+                echo $! > $REELPID
+            fi
+            ;;
         --noti)
             if [ -s "$DONT_DISTURB_MODE" ]; then
                 : > "$DONT_DISTURB_MODE"
