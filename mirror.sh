@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # All purpose syncing script
-# mirror --[git,mail,calcurse,phone,arch]
+# mirror --[git,mail,calcurse,phone,arch,firefox]
 
 if ! connected; then
     notify-send -t 3000 -i "$ICONS"/disconnected.png "Disconnected"
@@ -10,9 +10,11 @@ fi
 notify-send -i "$ICONS/mirror.png" "Mirroring now"
 while :; do
     case $1 in
-        --git)
+        --firefox)
             rsync -a --delete ~/.mozilla/firefox/zmzk0pef.default-release \
                 "$GIT"/own/firefox/.mozilla/firefox
+            ;;
+        --git)
             for dir in "$GIT"/own/*/; do
                 if [ -d "$dir" ]; then
                     cd "$dir" || exit 1
