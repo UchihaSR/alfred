@@ -4,17 +4,14 @@
 # 'extract --clean' cleans up the archive after extraction
 
 [ "$1" = --clean ] && shift && clean=true
-# path=$(readlink -f "$1")
-# ext="${path##*.}"
 ext="${1##*.}"
-# name="${path%.*}"
 
 case $ext in
     zip) unzip "$1" -d "${1%.*}" ;;
+    tar) tar -xvf "$1" ;;
+    gz) gunzip "$1" ;;
     *) exit 1 ;;
         # zip) unzip "$path" -d "${1%.*}" ;;
-        # tar) tar -xvf "$path" ;;
-        # gzip) gunzip "$path" ;;
         # rar) unrar "$path" ;;
 esac
 
