@@ -29,9 +29,9 @@ case $1 in
     --plugged)
         export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
         if [ "$2" = true ]; then
-            /usr/bin/notify-send -t 3000 -i ~/.icons/system/charging.png "Charging"
+            /usr/bin/notify-send -t 3000 -i ~/.local/share/icons/system/charging.png "Charging"
         else
-            /usr/bin/notify-send -t 3000 -i ~/.icons/system/discharging.png "Discharging"
+            /usr/bin/notify-send -t 3000 -i ~/.local/share/icons/system/discharging.png "Discharging"
         fi
         ;;
 esac
