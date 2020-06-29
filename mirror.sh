@@ -68,5 +68,4 @@ while :; do
 done
 wait
 notify-send -i "$ICONS/mirror.png" "Done mirroring"
-
-# exit 0
+exit 0
