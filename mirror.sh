@@ -29,7 +29,7 @@ while :; do
                         [ "$PWD" = /home/git/own/private ] ||
                         message=$(timeout 15 rofi -dmenu -i -p "$(echo "$PWD" | awk -F / '{print $NF}')")
                     [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
-                    git commit -m "$message" && git push
+                    git commit -m "$message" && git push &
                 fi
             done
             # wait &
@@ -66,6 +66,6 @@ while :; do
     esac
     shift
 done
-# wait
+wait
 notify-send -i "$ICONS/mirror.png" "Done mirroring"
 # exit 0
