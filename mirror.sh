@@ -52,6 +52,8 @@ while :; do
             npm update -g
             ;;
         --phone)
+            ANDROIDMOUNT=/mnt/android
+            ANDROIDDISK=/home/phone
             # notify-send -t 3000 -i "$ICONS"/phone.png "Phone Sync" "Time to sync"
             if ! timeout 3 sshfs -p "$PORT" "$CARD" "$ANDROIDMOUNT"; then
                 notify-send -t 3000 -i "$ICONS"/critical.png "Couldn't sync phone!" && exit 1
