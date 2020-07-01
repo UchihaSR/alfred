@@ -3,7 +3,7 @@
 # All purpose launch script
 
 case $1 in
-    --devour)
+    --devour | -d)
         shift
 
         if echo "$*" | grep "\.ar\."; then
@@ -36,7 +36,7 @@ case $1 in
                 ;;
         esac
         ;;
-    --choose)
+    --choose | -c)
         shift
         choice=$(printf "📖 Foxit Reader\n📚 Master PDF Editor\n💻 Code\n🎥 MPV" |
             rofi -dmenu -i -p "Open with" | sed "s/\W//g")
@@ -46,6 +46,15 @@ case $1 in
             MasterPDFEditor) devour masterpdfeditor4 "$*" ;;
             Code) devour code "$*" ;;
             MPV) devour mpv --shuffle "$*" ;;
+        esac
+        ;;
+    --link | -l)
+        shift
+        case "$1" in
+            *youtube.com/watch*)
+                setsid -f mpv -quiet "$1" > /dev/null 2>&1
+                ;;
+            *) firefox "$1" ;;
         esac
         ;;
     *)

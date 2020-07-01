@@ -53,7 +53,7 @@ while :; do
             ;;
         --phone | -p)
             ANDROIDMOUNT=/mnt/android
-            ANDROIDDISK=/home/phone
+            ANDROIDDISK=/mnt/horcrux/phone
             # notify-send -t 3000 -i "$ICONS"/phone.png "Phone Sync" "Time to sync"
             if ! timeout 3 sshfs -p "$PORT" "$CARD" "$ANDROIDMOUNT"; then
                 notify-send -t 3000 -i "$ICONS"/critical.png "Couldn't sync phone!" && exit 1
@@ -61,6 +61,9 @@ while :; do
             unison -batch -fat "$ANDROIDMOUNT" "$ANDROIDDISK"
             fusermount -u "$ANDROIDMOUNT"
             # notify-send -t 3000 -i "$ICONS"/phone.png "Done Syncing"
+            ;;
+        --newsboat | -n)
+            newsboat -x reload
             ;;
         *) break ;;
     esac
