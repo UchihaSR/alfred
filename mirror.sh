@@ -19,7 +19,7 @@ while :; do
                 "$GIT"/own/firefox/.mozilla/firefox
             ;;
         --git | -g)
-            ns "ran"
+            ns ran
             for dir in "$GIT"/own/*/; do
                 if [ -d "$dir" ]; then
                     cd "$dir" || exit 1
