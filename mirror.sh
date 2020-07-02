@@ -19,7 +19,6 @@ while :; do
                 "$GIT"/own/firefox/.mozilla/firefox
             ;;
         --git | -g)
-            notify-send ran
             for dir in "$GIT"/own/*/; do
                 if [ -d "$dir" ]; then
                     cd "$dir" || exit 1
