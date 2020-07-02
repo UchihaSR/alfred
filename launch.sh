@@ -61,13 +61,6 @@ case $1 in
         esac
         ;;
     *)
-        case $(file --mime-type "$*" -bL) in
-            x-scheme-handler/magnet | application/x-bittorrent)
-                torrent --add "$*"
-                ;;
-            application/pdf | application/postscript)
-                zathura "$*"
-                ;;
-        esac
+        :
         ;;
 esac
