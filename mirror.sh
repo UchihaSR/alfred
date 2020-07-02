@@ -19,14 +19,15 @@ while :; do
                 "$GIT"/own/firefox/.mozilla/firefox
             ;;
         --git | -g)
+            ns "ran"
             for dir in "$GIT"/own/*/; do
                 if [ -d "$dir" ]; then
                     cd "$dir" || exit 1
                     # git pull
                     git add .
                     [ -z "$(git status --porcelain)" ] && continue
-                    [ "$PWD" = /home/git/own/firefox ] ||
-                        [ "$PWD" = /home/git/own/private ] ||
+                    [ "$PWD" = /horcrux/git/own/firefox ] ||
+                        [ "$PWD" = /horcrux/git/own/private ] ||
                         message=$(timeout 15 rofi -dmenu -i -p "$(echo "$PWD" | awk -F / '{print $NF}')")
                     [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
                     git commit -m "$message" && git push
@@ -71,4 +72,3 @@ while :; do
 done
 # wait
 notify-send -i "$ICONS/mirror.png" "Done mirroring"
-# exit 0
