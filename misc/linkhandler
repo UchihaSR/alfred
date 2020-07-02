@@ -1,13 +1,5 @@
 #!/bin/sh
 
-# ns "$*"
-# case "$*" in
-#     *youtube.com/watch*)
-#         setsid -f mpv -quiet "$1" > /dev/null 2>&1
-#         ;;
-#     *) : ;;
-# esac
-
 # # If no url given. Opens browser. For using script as $BROWSER.
 # [ -z "$1" ] && {
 #     "$BROWSER"

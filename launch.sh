@@ -51,10 +51,12 @@ case $1 in
     --link | -l)
         shift
         case "$1" in
-            *youtube.com/watch*)
-                setsid -f mpv -quiet "$1" > /dev/null 2>&1
+            *mkv | *webm | *mp4 | *youtube.com/watch* | *youtube.com/playlist* | *youtu.be*)
+                setsid -f mpv "$1" > /dev/null 2>&1
                 ;;
-            *) firefox "$1" ;;
+            *)
+                setsid -f "$BROWSER" "$1" > /dev/null 2>&1
+                ;;
         esac
         ;;
     *)
