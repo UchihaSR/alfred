@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 # All purpose launch script
+# Dependency: Devour
 
 case $1 in
     --devour | -d)
