@@ -19,7 +19,8 @@ while :; do
                 "$GIT"/own/firefox/.mozilla/firefox
             ;;
         --git | -g)
-            # this
+            # tis
+            # and that
             for dir in "$GIT"/own/*/; do
                 if [ -d "$dir" ]; then
                     cd "$dir" || exit 1
