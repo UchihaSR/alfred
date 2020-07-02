@@ -56,7 +56,7 @@ case $1 in
                 setsid -f mpv "$1" > /dev/null 2>&1
                 ;;
             *)
-                setsid -f "$BROWSER" "$1" > /dev/null 2>&1
+                setsid -f firefox "$1" > /dev/null 2>&1
                 ;;
         esac
         ;;
