@@ -19,15 +19,15 @@ while :; do
                 "$GIT"/own/firefox/.mozilla/firefox
             ;;
         --git | -g)
-            ns ran
+            notify-send ran
             for dir in "$GIT"/own/*/; do
                 if [ -d "$dir" ]; then
                     cd "$dir" || exit 1
                     # git pull
                     git add .
                     [ -z "$(git status --porcelain)" ] && continue
-                    [ "$PWD" = /horcrux/git/own/firefox ] ||
-                        [ "$PWD" = /horcrux/git/own/private ] ||
+                    [ "$PWD" = /mnt/horcrux/git/own/firefox ] ||
+                        [ "$PWD" = /mnt/horcrux/git/own/private ] ||
                         message=$(timeout 15 rofi -dmenu -i -p "$(echo "$PWD" | awk -F / '{print $NF}')")
                     [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
                     git commit -m "$message" && git push
