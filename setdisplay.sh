@@ -15,20 +15,6 @@ while :; do
                     find "$WALLPAPERS" -name "*.jpg" -o -name "*.png" | shuf -n1 | tee "$WALL"
                     feh --no-fehbg --bg-scale "$(cat $WALL)"
                     ;;
-                toggle-reel)
-                    if [ -s $REELPID ]; then
-                        kill -9 "$(cat $REELPID)"
-                        : > $REELPID
-                        notify-send -i "$ICONS"/wall.png "Stopped reeling wallpapers"
-                    else
-                        notify-send -i "$ICONS"/wall.png "Started reeling wallpapers"
-                        while :; do
-                            $0 --bg shuffle
-                            sleep 5m
-                        done &
-                        echo $! > $REELPID
-                    fi
-                    ;;
                 delete)
                     find "$WALLPAPERS" -name "$(cat $WALL)" -delete
                     $0 --bg shuffle
