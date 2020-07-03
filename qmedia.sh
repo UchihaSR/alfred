@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+# Queues up media files on mpv
+
 MPVFIFO=/tmp/mpvfifo
 mkfifo $MPVFIFO
 if pidof mpv; then

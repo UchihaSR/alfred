@@ -43,6 +43,7 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 | `torrent --add`                         | Adds torrent to transmission and notifies                                |
 | `torrent --downloaded`                  | Notifies when a torrent gets downloaded                                  |
 | `checkstorage <PATH1> <THRESHOLD1> ...` | Notifies on low storage level                                            |
+| `qmedia [FILE]`                         | Queues up media files on mpv                                             |
 
 ## More highlights
 
