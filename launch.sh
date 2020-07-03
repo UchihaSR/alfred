@@ -22,7 +22,7 @@ case $1 in
                 $EDITOR "$*"
                 ;;
             video/* | audio/* | image/gif)
-                qmedia "$1"
+                qmedia "$*"
                 ;;
             application/pdf | application/postscript)
                 pidof zathura || devour zathura "$*"
