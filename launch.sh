@@ -53,7 +53,17 @@ case $1 in
         shift
         case "$1" in
             *mkv | *webm | *mp4 | *youtube.com/watch* | *youtube.com/playlist* | *youtu.be*)
-                setsid -f mpv "$1" > /dev/null 2>&1
+
+                # setsid -f mpv --input-ipc-server="~/mpv" "$1" > /dev/null 2>&1
+                echo loadfile "$1" append-play > ~/mpv
+
+                # setsid -f mpv --input-ipc-server=~/mpv "$1" > /dev/null 2>&1
+                # setsid -f mpv --input-ipc-server=\\.\\pipe\\tmp\\mpv "$1" > /dev/null 2>&1
+                # echo loadfile "$1" append-play > \\.\pipe\tmp\mpv
+                # echo loadfile https://www.youtube.com/watch?v=EBWy1d-JE6A append-play > ~/mpv
+                #
+                # setsid -f mpv "$1" > /dev/null 2>&1
+                # setsid -f tsp mpv "$1" > /dev/null 2>&1
                 ;;
             *)
                 setsid -f firefox "$1" > /dev/null 2>&1
