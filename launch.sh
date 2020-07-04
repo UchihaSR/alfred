@@ -60,6 +60,10 @@ case $1 in
                 ;;
         esac
         ;;
+    --tmux | -t)
+        shift
+        # TODO
+        ;;
     *)
         :
         ;;
