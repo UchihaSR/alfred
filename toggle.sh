@@ -21,13 +21,13 @@ while :; do
             fi
             ;;
         --noti | -n)
-            if [ -s "$DONT_DISTURB_MODE" ]; then
-                : > "$DONT_DISTURB_MODE"
+            if [ -s "$DDM" ]; then
+                : > "$DDM"
                 killall -SIGUSR2 dunst
                 sleep 1
                 notify-send -u low -i "$ICONS"/bell.png 'Disturb all you want'
             else
-                echo on > "$DONT_DISTURB_MODE"
+                echo on > "$DDM"
                 notify-send -u low -i "$ICONS"/dnd.png 'Do not disturb'
                 sleep 2
                 killall -SIGUSR1 dunst
