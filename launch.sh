@@ -28,9 +28,10 @@ case $1 in
         ;;
     --tmux | -t)
         [ "$(tmux ls)" ] || tmux new-session -d
+        tmux new-window -c "#{pane_current_path}"
         if pidof "$TERMINAL"; then
-            xdo activate -N Alacritty
-            tmux new-window
+            [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
+                xdo activate -N Alacritty
         else
             "$TERMINAL" -e tmux attach
         fi
