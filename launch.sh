@@ -29,10 +29,11 @@ case $1 in
     --tmux | -t)
         # [ "$(tmux ls)" ] || tmux new-session -d
         if ! pidof tmux; then
-            tmux new-session -d
-            tmux run-shell "$GIT"/others/tmux-resurrect/scripts/restore.sh
+            tmux new-session -d \; \
+                run-shell "$GIT"/others/tmux-resurrect/scripts/restore.sh
         fi
-        tmux new-window -c "#{pane_current_path}"
+        tmux new-session -d \; switch-client -p
+        # tmux new-window -c "#{pane_current_path}"
         if pidof "$TERMINAL"; then
             [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
                 xdo activate -N Alacritty
