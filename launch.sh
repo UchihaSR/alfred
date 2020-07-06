@@ -31,7 +31,7 @@ case $1 in
             tmux new-session -d \; \
                 run-shell "$GIT"/others/tmux-resurrect/scripts/restore.sh
         fi
-        tmux new-session -d \; switch-client -n
+        tmux new-session -d \; switch-client
         if pidof "$TERMINAL"; then
             [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
                 xdo activate -N Alacritty
