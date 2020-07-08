@@ -40,7 +40,17 @@ case $1 in
             [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
                 xdo activate -N Alacritty
         else
-            "$TERMINAL" -e tmux attach
+            "$TERMINAL" -e zsh && tmux attach
+            # "$TERMINAL"
+            # sleep 0.5
+            # xdo key_press -k 28
+            # xdo key_release -k 28
+            # xdo key_press -k 38
+            # sleep 0.2
+            # xdo key_release -k 38
+            # xdo key_press -k 36
+            # sleep 0.2
+            # xdo key_release -k 36
         fi
         ;;
     *)
