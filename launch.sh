@@ -27,11 +27,11 @@ case $1 in
         esac
         ;;
     --tmux | -t)
-        # if ! pidof tmux; then
-        # tmux new-session -d
-        # run-shell "$GIT"/others/tmux-resurrect/scripts/restore.sh
-        # fi
-        tmux new-session -d \; switch-client
+        if pidof tmux; then
+            tmux new-window
+        else
+            tmux new-session -d \; switch-client
+        fi
         if pidof "$TERMINAL"; then
             [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
                 xdo activate -N Alacritty
