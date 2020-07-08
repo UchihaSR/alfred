@@ -13,15 +13,15 @@ while :; do
             case $2 in
                 shuffle)
                     find "$WALLPAPERS" -name "*.jpg" -o -name "*.png" | shuf -n1 | tee "$WALL"
-                    feh --no-fehbg --bg-scale "$(cat $WALL)"
+                    feh --no-fehbg --bg-scale "$(< $WALL)"
                     ;;
                 delete)
-                    find "$WALLPAPERS" -name "$(cat $WALL)" -delete
+                    find "$WALLPAPERS" -name "$(< $WALL)" -delete
                     $0 --bg shuffle
                     ;;
                 *)
                     echo "$2" > $WALL
-                    feh --no-fehbg --bg-scale "$(cat $WALL)"
+                    feh --no-fehbg --bg-scale "$(< $WALL)"
                     ;;
             esac
             ;;
