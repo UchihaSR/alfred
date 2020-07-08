@@ -66,9 +66,16 @@ while :; do
             newsboat -x reload
             # pgrep -f newsboat$ && /usr/bin/xdotool key --window "$(/usr/bin/xdotool search --name newsboat)" R && exit
             ;;
-        --repos | -r)
+        --repo | -r)
             for dir in "$GIT"/others/*/; do
-                [ -d "$dir" ] && git -C "$dir" pull
+                echo "$dir"
+                [ -d "$dir" ] && git -C "$dir" pull --rebase
+            done
+            ;;
+        --upstream | -u)
+            for dir in "$GIT"/forks/*/; do
+                echo "$dir"
+                [ -d "$dir" ] && git -C "$dir" pull --no-rebase
             done
             ;;
         *) break ;;
