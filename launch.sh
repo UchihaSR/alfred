@@ -2,6 +2,10 @@
 
 # All purpose launch script
 
+run() {
+    ("$@" > /dev/null 2>&1 &)
+}
+
 case $1 in
     --choose | -c)
         shift
@@ -54,14 +58,14 @@ case $1 in
                 $EDITOR "$*"
                 ;;
             video/* | audio/* | image/gif)
-                qmedia "$*"
+                run qmedia "$*"
                 ;;
             application/pdf | application/postscript)
-                pidof zathura || devour zathura "$*"
+                pidof zathura || run zathura "$*"
                 ;;
             image/*)
                 pidof feh ||
-                    feh -A 'setdisplay --bg %f' -B 'black' -F -d --edit --keep-zoom-vp --start-at "$*"
+                    run feh -A 'setdisplay --bg %f' -B 'black' -F -d --edit --keep-zoom-vp --start-at "$*"
                 ;;
             application/*)
                 extract --clean "$*"
