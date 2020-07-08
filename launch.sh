@@ -58,7 +58,9 @@ case $1 in
                 $EDITOR "$*"
                 ;;
             video/* | audio/* | image/gif)
-                run qmedia "$*"
+                # run qmedia "$*"
+                # devour mpv "$*"
+                testt mpv "$*"
                 ;;
             application/pdf | application/postscript)
                 pidof zathura || run zathura "$*"
