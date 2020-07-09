@@ -23,7 +23,8 @@ case $1 in
                 qmedia "$1"
                 ;;
             *)
-                setsid -f firefox "$1" > /dev/null 2>&1
+                run firefox "$1"
+                # setsid -f firefox "$1" > /dev/null 2>&1
                 ;;
         esac
         ;;
@@ -69,8 +70,7 @@ case $1 in
                 # testt mpv "$*"
                 ;;
             application/pdf | application/postscript)
-                dz "$*"
-                # pidof zathura || run zathura "$*"
+                pidof zathura || run zathura "$*"
                 ;;
             image/*)
                 pidof feh ||
