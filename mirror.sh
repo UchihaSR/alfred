@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # All purpose syncing script
-# mirror --[git,mail,calcurse,phone,arch,firefox]
+# mirror --[git,mail,calcurse,phone,arch,firefox,repos,upstream]
 
 FIREFOXPROFILE=zmzk0pef
 
@@ -66,7 +66,7 @@ while :; do
             newsboat -x reload
             # pgrep -f newsboat$ && /usr/bin/xdotool key --window "$(/usr/bin/xdotool search --name newsboat)" R && exit
             ;;
-        --repo | -r)
+        --repos | -r)
             for dir in "$GIT"/others/*/; do
                 echo "$dir"
                 [ -d "$dir" ] && git -C "$dir" pull --rebase

@@ -2,10 +2,7 @@
 
 # All purpose launch script
 
-run() {
-    ("$@" > /dev/null 2>&1 &)
-}
-
+run() { "$@" > /dev/null 2>&1 & }
 case $1 in
     --choose | -c)
         shift
@@ -40,7 +37,7 @@ case $1 in
             [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
                 xdo activate -N Alacritty
         else
-            "$TERMINAL" -e zsh && tmux attach
+            "$TERMINAL" -e tmux attach
             # "$TERMINAL"
             # sleep 0.5
             # xdo key_press -k 28
@@ -72,7 +69,8 @@ case $1 in
                 # testt mpv "$*"
                 ;;
             application/pdf | application/postscript)
-                pidof zathura || run zathura "$*"
+                dz "$*"
+                # pidof zathura || run zathura "$*"
                 ;;
             image/*)
                 pidof feh ||

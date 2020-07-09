@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # Torrent  related scripts
-# torrent --[add,downloader]
+# torrent --[add,downloaded]
 
 case $1 in
     --add)

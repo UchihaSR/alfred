@@ -3,8 +3,8 @@
 # Audio player controller for spotify & mpd
 # setplayer --[next,prev,toggle]
 
-pidof mpd || mpd
 setplayer() { playerctl "$1" || mpc "$1"; }
+pidof mpd || mpd
 case $1 in
     next) setplayer next ;;
     prev) setplayer prev ;;
