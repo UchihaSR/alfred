@@ -9,6 +9,7 @@ ext="${1##*.}"
 case $ext in
     zip) unzip "$1" -d "${1%.*}" ;;
     tar) tar -xf "$1" -C "${1%.*}" ;;
+    xz) unxz "$1" -C "${1%.*}" ;;
     gz) tar -xzf "$1" -C "${1%.*}" ;;
     rar) unrar "$1" ;;
     *) exit 1 ;;
