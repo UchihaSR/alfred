@@ -70,8 +70,8 @@ case $1 in
                 # testt mpv "$*"
                 ;;
             application/pdf | application/postscript)
-                # pidof zathura || run zathura "$*"
-                devour zathura "$*"
+                pidof zathura || run zathura "$*"
+                # devour zathura "$*"
                 ;;
             image/*)
                 pidof feh ||
