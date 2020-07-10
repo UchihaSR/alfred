@@ -2,7 +2,7 @@
 
 # All purpose launch script
 
-run() { "$@" > /dev/null 2>&1 & }
+run() { $SHELL -c "$*" > /dev/null 2>&1 & }
 case $1 in
     --choose | -c)
         shift
@@ -75,7 +75,10 @@ case $1 in
                 ;;
             image/*)
                 pidof feh ||
-                    run feh -A 'setdisplay --bg %f' -B 'black' -F -d --edit --keep-zoom-vp --start-at "$*"
+                    run \
+                        feh -A 'setdisplay --bg %f' -B 'black' \
+                        -F -d --edit --keep-zoom-vp --start-at \
+                        "$*"
                 ;;
             application/*)
                 extract --clean "$*"

@@ -43,6 +43,17 @@ while :; do
                 notify-send -u low -i "$ICONS"/connected.png 'Turned Wifi On'
             fi
             ;;
+        --focus | -f)
+            if [ -s "$DDM" ]; then
+                xdo show -a "$STATUSBAR"
+                bspc config top_padding 35
+            else
+                xdo hide -a "$STATUSBAR"
+                bspc config top_padding 0
+            fi
+            tmux set status
+            $0 -r -w -n
+            ;;
         *) break ;;
     esac
     shift
