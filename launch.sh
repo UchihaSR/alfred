@@ -73,6 +73,9 @@ case $1 in
             text/* | inode/x-empty | application/json | application/octet-stream)
                 $EDITOR "$*"
                 ;;
+            inode/directory)
+                explore "$*"
+                ;;
             video/* | audio/* | image/gif)
                 qmedia "$1"
                 # testt mpv "$*"
