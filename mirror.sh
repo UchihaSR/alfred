@@ -25,8 +25,10 @@ while :; do
                     # git pull
                     git add .
                     [ -z "$(git status --porcelain)" ] && continue
-                    [ "$PWD" = /mnt/horcrux/git/own/firefox ] ||
-                        [ "$PWD" = /mnt/horcrux/git/own/private ] ||
+                    # [ "$PWD" = /mnt/horcrux/git/own/firefox ] ||
+                    # [ "$PWD" = /mnt/horcrux/git/own/private ] ||
+                    [ "${PWD##*/}" = firefox ] ||
+                        [ "${PWD##*/}" = private ] ||
                         message=$(timeout 15 rofi -dmenu -i -p "$(echo "$PWD" | awk -F / '{print $NF}')")
                     [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
                     git commit -m "$message" && git push
