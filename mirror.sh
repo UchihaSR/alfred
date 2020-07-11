@@ -70,7 +70,6 @@ while :; do
             ;;
         --repos | -r)
             for dir in "$GIT"/others/*/; do
-                echo "$dir"
                 [ -d "$dir" ] && git -C "$dir" pull --rebase
             done
             ;;
