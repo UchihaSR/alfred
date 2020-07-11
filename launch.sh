@@ -2,7 +2,8 @@
 
 # All purpose launch script
 
-run() { $SHELL -c "$*" > /dev/null 2>&1 & }
+run() { "$@" > /dev/null 2>&1 & }
+
 case $1 in
     --choose | -c)
         shift
@@ -66,7 +67,7 @@ case $1 in
                 $EDITOR "$*"
                 ;;
             video/* | audio/* | image/gif)
-                run qmedia "$*"
+                qmedia "$*"
                 # testt mpv "$*"
                 ;;
             application/pdf | application/postscript)
@@ -75,8 +76,7 @@ case $1 in
                 ;;
             image/*)
                 pidof feh ||
-                    run \
-                        feh -A 'setdisplay --bg %f' -B 'black' \
+                    feh -A 'setdisplay --bg %f' -B 'black' \
                         -F -d --edit --keep-zoom-vp --start-at \
                         "$*"
                 ;;
