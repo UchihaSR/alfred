@@ -32,7 +32,7 @@ while :; do
                 sleep 2
                 killall -SIGUSR1 dunst
             fi
-            refresh-block 3
+            uniblocks -r n
             ;;
         --wifi | -w)
             if pidof iwd; then
