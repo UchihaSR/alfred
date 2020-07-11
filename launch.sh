@@ -30,10 +30,13 @@ case $1 in
         esac
         ;;
     --tmux | -t)
-        tmux new-session -d -n 'news&mail' 'neomutt' \; \
-            split-window -h 'newsboat' \; \
-            swap-pane -d -t :.1
-        "$TERMINAL" -e tmux attach
+        if ! pidof tmux; then
+            tmux new-session -d -n 'news&mail' 'newsboat' \; \
+                split-window -h 'neomutt' \; \
+                swap-pane -d -t :.1 \; \
+                select-layout main-vertical
+            "$TERMINAL" -e tmux attach
+        fi
         ;;
     --terminal | -T)
         if pidof tmux; then
