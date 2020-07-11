@@ -30,6 +30,12 @@ case $1 in
         esac
         ;;
     --tmux | -t)
+        tmux new-session -d -n 'news&mail' 'neomutt' \; \
+            split-window -h 'newsboat' \; \
+            swap-pane -d -t :.1
+        "$TERMINAL" -e tmux attach
+        ;;
+    --terminal | -T)
         if pidof tmux; then
             tmux new-window
         else
@@ -51,6 +57,7 @@ case $1 in
             # sleep 0.2
             # xdo key_release -k 36
         fi
+
         ;;
     *)
         if echo "$*" | grep "\.ar\."; then
