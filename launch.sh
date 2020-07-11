@@ -74,7 +74,7 @@ case $1 in
                 $EDITOR "$*"
                 ;;
             video/* | audio/* | image/gif)
-                qmedia "$*"
+                qmedia "$1"
                 # testt mpv "$*"
                 ;;
             application/pdf | application/postscript)
