@@ -38,5 +38,26 @@ case $1 in
         printf "📫 %s" \
             find ~/.local/share/mail/gmail/INBOX/new/* -type f | wc -l
         ;;
+    --bspwm | -b)
+        bspc subscribe report |
+            while read -r line; do
+                line=${line#*:}
+                line=${line%:L*}
+                IFS=:
+                set $line
+                wm=
+                while :; do
+                    case $1 in
+                        [FOU]*) name=🏚 ;;
+                        f*) name=🕳 ;;
+                        o*) name=🌴 ;;
+                        *) break ;;
+                    esac
+                    wm="$wm $name"
+                    shift
+                done
+                printf "%s\r" "$wm"
+            done
+        ;;
     *) exit 1 ;;
 esac
