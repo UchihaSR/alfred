@@ -20,9 +20,9 @@ case $1 in
     --sys-stat | -s)
         cpu="$(top -b -n 1 | awk '(NR==3){
     if( $8 == "id," )
-        print "0"
+        print "00"
     else
-        printf "%d", 100 - $8
+        printf "%02d", 100 - $8
     }')"
         mem="$(free -m | awk '(NR==2){ printf "%s", $3 }')"
         temp="$(sensors | awk '(/Core 0/){printf $3}' | sed 's/\.0//; s/+//')"
@@ -31,7 +31,7 @@ case $1 in
     --vol-stat | -v)
         volstat="$(amixer get Master)"
         if echo "$volstat" | grep -o -m 1 "off" > /dev/null; then
-            echo 🔇
+            echo 🔇 00%
         else
             printf "🔊 %s\n" "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%")"
         fi
