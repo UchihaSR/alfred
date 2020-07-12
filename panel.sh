@@ -31,8 +31,11 @@ case $1 in
         ;;
     --vol-stat | -v)
         volstat="$(amixer get Master)"
-        echo "$volstat" | grep -o -m 1 "off" > /dev/null && echo 🔇 000% ||
-            printf "🔊 %03d%%" "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%")"
+        if echo "$volstat" | grep -o -m 1 "off" > /dev/null; then
+            echo 🔇 000%
+        else
+            printf "🔊 %s\n" "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%")"
+        fi
         ;;
     --mailbox)
         printf "📫 %s" \
@@ -56,7 +59,8 @@ case $1 in
                     wm="$wm $name"
                     shift
                 done
-                printf "%s\r" "$wm"
+                # echo "$wm"
+                echo "W$wm"
             done
         ;;
     *) exit 1 ;;

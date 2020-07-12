@@ -4,5 +4,5 @@ volstat="$(amixer get Master)"
 if echo "$volstat" | grep -o -m 1 "off" > /dev/null; then
     echo 🔇 000%
 else
-    printf "🔊 %s" "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%")"
+    printf "🔊 %s\n" "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%")"
 fi
