@@ -36,7 +36,7 @@ case $1 in
             printf "🔊 %s\n" "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%")"
         fi
         ;;
-    --mailbox)
+    --mailbox | -m)
         printf "📫 %s" \
             find ~/.local/share/mail/gmail/INBOX/new/* -type f | wc -l
         ;;
