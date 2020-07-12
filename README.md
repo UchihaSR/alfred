@@ -34,6 +34,7 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 | `mirror --git`                          | Syncs all my repositories                                                |
 | `mirror --mail`                         | Syncs my mails                                                           |
 | `panel --date-time`                     | Generates date & time panel module                                       |
+| `panel --bspwm`                         | Generates bspwm workspace module                                         |
 | `panel --wifi`                          | Generates wifi link strength panel module                                |
 | `panel --mailbox`                       | Generates unread mail count panel module                                 |
 | `panel --noti-stat`                     | Generates notification on/off status panel module                        |
