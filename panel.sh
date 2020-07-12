@@ -5,14 +5,13 @@
 case $1 in
     --date-time | -d)
         date +'📅  %a, %d %b ⌚ %H : %M'
-        # date +'📅  %a, %e %b ⌚ %H : %M'
         ;;
     --noti-stat | -n)
         [ -s "$DDM" ] && echo 🔕 || echo 🔔
         ;;
     --wifi | -w)
         if connected; then
-            printf "🌏 %s" \
+            printf "🌏 %s\n" \
                 "$(awk 'FNR == 3 { printf "%03d", $3*100/70 }' /proc/net/wireless)"
         else
             echo ❗ 000%
@@ -59,7 +58,6 @@ case $1 in
                     wm="$wm $name"
                     shift
                 done
-                # echo "$wm"
                 echo "W$wm"
             done
         ;;

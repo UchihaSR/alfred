@@ -18,7 +18,7 @@ case $1 in
             toggle) pactl set-sink-mute @DEFAULT_SINK@ toggle ;;
         esac
         canberra-gtk-play -i audio-volume-change
-        uniblocks -r v
+        uniblocks -u vol
         ;;
     *) : ;;
 esac
