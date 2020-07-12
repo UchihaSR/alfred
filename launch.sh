@@ -35,10 +35,11 @@ case $1 in
                 split-window -h 'neomutt' \; \
                 swap-pane -d -t :.1 \; \
                 select-layout main-vertical
-            "$TERMINAL" -e tmux attach
+            "$TERMINAL" -e tmux attach &
         fi
         ;;
     --terminal | -T)
+        $0 -t
         if pidof tmux; then
             tmux new-window
         else
@@ -48,7 +49,7 @@ case $1 in
             [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
                 xdo activate -N Alacritty
         else
-            "$TERMINAL" -e tmux attach
+            "$TERMINAL" -e tmux attach &
             # "$TERMINAL"
             # sleep 0.5
             # xdo key_press -k 28
