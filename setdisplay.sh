@@ -9,9 +9,10 @@ while :; do
     case $1 in
         --bg)
             WALL=/tmp/wall
-            case $2 in
+            shift
+            case $1 in
                 shuffle)
-                    find "$WALLPAPERS" -name "*.jpg" -o -name "*.png" | shuf -n1 | tee "$WALL"
+                    find "$WALLPAPERS" -name "*.jpg" -o -name "*.png" | shuf -n1 > "$WALL"
                     feh --no-fehbg --bg-scale "$(cat $WALL)"
                     ;;
                 delete)
@@ -19,7 +20,7 @@ while :; do
                     $0 --bg shuffle
                     ;;
                 *)
-                    echo "$2" > $WALL
+                    echo "$1" > $WALL
                     feh --no-fehbg --bg-scale "$(cat $WALL)"
                     ;;
             esac

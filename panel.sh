@@ -12,26 +12,26 @@ case $1 in
     --wifi | -w)
         if connected; then
             printf "🌏 %s\n" \
-                "$(awk 'FNR == 3 { printf "%03d", $3*100/70 }' /proc/net/wireless)"
+                "$(awk 'FNR == 3 { printf "%d", $3*100/70 }' /proc/net/wireless)"
         else
-            echo ❗ 000%
+            echo ❗
         fi
         ;;
     --sys-stat | -s)
         cpu="$(top -b -n 1 | awk '(NR==3){
     if( $8 == "id," )
-        print "00"
+        print "0"
     else
-        printf "%02d", 100 - $8
+        printf "%d", 100 - $8
     }')"
-        mem="$(free -m | awk '(NR==2){ printf "%04d", $3 }')"
+        mem="$(free -m | awk '(NR==2){ printf "%s", $3 }')"
         temp="$(sensors | awk '(/Core 0/){printf $3}' | sed 's/\.0//; s/+//')"
         echo "🌡 $temp   🐎 $cpu%   🧠 $mem"
         ;;
     --vol-stat | -v)
         volstat="$(amixer get Master)"
         if echo "$volstat" | grep -o -m 1 "off" > /dev/null; then
-            echo 🔇 000%
+            echo 🔇
         else
             printf "🔊 %s\n" "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%")"
         fi
@@ -55,7 +55,8 @@ case $1 in
                         o*) name=🌴 ;;
                         *) break ;;
                     esac
-                    wm="$wm $name"
+                    ! [ "$wm" ] && wm="$name" && shift && continue
+                    wm="$wm  $name"
                     shift
                 done
                 echo "W$wm"
