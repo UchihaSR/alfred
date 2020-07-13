@@ -7,7 +7,7 @@ case $1 in
         date +'📅  %a, %d %b ⌚ %H : %M'
         ;;
     --noti-stat | -n)
-        [ -s "$DDM" ] && echo 🔕 || echo 🔔
+        if [ -s "$DDM" ]; then echo 🔕; else echo 🔔; fi
         ;;
     --wifi | -w)
         if connected; then
@@ -47,7 +47,7 @@ case $1 in
                 line=${line#*:}
                 line=${line%:L*}
                 IFS=:
-                set $line
+                set -- $line
                 wm=
                 while :; do
                     case $1 in
