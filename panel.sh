@@ -31,7 +31,7 @@ case $1 in
     --vol-stat | -v)
         volstat="$(amixer get Master)"
         if echo "$volstat" | grep -o -m 1 "off" > /dev/null; then
-            echo 🔇 00%
+            echo 🔇 000
         else
             printf "🔊 %03d\n" \
                 "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%" | sed 's/%//')"
