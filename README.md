@@ -12,7 +12,7 @@ git clone https://github.com/salman-abedin/alfred.git && cd alfred && sudo make 
 
 | Command                                 | Effects                                                                  |
 | --------------------------------------- | ------------------------------------------------------------------------ |
-| `backlight --[up,down]`                 | Controls backlight levels                                                |
+| `backlight --[up,down]`                 | Modulates backlight levels                                               |
 | `battery --block-charge`                | Blocks charging at high capacity for battery longevity                   |
 | `battery --monitor`                     | Cron script to monitor battery level & act accordingly                   |
 | `battery --plugged`                     | Udev script to notify on plugging/unplugging                             |
