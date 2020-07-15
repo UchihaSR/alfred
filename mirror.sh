@@ -79,6 +79,11 @@ while :; do
                 [ -d "$dir" ] && git -C "$dir" pull --no-rebase
             done
             ;;
+        --drive | -d)
+            LOCAL=/mnt/horcrux/drive
+            CLOUD=drive:synced
+            rclone sync $LOCAL $CLOUD
+            ;;
         *) break ;;
     esac
     shift
