@@ -4,9 +4,7 @@
 # Blocks Charging on High battery level
 # Notifies on low levels
 # Hibernates on dangerous levels
-# Additionally notifies on Plug and Unplug (Using a supplimental udev rule)
-
-ns yo
+# It also notifies on Plug and Unplug (Using a supplimental udev rule)
 
 case $1 in
     --block-charge)
