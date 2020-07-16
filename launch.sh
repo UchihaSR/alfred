@@ -7,7 +7,7 @@ run() { "$@" > /dev/null 2>&1 & }
 case $1 in
     --choose | -c)
         shift
-        choice=$(printf "📖 Foxit Reader\n📚 Master PDF Editor\n💻 Code\n🎥 MPV" |
+        choice=$(printf "📖 Foxit Reader\n📚 Master PDF Editor\n💻 Code\n🎥 MPV\n🌏 Browser" |
             rofi -dmenu -i -p "Open with" | sed "s/\W//g")
         [ ! "$choice" ] && exit
         case "$choice" in
@@ -15,6 +15,7 @@ case $1 in
             MasterPDFEditor) masterpdfeditor4 "$*" ;;
             Code) code "$*" ;;
             MPV) mpv --shuffle "$*" ;;
+            Browser) $BROWSER "$*" ;;
         esac
         ;;
     --link | -l)

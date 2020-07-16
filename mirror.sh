@@ -75,7 +75,6 @@ while :; do
             ;;
         --upstream | -u)
             for dir in "$GIT"/forks/*/; do
-                echo "$dir"
                 [ -d "$dir" ] && git -C "$dir" pull --no-rebase
             done
             ;;
