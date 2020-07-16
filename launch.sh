@@ -6,7 +6,13 @@ run() { "$@" > /dev/null 2>&1 & }
 
 case $1 in
     --bookmarker | -b)
-        :
+        BOOKMARKS=/mnt/horcrux/git/own/private/.local/share/bookmarks
+        LOCATION=$(find $BOOKMARKS -type d |
+            awk -F / '{print $NF}' |
+            $DMENU -p 'Bookamark location') &&
+            TITLE=$($DMENU -p 'Bookamrk title') &&
+            LINK=$($DMENU -p 'Bookamrk link') &&
+            echo "$LINK" > "$(find $BOOKMARKS -type d -name "$LOCATION")"/"$TITLE".link
         ;;
     --choose | -c)
         shift
@@ -55,7 +61,7 @@ case $1 in
         else
             "$TERMINAL" -e tmux attach &
         fi
-        tmux send "explore" "Enter"
+        tmux send "explore $2" "Enter"
         ;;
     --terminal | -T)
         $0 -t
