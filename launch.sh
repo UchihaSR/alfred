@@ -5,17 +5,20 @@
 run() { "$@" > /dev/null 2>&1 & }
 
 case $1 in
+    --bookmarker | -b)
+        :
+        ;;
     --choose | -c)
         shift
-        choice=$(printf "📖 Foxit Reader\n📚 Master PDF Editor\n💻 Code\n🎥 MPV\n🌏 Browser" |
+        choice=$(printf "🌏 Browser\n📖 Foxit Reader\n📚 Master PDF Editor\n💻 Code\n🎥 MPV" |
             rofi -dmenu -i -p "Open with" | sed "s/\W//g")
         [ ! "$choice" ] && exit
         case "$choice" in
+            Browser) $BROWSER --new-window "$*" ;;
             FoxitReader) foxitreader "$*" ;;
             MasterPDFEditor) masterpdfeditor4 "$*" ;;
             Code) code "$*" ;;
             MPV) mpv --shuffle "$*" ;;
-            Browser) $BROWSER "$*" ;;
         esac
         ;;
     --link | -l)
@@ -80,15 +83,22 @@ case $1 in
 
         ;;
     *)
-        if echo "$*" | grep "\.ar\."; then
-            alacritty \
-                --config-file ~/.config/alacritty/alacritty_ar.yml \
-                -e "$EDITOR" "$*" &
-            exit
-        elif echo "$*" | grep "\.sent$"; then
-            sent "$*" &
-            exit
-        fi
+        case $1 in
+            *.ar.*)
+                alacritty \
+                    --config-file ~/.config/alacritty/alacritty_ar.yml \
+                    -e "$EDITOR" "$*" &
+                exit
+                ;;
+            *.link)
+                $BROWSER "$(cat "$*")"
+                exit
+                ;;
+            *.sent)
+                sent "$*" &
+                exit
+                ;;
+        esac
         case $(file --mime-type "$*" -bL) in
             text/* | inode/x-empty | application/json | application/octet-stream)
                 $EDITOR "$*"
