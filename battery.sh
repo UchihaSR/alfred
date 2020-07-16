@@ -6,6 +6,8 @@
 # Hibernates on dangerous levels
 # Additionally notifies on Plug and Unplug (Using a supplimental udev rule)
 
+ns yo
+
 case $1 in
     --block-charge)
         config="/sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode"
