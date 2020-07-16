@@ -9,7 +9,7 @@ ext="${1##*.}"
 case $ext in
     zip) unzip "$1" -d "${1%.*}" ;;
     tar) tar -xf "$1" -C "${1%.*}" ;;
-    xz) unxz "$1" -C "${1%.*}" ;;
+    xz) unxz "$1" ;;
     gz) tar -xzf "$1" -C "${1%.*}" ;;
     rar) unrar "$1" ;;
     7z) 7z x "$1" ;;
@@ -19,5 +19,4 @@ case $ext in
         # zip) unzip "$path" -d "${1%.*}" ;;
 esac
 
-[ "$clean" ] && mv -f "$1" ~/.local/Trash
-# [ "$clean" ] && rm -f "$1"
+[ "$clean" ] && mv -f "$1" ~/.local/share/Trash
