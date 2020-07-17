@@ -3,7 +3,7 @@
 # Modulates backlight levels
 # Usage: backlight --(up|down)
 
-DEVICE=/sys/class/backlight/"$(ls /sys/class/backlight)"
+DEVICE=$(echo /sys/class/backlight/*)
 CURRENT=$(cat "$DEVICE"/brightness)
 MAX=$(cat "$DEVICE"/max_brightness)
 MARGIN=$((MAX / 10))

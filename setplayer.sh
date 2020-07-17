@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 #
-# Audio player controller for spotify & mpd
+# Audio controller for spotify & mpd
 # Dependencies: playerctl, pulseaudio(for getting volume levels over 100%)
 # Usage: setplayer --play (next|prev|toggle)
 #           --vol (up|down|toggle)
