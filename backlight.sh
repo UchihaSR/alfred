@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 #
-# Modulates backlight level
+# Modulates backlight levels
 # Usage: backlight --(up|down)
 
 DEVICE=/sys/class/backlight/"$(ls /sys/class/backlight)"
