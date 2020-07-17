@@ -4,8 +4,8 @@
 # Usage: backlight --(up|down)
 
 DEVICE=$(echo /sys/class/backlight/*)
-CURRENT=$(cat "$DEVICE"/brightness)
-MAX=$(cat "$DEVICE"/max_brightness)
+read -r CURRENT < "$DEVICE"/brightness
+read -r MAX < "$DEVICE"/max_brightness
 MARGIN=$((MAX / 10))
 
 case $1 in
