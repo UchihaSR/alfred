@@ -17,15 +17,14 @@ case $1 in
     --choose | -c)
         shift
         choice=$(printf "🌏 Browser\n📖 Foxit Reader\n📚 Master PDF Editor\n💻 Code\n🎥 MPV" |
-            rofi -dmenu -i -p "Open with" | sed "s/\W//g")
-        [ ! "$choice" ] && exit
-        case "$choice" in
-            Browser) $BROWSER --new-window "$*" ;;
-            FoxitReader) foxitreader "$*" ;;
-            MasterPDFEditor) masterpdfeditor4 "$*" ;;
-            Code) code "$*" ;;
-            MPV) mpv --shuffle "$*" ;;
-        esac
+            rofi -dmenu -i -p "Open with" | sed "s/\W//g") &&
+            case "$choice" in
+                Browser) $BROWSER --new-window "$*" ;;
+                FoxitReader) foxitreader "$*" ;;
+                MasterPDFEditor) masterpdfeditor4 "$*" ;;
+                Code) code "$*" ;;
+                MPV) mpv --shuffle "$*" ;;
+            esac
         ;;
     --link | -l)
         shift

@@ -69,6 +69,7 @@ while :; do
             # pgrep -f newsboat$ && /usr/bin/xdotool key --window "$(/usr/bin/xdotool search --name newsboat)" R && exit
             # ;;
         --repos | -r)
+            echo ran > ~/ran
             for dir in "$GIT"/others/*/; do
                 [ -d "$dir" ] && git -C "$dir" pull --rebase
             done
