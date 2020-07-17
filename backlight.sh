@@ -9,12 +9,13 @@ MARGIN="$((MAX * 10 / 100))"
 
 case $1 in
     --up)
-        increased="$((CURRENT + MARGIN))"
-        [ "$increased" -gt "$MAX" ] && increased="$MAX"
+        increased=$((CURRENT + MARGIN))
+        # [ "$increased" -gt "$MAX" ] && increased="$MAX"
+        (increased > MAX) && increased="$MAX"
         echo "$increased" > "$DEVICE"/brightness
         ;;
     --down)
-        DECREASED="$((CURRENT - MARGIN))"
+        DECREASED=$((CURRENT - MARGIN))
         echo "$DECREASED" > "$DEVICE"/brightness
         ;;
 esac
