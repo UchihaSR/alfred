@@ -1,8 +1,17 @@
 #!/usr/bin/env sh
-
+#
 # Monitors specific directores for particular changes and runs commands
 
-dirs="$GIT/own/magpie $GIT/own/private"
+# dirs=
+# dirs="$dirs $GIT/own/magpie"
+# dirs="$dirs $GIT/own/private"
+
+dirs="
+$GIT/own/magpie
+$GIT/own/private"
+
+# dirs="$GIT/own/magpie $GIT/own/private"
+
 inotifywait -m -r -e create,moved_to $dirs |
     while read -r line; do
         cp -frsu -t ~ \

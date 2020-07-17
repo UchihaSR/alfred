@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
-
-# All purpose syncing script
+#
+# General purpose syncing script
 # mirror --[git,mail,calcurse,phone,arch,firefox,repos,upstream]
 
 FIREFOXPROFILE=zmzk0pef

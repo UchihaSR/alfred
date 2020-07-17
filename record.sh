@@ -1,10 +1,12 @@
 #!/usr/bin/env sh
+#
+# General purpose recording script
 
 RESOLUTION=$(xrandr | awk '(/current/){print $8 "x" $10 }' | sed 's/,//')
 
 case $1 in
-    --screen | -s)
-        # Stolen from https://github.com/dylanaraps
+    --display | -d)
+        # Forked from https://github.com/dylanaraps
         scr_dir=~
         date=$(date +%F)
         time=$(date +%I-%M-%S)
@@ -14,10 +16,12 @@ case $1 in
             -hide_banner \
             -loglevel error \
             -f x11grab \
-            -video_size 1366x768 \
-            -i :0.0 \
+            -video_size "$RESOLUTION" \
+            -i "$DISPLAY" \
             -vframes 1 \
             "$file"
         cp -f "$file" "$scr_dir/current.png"
         ;;
 esac
+
+# -i :0.0 \

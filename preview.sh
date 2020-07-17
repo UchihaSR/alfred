@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-
+#
 # Previewer for LF
 
 FILE="$1"

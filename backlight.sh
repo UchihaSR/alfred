@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+#
+# Modulates backlight level
 
 DEVICE=/sys/class/backlight/"$(ls /sys/class/backlight)"
 CURRENT="$(cat "$DEVICE"/brightness)"

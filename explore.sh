@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+#
+# Explore files on lf using the last visited path
 
 LAST_PATH=~/.local/share/LF_LAST_PATH
 if [ "$*" ]; then

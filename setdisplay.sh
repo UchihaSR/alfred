@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-
+#
 # Display related scripts
 # setdisplay --bg [shuffle,delete] sets & deletes wallpapers
 #   Requires an Environment variable named WALLPAPERS that has the path to your wallpapers

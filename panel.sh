@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-
+#
 # Panel Module Generator
 
 case $1 in

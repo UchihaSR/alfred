@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+#
+# Connects to my bluetooth earbuds
 
 doas rfkill unblock bluetooth
 doas systemctl start bluetooth

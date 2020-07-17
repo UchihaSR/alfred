@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-
+#
 # Audio player controller for spotify & mpd
 
 case $1 in

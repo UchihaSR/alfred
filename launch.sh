@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
-
-# All purpose launch script
+#
+# General purpose launching script
 
 run() { "$@" > /dev/null 2>&1 & }
 

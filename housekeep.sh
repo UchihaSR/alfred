@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+#
+# Cleans up the system (weekly cronjob)
 
 doas -- pacman -Scc --noconfirm
 doas -- pacman -Rns "$(pacman -Qtdq)" --noconfirm

@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-
+#
 # Checks if wifi & internet is up or not
 
 grep "up" /sys/class/net/w*/operstate > /dev/null &&

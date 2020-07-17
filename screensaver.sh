@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+#
+# Screensaver and locker script
 
 # Duration ( in minutes )
 dur=$((INACTIVITY / 60))

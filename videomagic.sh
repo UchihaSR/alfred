@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+#
+# Video editing scripts
 
 case $1 in
     --add-audio | -aa)

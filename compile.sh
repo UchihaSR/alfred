@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-
+#
 # Forked from Luke Smith.
 # Compiles Files based on their extensions
 # 'compile --clean' cleans up on exit (Vim autocommand)
