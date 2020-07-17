@@ -19,7 +19,6 @@ case $1 in
         echo "$increased" > "$DEVICE"/brightness
         ;;
     --down)
-
         echo $((CURRENT - MARGIN)) > "$DEVICE"/brightness
         ;;
     *) exit 1 ;;
