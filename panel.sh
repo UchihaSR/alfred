@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 #
 # Panel Module Generator
+# Usage: panel -(b|d|m|n|s|v|w)
 
 case $1 in
     --date-time | -d)
@@ -56,8 +57,11 @@ case $1 in
                         o*) name=🌴 ;;
                         *) break ;;
                     esac
-                    ! [ "$wm" ] && wm="$name" && shift && continue
-                    wm="$wm  $name"
+                    if [ -z "$wm" ]; then
+                        wm="$name" && shift && continue
+                    else
+                        wm="$wm  $name"
+                    fi
                     shift
                 done
                 echo "W$wm"
