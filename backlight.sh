@@ -3,11 +3,10 @@
 # Modulates backlight levels
 # Usage: backlight --(up|down)
 
-# DEVICE=$(echo /sys/class/backlight/*)
-
-direction=${1:?}
+ARG=${1:?}
 set -- /sys/class/backlight/*
 DEVICE=$1
+set -- "$ARG"
 
 read -r CURRENT < "$DEVICE"/brightness
 read -r MAX < "$DEVICE"/max_brightness
