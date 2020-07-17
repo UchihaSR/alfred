@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 #
 # Audio player controller for spotify & mpd
+# Dependencies: playerctl, pulseaudio(for getting volume levels over 100%)
+# Usage: setplayer --play (next|prev|toggle)
+#           --vol (up|down|toggle)
 
 case $1 in
     --play)
@@ -18,7 +21,7 @@ case $1 in
             toggle) pactl set-sink-mute @DEFAULT_SINK@ toggle ;;
         esac
         canberra-gtk-play -i audio-volume-change
-        uniblocks -u vol
+        uniblocks -u vol # Personal script (chill & ignore)
         ;;
     *) : ;;
 esac
