@@ -6,7 +6,7 @@
 DEVICE=/sys/class/backlight/"$(ls /sys/class/backlight)"
 CURRENT=$(cat "$DEVICE"/brightness)
 MAX=$(cat "$DEVICE"/max_brightness)
-MARGIN=$((MAX * 10 / 100))
+MARGIN=$((MAX / 10))
 
 case $1 in
     --up)
