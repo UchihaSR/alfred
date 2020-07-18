@@ -43,6 +43,7 @@ prompt() {
         p) echo "pause torrent: #"; read -r;  send -t "$REPLY" -S ;;
         r) echo "remove torrent: #"; read -r; send -t "$REPLY" -r; k=0 ;;
         m) echo "load magnet: "; read -r; send -a "$REPLY" ;;
+        q) kill -15 $$ ;;
     esac
     refresh && printf '\e[?25l\e[H'
 }
@@ -54,6 +55,7 @@ getkey() {
 }
 
 refresh
+# trap $'printf \e[?25h\e[?7h\e[999B' EXIT
 while :; do
     get_torrents
     prompt "$(getkey)"
