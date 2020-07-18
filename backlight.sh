@@ -3,19 +3,19 @@
 # Modulates backlight levels
 # Usage: backlight --(up|down)
 
-for DEVICE in /sys/class/backlight/*; do
-    read -r CURRENT < "$DEVICE"/brightness
-    read -r MAX < "$DEVICE"/max_brightness
+for device in /sys/class/backlight/*; do
+    read -r CURRENT < "$device"/brightness
+    read -r MAX < "$device"/max_brightness
     MARGIN=$((MAX / 10))
     case $1 in
         --up)
             [ "$CURRENT" = "$MAX" ] && exit
             increased=$((CURRENT + MARGIN))
             [ "$increased" -gt "$MAX" ] && increased="$MAX"
-            echo "$increased" > "$DEVICE"/brightness
+            echo "$increased" > "$device"/brightness
             ;;
         --down)
-            echo $((CURRENT - MARGIN)) > "$DEVICE"/brightness
+            echo $((CURRENT - MARGIN)) > "$device"/brightness
             ;;
     esac
 done
