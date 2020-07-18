@@ -22,5 +22,4 @@ case $1 in
     --down)
         echo $((CURRENT - MARGIN)) > "$DEVICE"/brightness
         ;;
-    *) exit 1 ;;
 esac

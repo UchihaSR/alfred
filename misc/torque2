@@ -7,7 +7,7 @@ refresh() {
     printf '\e[?7l\e[?25l\e[2J\e[H'
     shopt -s checkwinsize; (:;:)
     [ -z "$LINES" ] && set -- "$(stty size)" && LINES=$1 && COLUMNS=$2
-    ((j=(LINES-2)/3))
+    ((l=(LINES-2)/3))
 }
 
 status() { printf '\e[2m\e[%s;H%s\e[m' "$((LINES-1))" "$1"; }
@@ -21,8 +21,8 @@ get_torrents() {
     t=("${t[@]//Downloading/Active}")
     t=("${t[@]//     None/0 MB}")
 
-    for((i=${k:=0};i<(j=j>${#t[@]}?${#t[@]}:j);i++));{ t_print "${t[i]/n\/a/0}";}
-    status "[s]tart [p]ause [r]emove load_[m]agnet [k/l]scroll ($j/${#t[@]})"$'\e[H'
+    for((i=${k:=0};i<(l=l>${#t[@]}?${#t[@]}:l);i++));{ t_print "${t[i]/n\/a/0}";}
+    status "[s]tart [p]ause [r]emove [m]agnet [k/l]scroll ($j/${#t[@]})"$'\e[H'
 }
 
 t_print() {
@@ -43,17 +43,17 @@ prompt() {
         s) echo "start torrent: #"; read -r REPLY; send -t "$REPLY" -s ;;
         p) echo "pause torrent: #"; read -r REPLY;  send -t "$REPLY" -S ;;
         r) echo "remove torrent: #"; read -r REPLY; send -t "$REPLY" -r; k=0 ;;
-        m) echo "load agnet: "; read -r REPLY; send -a "$REPLY"; k=0 ;;
-        l) ((j==${#t[@]}))||((k=k>=j?k:++k,j=j<${#t[@]}?++j:j)) ;;
-        k) ((k==0))||((k=k<=j?k>0?--k:0:j,j=j>0?--j:j)) ;;
+        m) echo "load magnet: "; read -r REPLY; send -a "$REPLY"; k=0 ;;
+        l) ((l==${#t[@]}))||((k=k>=j?k:++k,l=l<${#t[@]}?++l:l)) ;;
+        k) ((k==0))||((k=k<=l?k>0?--k:0:j,l=l>0?--l:l)) ;;
     esac
     [ "$1" = k ] || [ "$1" = l ] || refresh && printf '\e[?25l\e[H'
 }
 
 main() {
     refresh
-    trap $'printf \e[?25h\e[?7h\e[999B' EXIT
-    trap  'refresh; k=0' WINCH
+    # trap $'printf \e[?25h\e[?7h\e[999B' EXIT
+    # trap  'refresh; k=0' WINCH
     for ((;;)); { get_torrents; read -rsN1 -t1 && prompt "$REPLY"; }
 }
 main
