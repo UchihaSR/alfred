@@ -20,8 +20,8 @@ merge() {
 
 merge "${urls[@]}" "${wwws[@]}" "${ips[@]}" "${gits[@]}"|
     sort -u |
-    nl -w3 -s '  ' |
-    fzf_cmd |
-    awk '{print $2}'|
-    xargs -n1 -I {} launch --link {} &>/dev/null ||
-    true
+    nl -w3 -s '  '
+    # fzf_cmd |
+    # awk '{print $2}'|
+    # xargs -n1 -I {} launch --link {} &>/dev/null ||
+    # true
