@@ -17,7 +17,8 @@ case $1 in
         ;;
     --monitor)
         [ "$(cat /sys/class/power_supply/ADP?/online)" = 1 ] && exit
-        cap=$(cat /sys/class/power_supply/BAT?/capacity)
+        set -- /sys/class/power_supply/BAT?/capacity
+        read -r cap < "$1"
         if [ "$cap" -lt 10 ]; then
             systemctl hibernate
         elif [ "$cap" -lt 20 ]; then
