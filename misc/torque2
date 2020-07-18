@@ -47,11 +47,14 @@ prompt() {
     refresh && printf '\e[?25l\e[H'
 }
 
-main() {
-    refresh
-    while :; do
-        get_torrents
-        read -rsN1 -t1 && prompt "$REPLY"
-    done
+getkey() {
+    stty -icanon -echo
+    dd bs=1 count=1 2> /dev/null
+    stty icanon echo
 }
-main
+
+refresh
+while :; do
+    get_torrents
+    prompt "$(getkey)"
+done
