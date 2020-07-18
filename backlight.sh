@@ -14,6 +14,7 @@ MARGIN=$((MAX / 10))
 
 case $1 in
     --up)
+        [ "$CURRENT" = "$MAX" ] && exit
         increased=$((CURRENT + MARGIN))
         [ "$increased" -gt "$MAX" ] && increased="$MAX"
         echo "$increased" > "$DEVICE"/brightness
