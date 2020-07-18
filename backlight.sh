@@ -9,7 +9,7 @@ for device in /sys/class/backlight/*; do
     MARGIN=$((MAX / 10))
     case $1 in
         --up)
-            [ "$CURRENT" = "$MAX" ] && exit
+            [ "$CURRENT" = "$MAX" ] && continue
             increased=$((CURRENT + MARGIN))
             [ "$increased" -gt "$MAX" ] && increased="$MAX"
             echo "$increased" > "$device"/brightness

@@ -74,7 +74,7 @@ UNMARK="\033[27m"
 CLEAR="\033[2J\033[H"
 
 cursor=1
-items=0
+items=$(transmission-remote -l | sed '1d;$d' | wc -l)
 
 lines="
 first
@@ -91,9 +91,12 @@ goto() {
 
 handleinput() {
     case $1 in
+        d) : ;;
+        p) : ;;
+        s) : ;;
         l) [ "$cursor" -lt "$items" ] && cursor=$((cursor + 1)) ;;
-        k) [ "$cursor" -gt "$items" ] && cursor=$((cursor - 1)) ;;
-        n) printf "$CLEAR$SHOWCURSOR" && kill -15 $$ ;;
+        k) [ "$cursor" -gt 1 ] && cursor=$((cursor - 1)) ;;
+        n) printf "$CLEAR$SHOWCURSOR" && kill -9 $(pgrep -f "$0") ;;
     esac
 }
 
@@ -118,29 +121,23 @@ footer() {
     mark "$@"
 }
 
-while :; do
-    printf "$CLEAR$HIDECURSOR"
-
-    header this is the header
-
+torrents() {
     transmission-remote -l |
         sed '1d;$d' |
         while read -r line; do
-            items=$((items + 1))
-            if [ "$items" = "$cursor" ]; then
+            i=$((i + 1))
+            if [ "$i" = "$cursor" ]; then
                 mark "$line"
             else
                 echo "$line"
             fi
         done
+}
 
-    # for line in $lines; do
-    #     printf "\033[25C"
-    #     echo "$line"
-    # done
-
-    footer this is the footer
-    # goto $cursor
-
+while :; do
+    printf "%b" "$CLEAR$HIDECURSOR"
+    header torque mini
+    torrents
+    footer l:Down k:Up n:Quit
     handleinput "$(getkey)"
 done
