@@ -1,0 +1,146 @@
+#!/usr/bin/env sh
+
+gettermsize() {
+    IFS=' '
+    set -- "$(stty size)"
+    LINES=$1 && COLUMNS=$2
+}
+
+getkey() {
+    stty -icanon -echo
+    dd bs=1 count=1 2> /dev/null
+    stty icanon echo
+}
+
+# trap 'gettermsize' WINCH
+
+# e='printf'                           # shortened echo command variable
+# ESC=$($e "\033")                     # variable containing escaped value
+# CLEAR() { $e "\033c"; }              # clear screen
+# CIVIS() { $e "\033[?25l"; }          # hide cursor
+# CNORM() { $e "\033[?12l\033[?25h"; } # show cursor
+# TPUT() { $e "\033[${1};${2}H"; }     # terminal put (x and y position)
+# COLPUT() { $e "\033[${1}G"; }        # put text in the same line as the specified column
+# MARK() { $e "\033[7m"; }             # select current line text
+# UNMARK() { $e "\033[27m"; }          # normalize current line text
+# DRAW() {
+#     $e "\033%@"
+#     printf "\033(0"
+# }                                                # switch to 'garbage' mode to be able to draw
+# WRITE() { $e "\033(B"; }                         # return to normal (reset)
+# BLUE() { $e "\033c\033[0;1m\033[37;44m\033[J"; } # clear screen, set background to blue and font to whit
+
+# printf "$CLEAR$TOP"
+# printf "$CLEAR"
+# printf "$TOP"
+# echo hello world
+
+# gettermsize
+# echo "$LINES"
+# LINES=34
+# printf '\033[%sH' "$LINES"
+# read -r line
+
+# status() { printf '\e[2m\e[%s;H%s\e[m' "$((LINES-1))" "$1"; }
+
+#     printf '\e[?7l\e[?25l\e[2J\e[H'
+#     shopt -s checkwinsize; (:;:)
+#     [ -z "$LINES" ] && set -- "$(stty size)" && LINES=$1 && COLUMNS=$2
+#     ((l=(LINES-2)/3))
+
+#     IFS=$'\n' read -d "" -ra t < <(transmission-remote -l)
+#     unset 't[0]' 't[-1]' 2>/dev/null
+
+#     t=("${t[@]//[0-9] [a-z][a-z][a-z]?/.}")
+#     t=("${t[@]//Up & Down/Active}")
+#     t=("${t[@]//Downloading/Active}")
+#     t=("${t[@]//     None/0 MB}")
+
+#     for((i=${k:=0};i<(l=l>${#t[@]}?${#t[@]}:l);i++));{ t_print "${t[i]/n\/a/0}";}
+#     status "[s]tart [p]ause [r]emove [m]agnet ($l/${#t[@]})"$'\e[H'
+
+LINES=$(stty size | cut -d' ' -f1)
+COLUMNS=$(stty size | cut -d' ' -f2)
+
+# GOTOLINE="\033[34B"
+# GOBOTTOM="\033[$(stty size | cut -d' ' -f1)B"
+SHOWCURSOR="\033[?25h"
+HIDECURSOR="\033[?25l"
+ENABLEWRAP="\033[?7h"
+DISABLEWRAP="\033[?7l"
+MARK="\033[7m"
+UNMARK="\033[27m"
+
+CLEAR="\033[2J\033[H"
+
+cursor=1
+items=0
+
+lines="
+first
+second
+third
+fourth
+"
+
+goto() {
+    # printf "$UNMARK"
+    printf "\033[${1}H"
+    # printf "$MARK"
+}
+
+handleinput() {
+    case $1 in
+        l) [ "$cursor" -lt "$items" ] && cursor=$((cursor + 1)) ;;
+        k) [ "$cursor" -gt "$items" ] && cursor=$((cursor - 1)) ;;
+        n) printf "$CLEAR$SHOWCURSOR" && kill -15 $$ ;;
+    esac
+}
+
+goto() {
+    printf "\033[${1};${2}H"
+}
+
+mark() {
+    printf "\033[7m"
+    echo "$@"
+    printf "\033[27m"
+}
+
+header() {
+    goto 1 "$((COLUMNS / 2 - 10))"
+    mark "$@"
+    printf "\n\n\n"
+}
+
+footer() {
+    goto "$((LINES - 1))" "$((COLUMNS / 2 - 10))"
+    mark "$@"
+}
+
+while :; do
+    printf "$CLEAR$HIDECURSOR"
+
+    header this is the header
+
+    transmission-remote -l |
+        sed '1d;$d' |
+        while read -r line; do
+            items=$((items + 1))
+            if [ "$items" = "$cursor" ]; then
+                mark "$line"
+            else
+                echo "$line"
+            fi
+        done
+
+    # for line in $lines; do
+    #     printf "\033[25C"
+    #     echo "$line"
+    # done
+
+    footer this is the footer
+    # goto $cursor
+
+    handleinput "$(getkey)"
+done
