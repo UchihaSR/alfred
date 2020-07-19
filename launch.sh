@@ -2,10 +2,16 @@
 #
 # General purpose launching script
 
-run() { "$@" > /dev/null 2>&1 & }
+run() { "$*" > /dev/null 2>&1 & }
 
 case $1 in
     --bookmarker | -b)
+        # xdotool key Control+l && sleep 1 && exit
+        # xdotool keyup j key --clearmodifiers Control+l && sleep 1 && exit
+        # xte 'keydown Control_L' 'keydown l' 'keyup Control_L' 'keyup l' && exit
+        # xte 'keydown Super_L' 'keydown t' 'keyup Super_L' 'keyup t' && exit
+        # xte 'keydown Super_L' 'keydown t' && sleep 0.2 && xte 'keyup Super_L' 'keyup t' && exit
+        # xte 'keydown Ctrl_L' 'keydown l' && sleep 0.2 && xte 'keyup Ctrl_L' 'keyup l' && exit
         BOOKMARKS=/mnt/horcrux/git/own/private/.local/share/bookmarks
         LOCATION=$(find $BOOKMARKS -type d |
             awk -F / '{print $NF}' |
