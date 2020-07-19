@@ -14,11 +14,11 @@ getkey() {
     stty icanon echo
 }
 
-goto() {
-    # printf "$UNMARK"
-    printf "\033[${1}H"
-    # printf "$MARK"
-}
+# goto() {
+#     # printf "$UNMARK"
+#     printf "\033[${1}H"
+#     # printf "$MARK"
+# }
 
 quit() {
     printf "%b" "$CLEAR$SHOWCURSOR"
@@ -58,7 +58,7 @@ footer() {
 }
 
 showui() {
-    header torque mini
+    goto 3 0
     transmission-remote -l |
         sed '1d;$d' |
         while read -r line; do
@@ -69,7 +69,6 @@ showui() {
                 echo "$line"
             fi
         done
-    footer l:Down k:Up n:Quit
 }
 
 setscreen() {
@@ -81,6 +80,8 @@ setscreen() {
 trap 'setscreen' WINCH
 
 setscreen
+header torque mini
+footer l:Down k:Up n:Quit
 while :; do
     showui
     handleinput "$(getkey)"
