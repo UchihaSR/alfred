@@ -2,7 +2,7 @@
 #
 # General purpose launching script
 
-run() { "$*" > /dev/null 2>&1 & }
+run() { "$@" > /dev/null 2>&1 & }
 
 case $1 in
     --bookmarker | -b)
