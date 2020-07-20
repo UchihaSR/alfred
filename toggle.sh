@@ -32,7 +32,7 @@ while :; do
                 sleep 2
                 killall -SIGUSR1 dunst
             fi
-            uniblocks -u noti
+            # uniblocks -u noti
             ;;
         --wifi | -w)
             if pidof iwd > /dev/null; then
