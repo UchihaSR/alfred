@@ -7,6 +7,7 @@ refresh() {
     shopt -s checkwinsize; (:;:)
     [[ -z "$LINES" ]] && read -r LINES COLUMNS < <(stty size)
     ((j=(LINES-2)/3))
+    ns refreshed
 }
 
 status() {
