@@ -128,8 +128,8 @@ case $1 in
                 ;;
             image/*)
                 pidof feh ||
-                    feh -A 'setdisplay --bg %f' -B 'black' \
-                        -F -d --edit --keep-zoom-vp --start-at \
+                    devour feh -A 'setdisplay --bg %f' -B 'black' \
+                        -d --edit --keep-zoom-vp --start-at \
                         "$*"
                 ;;
             application/*)
