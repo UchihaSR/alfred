@@ -22,10 +22,11 @@ case $1 in
         ;;
     --choose | -c)
         shift
-        choice=$(printf "🌏 Browser\n📖 Foxit Reader\n📚 Master PDF Editor\n💻 Code\n🎥 MPV" |
+        choice=$(printf "📚 Okular\n📖 Foxit Reader\n📙 Master PDF Editor\n💻 Code\n🎥 MPV\n🌏 Browser" |
             rofi -dmenu -i -p "Open with" | sed "s/\W//g") &&
             case "$choice" in
                 Browser) $BROWSER --new-window "$*" ;;
+                Okular) okular "$*" ;;
                 FoxitReader) foxitreader "$*" ;;
                 MasterPDFEditor) masterpdfeditor4 "$*" ;;
                 Code) code "$*" ;;
@@ -121,9 +122,8 @@ case $1 in
                 qmedia "$1"
                 # testt mpv "$*"
                 ;;
-            application/pdf | application/postscript | application/epub+zip)
-                pidof zathura || zathura "$*"
-                # pidof zathura || run zathura "$*"
+            application/pdf | application/postscript | application/epub+zip | image/vnd.djvu)
+                pidof zathura || devour zathura "$*"
                 # devour zathura "$*"
                 ;;
             image/*)

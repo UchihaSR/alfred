@@ -22,12 +22,12 @@ case $(file --dereference --brief --mime-type "$FILE") in
             -- "$FILE"
         # highlight --force --out-format=ansi -- "$FILE"
         ;;
-    image/*)
-        chafa --fill=block --symbols=block --colors=256 --size="80x$HEIGHT" "$FILE" || exit 1
-        ;;
-    # */pdf)
-    #     pdftotext -l 10 -nopgbrk -q -- "$FILE" -
+    # image/*)
+    #     chafa --fill=block --symbols=block --colors=256 --size="80x$HEIGHT" "$FILE" || exit 1
     #     ;;
+    */pdf)
+        pdftotext -l 10 -nopgbrk -q -- "$FILE" -
+        ;;
     *)
         file --brief "$FILE"
         ;;
