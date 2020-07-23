@@ -4,7 +4,10 @@
 
 echo ran > ~/ran
 doas -- pacman -Scc --noconfirm
-doas -- pacman -Rns "$(pacman -Qtdq)" --noconfirm
+doas -- pacman -Rns --noconfirm $(pacman -Qtdq)
 find ~ -xtype l -delete
 find ~ -type d -empty -delete
-doas -- rm -fr ~/.local/share/cache/* /var/log/journal/* ~/.local/share/Trash/*
+doas -- rm -fr \
+    ~/.local/share/Trash/* \
+    /var/cache/pacman/pkg/* \
+    /var/log/journal/*
