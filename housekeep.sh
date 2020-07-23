@@ -4,7 +4,7 @@
 
 echo ran > ~/ran
 doas -- pacman -Scc --noconfirm
-doas -- pacman -Rns --noconfirm $(pacman -Qtdq)
+doas -- pacman -Rns --noconfirm $(pacman -Qttdq)
 find ~ -xtype l -delete
 find ~ -type d -empty -delete
 doas -- rm -fr \
