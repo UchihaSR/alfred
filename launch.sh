@@ -121,7 +121,7 @@ case $1 in
                 qmedia "$1"
                 # testt mpv "$*"
                 ;;
-            application/pdf | application/postscript)
+            application/pdf | application/postscript | application/epub+zip)
                 pidof zathura || zathura "$*"
                 # pidof zathura || run zathura "$*"
                 # devour zathura "$*"

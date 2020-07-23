@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 #
 # Previewer for LF
+# Dependencies: file, highlight, chafa, w3m
 
 FILE="$1"
 HEIGHT="$2"
@@ -24,9 +25,9 @@ case $(file --dereference --brief --mime-type "$FILE") in
     image/*)
         chafa --fill=block --symbols=block --colors=256 --size="80x$HEIGHT" "$FILE" || exit 1
         ;;
-    */pdf)
-        pdftotext -l 10 -nopgbrk -q -- "$FILE" -
-        ;;
+    # */pdf)
+    #     pdftotext -l 10 -nopgbrk -q -- "$FILE" -
+    #     ;;
     *)
         file --brief "$FILE"
         ;;
