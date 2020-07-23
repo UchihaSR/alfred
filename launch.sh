@@ -22,11 +22,11 @@ case $1 in
         ;;
     --choose | -c)
         shift
-        choice=$(printf "📚 Okular\n📖 Foxit Reader\n📙 Master PDF Editor\n💻 Code\n🎥 MPV\n🌏 Browser" |
+        choice=$(printf "📚 Evince\n📖 Foxit Reader\n📙 Master PDF Editor\n💻 Code\n🎥 MPV\n🌏 Browser" |
             rofi -dmenu -i -p "Open with" | sed "s/\W//g") &&
             case "$choice" in
+                Evince) evince "$*" ;;
                 Browser) $BROWSER --new-window "$*" ;;
-                Okular) okular "$*" ;;
                 FoxitReader) foxitreader "$*" ;;
                 MasterPDFEditor) masterpdfeditor4 "$*" ;;
                 Code) code "$*" ;;

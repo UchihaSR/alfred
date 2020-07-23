@@ -49,8 +49,8 @@ while :; do
             # notify-send -i "$ICONS"/calendar.png "Done syncing calcurse"
             ;;
         --arch | -a)
-            doas -- pacman -Syyu --noconfirm
-            yay -Syyu --noconfirm
+            doas -- pacman -Syu --noconfirm
+            yay -Syu --noconfirm
             npm update -g
             ;;
         --phone | -p)
