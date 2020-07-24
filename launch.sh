@@ -49,7 +49,8 @@ case $1 in
         if ! pidof tmux; then
             tmux new-session -d -n 'news&mail' 'neomutt' \; \
                 split-window -h 'newsboat' \; \
-                split-window 'calcurse' \;
+                split-window 'calcurse' \; \
+                select-pane -t :.1
             "$TERMINAL" -e tmux attach &
         fi
         ;;
