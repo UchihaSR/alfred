@@ -64,7 +64,6 @@ case $1 in
                     fi
                     shift
                 done
-                # echo "$wm"
                 echo "W$wm"
             done
         ;;
