@@ -1,15 +1,15 @@
 #!/bin/sh
 
-rm -r fifo
-mkfifo fifo
-exec 3<> fifo
+# rm -r fifo
+# mkfifo fifo
+# exec 3<> fifo
 
-while :; do
-    echo yo >&3
-    sleep 3
-done &
+# while :; do
+#     echo yo >&3
+#     sleep 3
+# done &
 
-cat <&3
+# cat <&3
 
 # grep -Pzo \
 #     '(http|https)://[a-zA-Z0-9+&@#/%?=~_|!:,.;-]*\n*[a-zA-Z0-9+&@#/%?=~_|!:,.;-]*' /tmp/tb |
@@ -39,9 +39,7 @@ cat <&3
 #     echo $line
 # done <&3
 
-# rm -r fifo
-# mkfifo fifo
-# exec 3<> fifo
+# rm -f ~/in ~/out
 
 # while :; do
 #     echo yo >&3
@@ -53,3 +51,19 @@ cat <&3
 # exec cat fifo | nl
 
 # tail -n +1 -f pipe
+
+# exec 3> ~/in
+# exec 4< ~/in
+# echo yo >&3
+# cat <&4
+# exec 3<&-
+# exec 4<&-
+
+# [ -p fifo ] || mkfifo fifo
+# exec 3<> fifo
+# while :; do
+#     echo writing to fifo
+#     sleep 1
+# done >&3 &
+# trap 'rm -f fifo; exit' INT
+# cat <&3
