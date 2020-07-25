@@ -2,17 +2,11 @@
 #
 # Monitors specific directores for particular changes and runs commands
 
-# dirs=
-# dirs="$dirs $GIT/own/magpie"
-# dirs="$dirs $GIT/own/private"
-
-dirs="
+echo "
 $GIT/own/magpie
-$GIT/own/private"
-
-# dirs="$GIT/own/magpie $GIT/own/private"
-
-inotifywait -m -r -e create,moved_to $dirs |
+$GIT/own/private
+" |
+    xargs inotifywait -m -r -e create,moved_to |
     while read -r line; do
         cp -frsu -t ~ \
             "$GIT"/own/magpie/. \
