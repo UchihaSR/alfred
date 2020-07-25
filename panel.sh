@@ -7,9 +7,6 @@ case $1 in
     --date-time | -d)
         date +'📅  %a, %d %b ⌚ %H : %M'
         ;;
-    --noti-stat | -n)
-        if [ -s "$DDM" ]; then echo 🔕; else echo 🔔; fi
-        ;;
     --wifi | -w)
         if connected; then
             printf "🌏 %s\n" \
@@ -38,10 +35,6 @@ case $1 in
                 "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%" | sed 's/%//')"
         fi
         ;;
-    --mailbox | -m)
-        printf "📫 %s" \
-            find ~/.local/share/mail/gmail/INBOX/new/* -type f | wc -l
-        ;;
     --bspwm | -b)
         bspc subscribe report |
             while read -r line; do
@@ -67,5 +60,12 @@ case $1 in
                 echo "W$wm"
             done
         ;;
+        # --mailbox | -m)
+        #     printf "📫 %s" \
+        #         find ~/.local/share/mail/gmail/INBOX/new/* -type f | wc -l
+        # ;;
+    # --noti-stat | -n)
+    #     if [ -s "$DDM" ]; then echo 🔕; else echo 🔔; fi
+    #     ;;
     *) exit 1 ;;
 esac
