@@ -2,7 +2,6 @@
 #
 # Cleans up the system (weekly cronjob)
 
-echo ran > ~/ran
 doas -- pacman -Scc --noconfirm
 doas -- pacman -Rns --noconfirm $(pacman -Qttdq)
 find ~ -xtype l -delete
