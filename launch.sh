@@ -112,26 +112,27 @@ case $1 in
                 ;;
         esac
         case $(file --mime-type "$*" -bL) in
-            text/* | inode/x-empty | application/json | application/octet-stream)
+            text* | *x-empty | *json | *octet-stream)
                 $EDITOR "$*"
                 ;;
-            inode/directory)
+            *directory)
                 explore "$*"
                 ;;
-            video/* | audio/* | image/gif)
+            video* | audio* | *gif)
                 qmedia "$1"
                 # testt mpv "$*"
                 ;;
-            application/pdf | application/postscript | application/epub+zip | image/vnd.djvu)
+            *pdf | *postscript | *epub+zip | *vnd.djvu)
                 devour zathura -- "$*"
                 ;;
-            image/*)
+            image*)
                 devour feh -A 'setdisplay --bg %f' -B 'black' \
                     -d --edit --keep-zoom-vp --start-at \
                     -- "$*"
                 ;;
-            application/*)
-                extract --clean "$*"
+            application*)
+                extract "$*"
+                # extract --clean "$*"
                 ;;
         esac
         ;;
