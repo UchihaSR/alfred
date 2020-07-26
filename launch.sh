@@ -46,6 +46,7 @@ case $1 in
         esac
         ;;
     --tmux | -t)
+        ns launched
         if ! pidof tmux; then
             tmux new-session -d -n 'news&mail' 'neomutt' \; \
                 split-window -h 'newsboat' \; \
