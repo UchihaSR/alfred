@@ -46,13 +46,13 @@ case $1 in
         esac
         ;;
     --tmux | -t)
-        if ! pidof tmux; then
+        pidof tmux || {
             tmux new-session -d -n 'news&mail' 'neomutt' \; \
                 split-window -h 'newsboat' \; \
                 split-window 'calcurse' \; \
                 select-pane -t :.1
-            "$TERMINAL" -e tmux attach &
-        fi
+        }
+        pidof "$TERMINAL" || "$TERMINAL" -e tmux attach &
         ;;
     --explorer | -e)
         launch --tmux 2> /dev/null # Personal Script
