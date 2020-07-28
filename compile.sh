@@ -23,6 +23,7 @@ case $ext in
     h | sh) doas make install ;;
     py) python "$path" ;;
     tex) xelatex "$path" ;;
+    lua) lua "$path" ;;
         # c) gcc -Wall "$path" -lxcb ;;
         # c) cc "$path" ;;
         # c) cc "$path" -o "$name" && "$name" ;;
