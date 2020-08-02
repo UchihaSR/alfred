@@ -123,12 +123,12 @@ case $1 in
                 # testt mpv "$*"
                 ;;
             *pdf | *postscript | *epub+zip | *vnd.djvu)
-                devour zathura -- "$@"
+                devour zathura -- $*
                 ;;
             image*)
-                devour feh -A 'setdisplay --bg %f' -B 'black' \
+                devour -- feh -A 'setdisplay --bg %f' -B 'black' \
                     -d --edit --keep-zoom-vp --start-at \
-                    -- "$*"
+                    -- $*
                 ;;
             application*)
                 extract "$*"
