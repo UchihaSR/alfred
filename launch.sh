@@ -128,11 +128,11 @@ case $1 in
             devour zathura -- $*
             ;;
          image*)
-            devour -- feh -A 'setdisplay --bg %f' -B 'black' \
+            devour feh -A "setdisplay --bg %f" -B 'black' \
                -d --edit --keep-zoom-vp --start-at \
                -- $*
             ;;
-            application*)
+         application*)
             extract     "$*"
             # extract --clean "$*"
             ;;
