@@ -8,5 +8,5 @@ doas -- ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 while :; do
    sleep 170
    ns submit
-   canberra-gtk-play -i complete
+   # canberra-gtk-play -i complete
 done
