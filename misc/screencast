@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+RECPID=/tmp/recpid
+
 stop() {
     recpid=$(cat "$RECPID")
     kill -15 "$recpid"
