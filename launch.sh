@@ -133,7 +133,7 @@ case $1 in
                -- $*
             ;;
          application*)
-            extract     "$*"
+            extract "$*"
             # extract --clean "$*"
             ;;
       esac
