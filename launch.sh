@@ -48,8 +48,8 @@ case $1 in
    --tmux | -t)
       pidof tmux || {
          tmux new-session -d -n 'news&mail' 'neomutt' \; \
-            split-window -h 'newsboat' \; \
-            split-window 'calcurse' \; \
+            split-window -h 'calcurse' \; \
+            split-window 'newsboat' \; \
             split-window 'weechat' \; \
             select-pane -t :.1
       }
