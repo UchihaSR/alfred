@@ -132,6 +132,10 @@ case $1 in
                -d --edit --keep-zoom-vp --start-at \
                -- $*
             ;;
+         *x-bittorent)
+             ns came
+            torrent --add "$*"
+            ;;
          application*)
             extract "$*"
             # extract --clean "$*"
