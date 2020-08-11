@@ -22,9 +22,10 @@ case $1 in
       ;;
    --choose | -c)
       shift
-      choice=$(printf "📚 Evince\n📖 Foxit Reader\n📙 Master PDF Editor\n💻 Code\n🎥 MPV\n🌏 Browser" |
+      choice=$(printf "📕 Zathura\n📘 Evince\n📖 Foxit Reader\n📙 Master PDF Editor\n💻 Code\n🎥 MPV\n🌏 Browser" |
          rofi -dmenu -i -p "Open with" | sed "s/\W//g") &&
          case "$choice" in
+            Zathura) zathura "$*" ;;
             Evince) evince "$*" ;;
             Browser) $BROWSER --new-window "$*" ;;
             FoxitReader) foxitreader "$*" ;;
@@ -41,7 +42,6 @@ case $1 in
             ;;
          *)
             run firefox "$1"
-            # setsid -f firefox "$1" > /dev/null 2>&1
             ;;
       esac
       ;;
@@ -113,12 +113,12 @@ case $1 in
             ;;
       esac
 
-      case $(file --mime-type "$*" -bL) in
+      case $(file --mime-type "$1" -bL) in
          text* | *x-empty | *json | *octet-stream)
-            $EDITOR "$*"
+            $EDITOR "$1"
             ;;
          *directory)
-            explore "$*"
+            explore "$1"
             ;;
          video* | audio* | *gif)
             qmedia "$1"
@@ -126,6 +126,7 @@ case $1 in
             ;;
          *pdf | *postscript | *epub+zip | *vnd.djvu)
             devour zathura -- $*
+            # devour zathura -- $*
             ;;
          image*)
             devour feh -A "setdisplay --bg %f" -B 'black' \
@@ -133,11 +134,14 @@ case $1 in
                -- $*
             ;;
          *x-bittorrent)
-            torrent --add "$*"
+            torrent --add "$1"
+            ;;
+         *.document)
+            pandoc "$1" -o "${1%.*}.pdf"
+            devour zathura -- ${1%.*}.pdf
             ;;
          application*)
-            extract "$*"
-            # extract --clean "$*"
+            extract --clean "$1"
             ;;
       esac
       ;;
