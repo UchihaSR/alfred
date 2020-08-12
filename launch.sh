@@ -2,7 +2,7 @@
 #
 # General purpose launching script
 
-run() { "$@" > /dev/null 2>&1 & }
+run() { setsid "$@" > /dev/null 2>&1 & }
 
 case $1 in
    --bookmarker | -b)
@@ -25,13 +25,13 @@ case $1 in
       choice=$(printf "📕 Zathura\n📘 Evince\n📖 Foxit Reader\n📙 Master PDF Editor\n💻 Code\n🎥 MPV\n🌏 Browser" |
          rofi -dmenu -i -p "Open with" | sed "s/\W//g") &&
          case "$choice" in
-            Zathura) zathura "$*" ;;
-            Evince) evince "$*" ;;
-            Browser) $BROWSER --new-window "$*" ;;
-            FoxitReader) foxitreader "$*" ;;
-            MasterPDFEditor) masterpdfeditor4 "$*" ;;
-            Code) code "$*" ;;
-            MPV) mpv --shuffle "$*" ;;
+            Zathura) run zathura "$1" ;;
+            Evince) run evince "$1" ;;
+            Browser) run $BROWSER --new-window "$1" ;;
+            FoxitReader) run foxitreader "$1" ;;
+            MasterPDFEditor) run masterpdfeditor4 "$1" ;;
+            Code) run code "$1" ;;
+            MPV) run mpv --shuffle "$1" ;;
          esac
       ;;
    --link | -l)
