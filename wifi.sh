@@ -9,6 +9,5 @@ case "$1" in
       iwctl station "$CARD" get-networks
       iwctl --passphrase "${PASS:-$2}" station "$CARD" connect "${SSID:-$1}"
       ;;
-   -dis | -d) iwctl station "$CARD" disconnect;
-
+   -dis | -d) iwctl station "$CARD" disconnect ;;
 esac
