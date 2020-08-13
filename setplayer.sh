@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # Audio controller for spotify & mpd
 # Dependencies: playerctl, pulseaudio-alsa(for getting volume levels over 100%)

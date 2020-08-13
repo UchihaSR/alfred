@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # Extracts Files based on their extensions
 # 'extract --clean' cleans up the archive after extraction

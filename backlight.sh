@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # Modulates backlight levels
 # Usage: backlight --(up|down)

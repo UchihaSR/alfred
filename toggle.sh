@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # Toggles Wifi, Notification & Wallpaper reeling
 # toggle --[noti,wifi,wall-reel]

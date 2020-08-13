@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # Torrent  related scripts
 # torrent --[add,downloaded]

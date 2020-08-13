@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # Panel Module Generator
 # Usage: panel -(b|d|m|n|s|v|w)

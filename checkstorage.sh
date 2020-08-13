@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # checkstorage <PATH1> <THRESHOLD1> <PATH2> <THRESHOLD2> ...
 # Notifies on low storage level

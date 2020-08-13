@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # General purpose launching script
 
@@ -108,7 +108,7 @@ case $1 in
             exit
             ;;
          *.sent)
-            sent "$*" &
+            devour sent "$*" &
             exit
             ;;
       esac

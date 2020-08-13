@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # Monitors Battery level,
 # Blocks Charging on High battery level

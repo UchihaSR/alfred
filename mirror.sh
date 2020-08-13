@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # General purpose syncing script
 # mirror --[git,mail,calcurse,phone,arch,firefox,repos,upstream]

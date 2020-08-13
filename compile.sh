@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # Forked from Luke Smith.
 # Compiles Files based on their extensions
