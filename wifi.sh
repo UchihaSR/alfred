@@ -1,7 +1,8 @@
 #!/bin/sh
 #
-# connects to wifi
-# USAGE: wifi SSID PASS
+# connects to wifi using iwd
+# USAGE: wifi -c SSID PASS
+#        wifi -d
 
 case "$1" in
    -con | -c)
