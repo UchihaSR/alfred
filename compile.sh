@@ -24,6 +24,7 @@ case $ext in
     py) python "$path" ;;
     tex) xelatex "$path" ;;
     lua) lua "$path" ;;
+    txt) wc -w "$path" ;;
         # c) gcc -Wall "$path" -lxcb ;;
         # c) cc "$path" ;;
         # c) cc "$path" -o "$name" && "$name" ;;
