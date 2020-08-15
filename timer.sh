@@ -6,7 +6,7 @@ pgrep -f "$0" | grep -v $$ &&
 
 doas -- ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 while :; do
-   sleep 170
+   sleep 110
    ns submit
-   # canberra-gtk-play -i complete
+   canberra-gtk-play -i complete
 done
