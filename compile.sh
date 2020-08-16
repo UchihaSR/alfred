@@ -20,7 +20,7 @@ cd "$dir" || exit 1
 
 makefile() {
    found=$(find . -name Makefile | wc -l)
-   if [ "$found" ]; then
+   if [ "$found" = 1 ]; then
       doas make install
    else
       cd ..
