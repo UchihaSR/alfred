@@ -24,7 +24,7 @@ case $1 in
     }')"
       mem="$(free -m | awk '(NR==2){ printf "%04d", $3 }')"
       temp="$(sensors | awk '(/Core 0/){printf $3}' | sed 's/\.0//; s/+//')"
-      echo "🌡 $temp   🐎 $cpu   🧠 $mem"
+      echo "🧠 $mem  🐎 $cpu 🌡 $temp"
       ;;
    --vol-stat | -v)
       DUMMY_FIFO=/tmp/dff
