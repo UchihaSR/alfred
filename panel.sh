@@ -27,13 +27,25 @@ case $1 in
       echo "🌡 $temp   🐎 $cpu   🧠 $mem"
       ;;
    --vol-stat | -v)
-      volstat="$(amixer get Master)"
-      if echo "$volstat" | grep -o -m 1 "off" > /dev/null; then
-         echo 🔇 000
-      else
-         printf "🔊 %03d\n" \
-            "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%" | sed 's/%//')"
-      fi
+      DUMMY_FIFO=/tmp/dff
+      showstat() {
+         volstat="$(amixer get Master)"
+         if echo "$volstat" | grep -o -m 1 "off" > /dev/null; then
+            printf "%s\r" "🔇 000"
+         else
+            printf "🔊 %03d\r" \
+               "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%" | sed 's/%//')"
+         fi
+      }
+      trap 'showstat' RTMIN+1
+      trap 'rm -f "$DUMMY_FIFO"; exit' INT TERM QUIT EXIT
+
+      showstat
+      mkfifo "$DUMMY_FIFO"
+      while :; do
+         : < "$DUMMY_FIFO" &
+         wait
+      done
       ;;
    --bspwm | -b)
       bspc subscribe report |
