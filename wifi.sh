@@ -4,7 +4,9 @@
 # USAGE: wifi -c SSID PASS
 #        wifi -d
 
-      CARD="$(ip link | grep -o 'w.*:' | tr -d ':')"
+CARD="$(ip link | grep -o 'w.*:' | tr -d ':')"
+SSID=c4rn@g3
+PASS=pqlamz.,
 case "$1" in
    -con | -c)
       iwctl station "$CARD" get-networks
