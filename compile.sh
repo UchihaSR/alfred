@@ -18,9 +18,18 @@ cd "$dir" || exit 1
       c) rm -f "$dir/a.out" ;;
    esac && exit
 
+makefile() {
+   found=$(find . -name Makefile | wc -l)
+   if [ "$found" ]; then
+      doas make install
+   else
+      cd ..
+      doas make install
+   fi
+}
+
 case $ext in
-   c | h) cd .. && doas make install ;;
-   sh) doas make install ;;
+   c | h | sh) makefile ;;
    py) python "$path" ;;
    tex) xelatex "$path" ;;
    lua) lua "$path" ;;
