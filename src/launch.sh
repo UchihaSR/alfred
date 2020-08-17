@@ -109,6 +109,8 @@ case $1 in
             ;;
          *.sent)
             devour sent "$*" &
+            sleep 2
+            bspc node -t fullscreen
             exit
             ;;
       esac
