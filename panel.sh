@@ -1,7 +1,8 @@
 #!/bin/sh
 #
 # Panel Module Generator
-# Usage: panel -(b|d|m|n|s|v|w)
+# Usage: panel -(b|d|s|v|w)
+# Dependencies: date, awk, sed, grep, top, free, sensors, alsa-utils
 
 case $1 in
    --date-time | -d)
@@ -29,12 +30,11 @@ case $1 in
    --vol-stat | -v)
       DUMMY_FIFO=/tmp/dff
       showstat() {
-         volstat="$(amixer get Master)"
-         if echo "$volstat" | grep -o -m 1 "off" > /dev/null; then
-            printf "%s\r" "🔇 000"
+         if amixer get Master | grep -o -m 1 "off" > /dev/null; then
+            printf "🔇 000\r"
          else
             printf "🔊 %03d\r" \
-               "$(echo "$volstat" | grep -o -m 1 "[0-9]\+%" | sed 's/%//')"
+               "$(amixer get Master | grep -o -m 1 "[0-9]\+%" | sed 's/%//')"
          fi
       }
       trap 'showstat' RTMIN+1
