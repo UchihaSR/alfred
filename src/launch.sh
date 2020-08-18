@@ -31,7 +31,8 @@ case $1 in
             FoxitReader) run foxitreader "$1" ;;
             MasterPDFEditor) run masterpdfeditor4 "$1" ;;
             Code) run code "$1" ;;
-            MPV) run mpv --shuffle "$1" ;;
+            MPV) run mpv "$1" ;;
+               # MPV) run mpv --shuffle "$1" ;;
          esac
       ;;
    --link | -l)
