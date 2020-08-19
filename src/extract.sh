@@ -15,7 +15,7 @@ case $ext in
    rar) unrar "$1" ;;
    7z) 7z x "$1" ;;
    *) exit 1 ;;
-   # gz) tar -xzf "$1" -C "${1%.*}" ;;
+      # gz) tar -xzf "$1" -C "${1%.*}" ;;
       # tar) tar -xvf "$1" ;;
       # zip) unzip "$path" -d "${1%.*}" ;;
 esac
