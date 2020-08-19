@@ -49,7 +49,7 @@ while :; do
          # notify-send -i "$ICONS"/calendar.png "Done syncing calcurse"
          ;;
       --arch | -a)
-         doas -- pacman -Syu --noconfirm
+         doas -- pacman -Syyu --noconfirm
          yay -Syu --noconfirm
          npm update -g
          ;;
@@ -78,11 +78,11 @@ while :; do
             [ -d "$dir" ] && git -C "$dir" pull --no-rebase
          done
          ;;
-      --dots | -d) 
-        cp -frsu -t ~ \
+      --dots | -d)
+         cp -frsu -t ~ \
             "$GIT"/own/magpie/. \
             "$GIT"/own/private/.
-                    ;;
+         ;;
 
       --drive | -D)
          LOCAL=/mnt/horcrux/drive
