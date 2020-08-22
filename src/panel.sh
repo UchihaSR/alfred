@@ -14,6 +14,7 @@ case $1 in
             "$(awk 'FNR == 3 { printf "%03d", $3*100/70 }' /proc/net/wireless)"
       else
          echo "❗ 000"
+         iwctl station "$(ip link | grep -o 'w.*:' | tr -d ':')" scan
       fi
       ;;
    --sys-stat | -s)
