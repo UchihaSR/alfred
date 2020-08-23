@@ -80,7 +80,8 @@ case $1 in
       fi
       if pidof "$TERMINAL"; then
          [ "$(pidof "$TERMINAL")" != "$(xdo pid)" ] &&
-            xdo activate -N Alacritty
+            xdo activate -N st-256color
+         # xdo activate -N Alacritty
       else
          "$TERMINAL" -e tmux attach &
          # "$TERMINAL"
