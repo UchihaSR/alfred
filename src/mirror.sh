@@ -19,7 +19,7 @@ while :; do
             "$GIT"/own/firefox/.mozilla/firefox
          ;;
       --git | -g)
-         for dir in "$GIT"/own/*/; do
+         for dir in "$GIT"/own/*/ "$GIT"/suckless/*/; do
             if [ -d "$dir" ]; then
                cd "$dir" || exit 1
                # git pull
