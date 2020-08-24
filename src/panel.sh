@@ -10,7 +10,7 @@ case $1 in
       ;;
    --wifi | -w)
       if connected; then
-         printf "🌏 %s\n" \
+         printf "🌏 %s" \
             "$(awk 'FNR == 3 { printf "%03d", $3*100/70 }' /proc/net/wireless)"
       else
          echo "❗ 000"
@@ -26,7 +26,7 @@ case $1 in
     }')"
       mem="$(free -m | awk '(NR==2){ printf "%04d", $3 }')"
       temp="$(sensors | awk '(/Core 0/){printf $3}' | sed 's/\.0//; s/+//')"
-      echo "🧠 $mem  🐎 $cpu 🌡 $temp"
+      printf "🧠 %s  🐎 %s 🌡 %s" "$mem" "$cpu" "$temp"
       ;;
    --vol-stat | -v)
       # DUMMY_FIFO=/tmp/dff
@@ -40,48 +40,45 @@ case $1 in
       }
       # trap 'showstat' RTMIN+1
       # trap 'rm -f "$DUMMY_FIFO"; exit' INT TERM QUIT EXIT
-
       showstat
-
       # mkfifo "$DUMMY_FIFO"
       # while :; do
       #    : < "$DUMMY_FIFO" &
       #    wait
       # done
-
       ;;
-   --bspwm | -b)
-      bspc subscribe report |
-         while read -r line; do
-            line=${line#*:}
-            line=${line%:L*}
-            IFS=:
-            set -- $line
-            wm=
-            while :; do
-               case $1 in
-                  [FOU]*) name=🏚 ;;
-                  f*) name=🕳 ;;
-                  o*) name=🌴 ;;
-                  *) break ;;
-               esac
-               if [ -z "$wm" ]; then
-                  wm="$name" && shift && continue
-               else
-                  wm="$wm  $name"
-               fi
-               shift
-            done
-            # echo "W$wm"
-            echo "$wm"
-         done
-      ;;
-      # --mailbox | -m)
-      #     printf "📫 %s" \
-      #         find ~/.local/share/mail/gmail/INBOX/new/* -type f | wc -l
-      # ;;
+   # --bspwm | -b)
+   #    bspc subscribe report |
+   #       while read -r line; do
+   #          line=${line#*:}
+   #          line=${line%:L*}
+   #          IFS=:
+   #          set -- $line
+   #          wm=
+   #          while :; do
+   #             case $1 in
+   #                [FOU]*) name=🏚 ;;
+   #                f*) name=🕳 ;;
+   #                o*) name=🌴 ;;
+   #                *) break ;;
+   #             esac
+   #             if [ -z "$wm" ]; then
+   #                wm="$name" && shift && continue
+   #             else
+   #                wm="$wm  $name"
+   #             fi
+   #             shift
+   #          done
+   #          # echo "W$wm"
+   #          echo "$wm"
+   #       done
+   #    ;;
+   # --mailbox | -m)
+   #    printf "📫 %s" \
+   #       find ~/.local/share/mail/gmail/INBOX/new/* -type f | wc -l
+   #    ;;
    # --noti-stat | -n)
-   #     if [ -s "$DDM" ]; then echo 🔕; else echo 🔔; fi
-   #     ;;
+   #    if [ -s "$DDM" ]; then echo 🔕; else echo 🔔; fi
+   #    ;;
    *) exit 1 ;;
 esac
