@@ -4,6 +4,22 @@
 
 run() { setsid "$@" > /dev/null 2>&1 & }
 
+launch_dwm() {
+   # relaunch DWM if the binary changes, otherwise bail
+   csum=$(sha1sum $(which dwm))
+   new_csum=""
+   while true; do
+      if [ "$csum" != "$new_csum" ]; then
+         csum=$new_csum
+         dwm
+      else
+         exit 0
+      fi
+      new_csum=$(sha1sum $(which dwm))
+      sleep 0.5
+   done
+}
+
 bookmark() {
    # xdotool key Control+l && sleep 1 && exit
    # xdotool keyup j key --clearmodifiers Control+l && sleep 1 && exit
@@ -165,6 +181,7 @@ while :; do
       --link | -l) shift && link "$1" ;;
       --explorer | -e) shift && explorer "$1" ;;
       --bookmark | -b) bookmark ;;
+      --dwm | -d) launch_dwm ;;
       *) break ;;
    esac
    shift
