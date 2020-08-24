@@ -29,24 +29,26 @@ case $1 in
       echo "🧠 $mem  🐎 $cpu 🌡 $temp"
       ;;
    --vol-stat | -v)
-      DUMMY_FIFO=/tmp/dff
+      # DUMMY_FIFO=/tmp/dff
       showstat() {
          if amixer get Master | grep -o -m 1 "off" > /dev/null; then
-            printf "🔇 000\r"
+            printf "🔇 000"
          else
-            printf "🔊 %03d\r" \
+            printf "🔊 %03d" \
                "$(amixer get Master | grep -o -m 1 "[0-9]\+%" | sed 's/%//')"
          fi
       }
-      trap 'showstat' RTMIN+1
-      trap 'rm -f "$DUMMY_FIFO"; exit' INT TERM QUIT EXIT
+      # trap 'showstat' RTMIN+1
+      # trap 'rm -f "$DUMMY_FIFO"; exit' INT TERM QUIT EXIT
 
       showstat
-      mkfifo "$DUMMY_FIFO"
-      while :; do
-         : < "$DUMMY_FIFO" &
-         wait
-      done
+
+      # mkfifo "$DUMMY_FIFO"
+      # while :; do
+      #    : < "$DUMMY_FIFO" &
+      #    wait
+      # done
+
       ;;
    --bspwm | -b)
       bspc subscribe report |
