@@ -6,7 +6,7 @@
 
 case $1 in
    --date-time | -d)
-      date +'🕰 %H : %M  🗓  %a, %d %b'
+      date +'🗓  %a, %d %b 🕰 %H : %M'
       ;;
    --wifi | -w)
       if connected; then
