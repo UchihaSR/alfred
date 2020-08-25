@@ -1,8 +1,8 @@
 #!/bin/sh
 #
 # Panel Module Generator
-# Usage: panel -(b|d|s|v|w)
 # Dependencies: date, awk, sed, grep, top, free, sensors, alsa-utils
+# Usage: panel -(b|d|s|v|w)
 
 case $1 in
    --date-time | -d)
@@ -14,7 +14,8 @@ case $1 in
             "$(awk 'FNR == 3 { printf "%03d", $3*100/70 }' /proc/net/wireless)"
       else
          echo "❗ 000"
-         iwctl station "$(ip link | grep -o 'w.*:' | tr -d ':')" scan
+         # iwctl station "$(ip link | grep -o 'w.*:' | tr -d ':')" scan
+         wifi -c
       fi
       ;;
    --sys-stat | -s)
