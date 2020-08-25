@@ -3,7 +3,7 @@
 # Queues up a file on mpv
 
 MPVFIFO=/tmp/mpvfifo
-mkfifo $MPVFIFO 2> /dev/null
+[ -e $MPVFIFO ] || mkfifo $MPVFIFO
 if pidof mpv; then
    echo loadfile "$*" append-play > $MPVFIFO
 else
