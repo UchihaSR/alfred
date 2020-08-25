@@ -4,7 +4,7 @@
 
 run() { setsid "$@" > /dev/null 2>&1 & }
 
-launch_dwm() { while :; do dwm 2> ~/.dwm.log; done; }
+launch_dwm() { while :; do sleep 3 && dwm 2> ~/.dwm.log; done; }
 
 bookmark() {
    # xdotool key Control+l && sleep 1 && exit

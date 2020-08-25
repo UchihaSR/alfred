@@ -54,7 +54,7 @@ while :; do
          # "You've got $unread new mail!"
          # ;;
       --calcurse | -c)
-         CALCURSE_CALDAV_PASSWORD=$(gpg -d --batch --passphrase asdlkj ~/.local/share/passwords/salmanabedin@disroot.org.gpg) calcurse-caldav
+         CALCURSE_CALDAV_PASSWORD=$(gpg -d ~/.local/share/passwords/salmanabedin@disroot.org.gpg) calcurse-caldav
          # --init=keep-remote
          # notify-send -i "$ICONS"/calendar.png "Done syncing calcurse"
          ;;
