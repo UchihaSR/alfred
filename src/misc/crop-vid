@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 echo "Width(px)? "
 read -r w
@@ -15,4 +15,3 @@ read -r y
 ffmpeg -y -i "$1" \
    -filter:v "crop=$w:$h:$x:$y" \
    "${1%.*}"-"$(date +'%Y%b%d-%H%M%S')"."${1##*.}"
-

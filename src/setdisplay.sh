@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 #
 # Display related scripts
 # setdisplay --bg [shuffle,delete] sets & deletes wallpapers

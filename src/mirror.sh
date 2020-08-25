@@ -76,7 +76,11 @@ while :; do
          ;;
       --upstream | -u)
          for dir in "$GIT"/forks/*/; do
-            [ -d "$dir" ] && git -C "$dir" pull --no-rebase
+            if [ -d "$dir" ]; then
+               cd "$dir" || exit
+               git fetch upstream
+               git rebase upstream/master
+            fi
          done
          ;;
       --dots | -d)

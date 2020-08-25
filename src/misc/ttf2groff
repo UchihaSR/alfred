@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 # Converts ttf fonts to textmap(Groff compatible fonts)
 

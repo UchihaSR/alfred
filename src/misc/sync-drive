@@ -1,15 +1,15 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 dir="Audio Books"
 
 sync() {
-    for i in "$@"; do
-        cd ~/Drive/"$i" || exit 1
-        # drive pull -no-prompt
-        drive push -no-prompt ||
-            notify-send -t 3000 -i "$ICONS"/critical.png "Couldn't sync with Drive!" ||
-            exit 1
-    done
+   for i in "$@"; do
+      cd ~/Drive/"$i" || exit 1
+      # drive pull -no-prompt
+      drive push -no-prompt ||
+         notify-send -t 3000 -i "$ICONS"/critical.png "Couldn't sync with Drive!" ||
+         exit 1
+   done
 }
 
 notify-send -t 3000 -i "$ICONS"/drive.png "Time to Mirror Drive"

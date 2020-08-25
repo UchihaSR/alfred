@@ -1,10 +1,10 @@
-#!/usr/bin/env sh
+#!/bin/sh
 
 data="'{"
 for i in "$@"; do
-  key=${i%%:*}
-  value=${i#*:}
-  data="$data\"$key\":\"$value\","
+   key=${i%%:*}
+   value=${i#*:}
+   data="$data\"$key\":\"$value\","
 done
 data="$data}'"
 
