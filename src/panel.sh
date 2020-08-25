@@ -21,9 +21,9 @@ case $1 in
    --sys-stat | -s)
       cpu="$(top -b -n 1 | awk '(NR==3){
     if( $8 == "id," )
-        print "00"
+        print "000"
     else
-        printf "%02d", 100 - $8
+        printf "%03d", 100 - $8
     }')"
       mem="$(free -m | awk '(NR==2){ printf "%04d", $3 }')"
       temp="$(sensors | awk '(/Core 0/){printf $3}' | sed 's/\.0//; s/+//')"

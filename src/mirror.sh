@@ -15,9 +15,18 @@ notify-send -i "$ICONS/mirror.png" "Mirroring now"
 while :; do
    case $1 in
       --firefox | -f)
-         rsync -a --delete ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release \
-            "$GIT"/own/firefox/.mozilla/firefox
+         # rsync -a --delete ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release \
+         #    "$GIT"/own/firefox/.mozilla/firefox
+         # ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release
+         cd ~/.mozilla/firefox || exit
+         tar cfz firefox.tar.gz "$FIREFOXPROFILE".default-release
+         curl -T firefox.tar.gz \
+            -u "salmanabedin@disroot.org:$(gpg -d --batch --passphrase asdlkj \
+               ~/.local/share/passwords/salmanabedin@disroot.org.gpg)" \
+            https://cloud.disroot.org/remote.php/dav/files/salmanabedin/
+         rm -f firefox.tar.gz
          ;;
+
       --git | -g)
          for dir in "$GIT"/own/*/ "$GIT"/suckless/*/; do
             if [ -d "$dir" ]; then
