@@ -29,7 +29,8 @@ while :; do
                # [ "$PWD" = /mnt/horcrux/git/own/private ] ||
                [ "${PWD##*/}" = firefox ] ||
                   [ "${PWD##*/}" = private ] ||
-                  message=$(timeout 15 $DMENU -p "$(echo "$PWD" | awk -F / '{print $NF}')")
+                  message=$(: | dmenu -i -p "$(echo "$PWD" | awk -F / '{print $NF}')")
+               # message=$(timeout 15 : | $DMENU -p "$(echo "$PWD" | awk -F / '{print $NF}')")
                [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
                git commit -m "$message" && git push
             fi
