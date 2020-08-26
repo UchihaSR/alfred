@@ -3,8 +3,6 @@
 # General purpose syncing script
 # mirror --[git,mail,calcurse,phone,arch,firefox,repos,upstream]
 
-FIREFOXPROFILE=zmzk0pef
-
 if ! connected; then
    notify-send -t 3000 -i "$ICONS"/disconnected.png "Disconnected"
    exit 1
@@ -14,19 +12,6 @@ notify-send -i "$ICONS/mirror.png" "Mirroring now"
 
 while :; do
    case $1 in
-      --firefox | -f)
-         # rsync -a --delete ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release \
-         #    "$GIT"/own/firefox/.mozilla/firefox
-         # ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release
-         cd ~/.mozilla/firefox || exit
-         tar cfz firefox.tar.gz "$FIREFOXPROFILE".default-release
-         curl -T firefox.tar.gz \
-            -u "salmanabedin@disroot.org:$(gpg -d --batch --passphrase asdlkj \
-               ~/.local/share/passwords/salmanabedin@disroot.org.gpg)" \
-            https://cloud.disroot.org/remote.php/dav/files/salmanabedin/
-         rm -f firefox.tar.gz
-         ;;
-
       --git | -g)
          for dir in "$GIT"/own/*/ "$GIT"/suckless/*/; do
             if [ -d "$dir" ]; then
@@ -34,11 +19,9 @@ while :; do
                # git pull
                git add .
                [ -z "$(git status --porcelain)" ] && continue
-               # [ "$PWD" = /mnt/horcrux/git/own/firefox ] ||
-               # [ "$PWD" = /mnt/horcrux/git/own/private ] ||
-               [ "${PWD##*/}" = firefox ] ||
-                  [ "${PWD##*/}" = private ] ||
-                  message=$(: | dmenu -p "$(echo "$PWD" | awk -F / '{print $NF}')")
+               [ "${PWD##*/}" = private ] ||
+                  message=$(timeout 15 sh -c " : | $DMENU -p $(echo $PWD | awk -F / '{print $NF}')")
+               # message=$(: | $DMENU -p "$(echo "$PWD" | awk -F / '{print $NF}')")
                # message=$(timeout 15 : | $DMENU -p "$(echo "$PWD" | awk -F / '{print $NF}')")
                [ "$message" ] || message=$(git log -1 | tail -1 | awk '{$1=$1};1')
                git commit -m "$message" && git push
@@ -102,8 +85,25 @@ while :; do
       --drive | -D)
          LOCAL=/mnt/horcrux/drive
          CLOUD=drive:synced
+         FIREFOXPROFILE=zmzk0pef
+
+         cd ~/.mozilla/firefox || exit
+         tar cf firefox.tar.gz "$FIREFOXPROFILE".default-release
+         gpg -r salmanabedin@disroot.org -e firefox.tar.gz
+         rm firefox.tar.gz
+         mv firefox.tar.gz.gpg $LOCAL
+
          rclone sync $LOCAL $CLOUD
          ;;
+      # --firefox | -f)
+      # rsync -a --delete ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release \
+      #    "$GIT"/own/firefox/.mozilla/firefox
+      # ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release
+      # curl -T firefox.tar.gz \
+      # -u "salmanabedin@disroot.org:$(gpg -d --batch --passphrase asdlkj \
+      # ~/.local/share/passwords/salmanabedin@disroot.org.gpg)" \
+      # https://cloud.disroot.org/remote.php/dav/files/salmanabedin/
+      # ;;
       *) break ;;
    esac
    shift
