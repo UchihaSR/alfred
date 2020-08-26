@@ -83,7 +83,7 @@ launch_file() {
          exit
          ;;
       *.sent)
-         devour sent "$*" &
+         devour sent -- "$@" &
          sleep 2
          bspc node -t fullscreen
          exit
@@ -103,20 +103,19 @@ launch_file() {
          # testt mpv "$*"
          ;;
       *pdf | *postscript | *epub+zip | *vnd.djvu)
-         devour zathura -- $*
-         # devour zathura -- $*
+         devour zathura -- "$@"
          ;;
       image*)
          devour feh -A "setdisplay --bg %f" -B 'black' \
             -d --edit --keep-zoom-vp --start-at \
-            -- $*
+            -- "$@"
          ;;
       *x-bittorrent)
          torrent --add "$1"
          ;;
       *.document)
          pandoc "$1" -o "${1%.*}.pdf"
-         devour zathura -- ${1%.*}.pdf
+         devour zathura -- "${1%.*}.pdf"
          ;;
       application*)
          extract --clean "$1"
