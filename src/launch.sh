@@ -6,10 +6,6 @@ run() { setsid "$@" > /dev/null 2>&1 & }
 
 launch_dwm() {
    while :; do
-      # dwm &
-      # sleep 2
-      # kill $(ps -o pid= --ppid $$) 2> /dev/null
-      # pkill -P $$
       dwm 2> ~/.dwm.log
    done
 }
