@@ -75,17 +75,18 @@ launch_file() {
       *.ar.*)
          alacritty \
             --config-file ~/.config/alacritty/alacritty_ar.yml \
-            -e "$EDITOR" "$*" &
+            -e "$EDITOR" "$@" &
          exit
          ;;
       *.link)
-         $BROWSER "$(cat "$*")"
+         $BROWSER "$(cat "$@")"
          exit
          ;;
       *.sent)
          devour sent "$@" &
-         sleep 2
-         bspc node -t fullscreen
+         sleep 1
+         # bspc node -t fullscreen
+         xdotool key Super+f
          exit
          ;;
    esac
@@ -100,7 +101,7 @@ launch_file() {
          ;;
       video* | audio* | *gif)
          qmedia "$1"
-         # testt mpv "$*"
+         # testt mpv "$@"
          ;;
       *pdf | *postscript | *epub+zip | *vnd.djvu)
          devour zathura "$@"
