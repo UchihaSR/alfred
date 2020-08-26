@@ -96,6 +96,7 @@ while :; do
          cp -frsu -t ~ \
             "$GIT"/own/magpie/. \
             "$GIT"/own/private/.
+         doas -- find ~ -xtype l -delete
          ;;
 
       --drive | -D)
