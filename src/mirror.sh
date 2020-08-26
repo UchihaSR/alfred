@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # General purpose syncing script
-# mirror --[git,mail,calcurse,phone,arch,firefox,repos,upstream]
+# mirror --[git,calcurse,phone,arch,repos,upstream]
 
 if ! connected; then
    notify-send -t 3000 -i "$ICONS"/disconnected.png "Disconnected"
@@ -28,22 +28,19 @@ while :; do
          # wait &
          # notify-send -t 3000 -i "$ICONS"/gitlab.png "Done syncing git repos"
          ;;
-         # --mail | -m)
-         # mbsync -c ~/.config/isync/mbsyncrc -a
-         # unread=$(find ~/.local/share/mail/gmail/INBOX/new/* -type f 2> /dev/null | wc -l)
-         # [ "$unread" -gt 0 ] && notify-send -t 0 -i "$ICONS/mail.png" \
-         # "You've got $unread new mail!"
-         # ;;
+
       --calcurse | -c)
          CALCURSE_CALDAV_PASSWORD=$(gpg -d ~/.local/share/passwords/salmanabedin@disroot.org.gpg) calcurse-caldav
          # --init=keep-remote
          # notify-send -i "$ICONS"/calendar.png "Done syncing calcurse"
          ;;
+
       --arch | -a)
          doas -- pacman -Syyu --noconfirm
          yay -Syu --noconfirm
          npm update -g
          ;;
+
       --phone | -p)
          ANDROIDMOUNT=/mnt/android
          ANDROIDDISK=/mnt/horcrux/phone
@@ -55,15 +52,13 @@ while :; do
          fusermount -u "$ANDROIDMOUNT"
          # notify-send -t 3000 -i "$ICONS"/phone.png "Done Syncing"
          ;;
-         # --newsboat | -n)
-         # newsboat -x reload
-         # pgrep -f newsboat$ && /usr/bin/xdotool key --window "$(/usr/bin/xdotool search --name newsboat)" R && exit
-         # ;;
+
       --repos | -r)
          for dir in "$GIT"/others/*/; do
             [ -d "$dir" ] && git -C "$dir" pull --rebase
          done
          ;;
+
       --upstream | -u)
          for dir in "$GIT"/forks/*/; do
             if [ -d "$dir" ]; then
@@ -73,6 +68,7 @@ while :; do
             fi
          done
          ;;
+
       --dots | -d)
          cp -frsu -t ~ \
             "$GIT"/own/magpie/. \
@@ -93,18 +89,34 @@ while :; do
 
          rclone sync $LOCAL $CLOUD
          ;;
-      # --firefox | -f)
-      # rsync -a --delete ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release \
-      #    "$GIT"/own/firefox/.mozilla/firefox
-      # ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release
-      # curl -T firefox.tar.gz \
-      # -u "salmanabedin@disroot.org:$(gpg -d --batch --passphrase asdlkj \
-      # ~/.local/share/passwords/salmanabedin@disroot.org.gpg)" \
-      # https://cloud.disroot.org/remote.php/dav/files/salmanabedin/
-      # ;;
       *) break ;;
    esac
    shift
 done
 # wait
 notify-send -i "$ICONS/mirror.png" "Done mirroring"
+
+#===============================================================================
+#                             Exp
+#===============================================================================
+
+# --firefox | -f)
+# rsync -a --delete ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release \
+#    "$GIT"/own/firefox/.mozilla/firefox
+# ~/.mozilla/firefox/"$FIREFOXPROFILE".default-release
+# curl -T firefox.tar.gz \
+# -u "salmanabedin@disroot.org:$(gpg -d --batch --passphrase asdlkj \
+# ~/.local/share/passwords/salmanabedin@disroot.org.gpg)" \
+# https://cloud.disroot.org/remote.php/dav/files/salmanabedin/
+# ;;
+# --mail | -m)
+# mbsync -c ~/.config/isync/mbsyncrc -a
+# unread=$(find ~/.local/share/mail/gmail/INBOX/new/* -type f 2> /dev/null | wc -l)
+# [ "$unread" -gt 0 ] && notify-send -t 0 -i "$ICONS/mail.png" \
+# "You've got $unread new mail!"
+# ;;
+
+# --newsboat | -n)
+# newsboat -x reload
+# pgrep -f newsboat$ && /usr/bin/xdotool key --window "$(/usr/bin/xdotool search --name newsboat)" R && exit
+# ;;
