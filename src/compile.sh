@@ -4,6 +4,8 @@
 # Compiles Files based on their extensions
 # 'compile --clean' cleans up on exit (Vim autocommand)
 
+ns ran
+
 [ "$1" = --clean ] && shift && clean=true
 path=$(readlink -f "$1")
 # name="${path%.*}"
