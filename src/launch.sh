@@ -108,7 +108,7 @@ launch_file() {
          # devour zathura -- "$@"
          ;;
       image*)
-         devour feh -A "setdisplay --bg %f" -B 'black' \
+         devour feh -F -A "setdisplay --bg %f" -B 'black' \
             -d --edit --keep-zoom-vp --start-at \
             "$@"
          ;;
