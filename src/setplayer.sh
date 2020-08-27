@@ -10,7 +10,7 @@ case $1 in
       pidof mpd || mpd
       case $2 in
          next) playerctl next || mpc next ;;
-         prev) playerctl prev || mpc prev ;;
+         prev) playerctl previous || mpc prev ;;
          toggle) playerctl play-pause || mpd toggle ;;
       esac
       ;;
