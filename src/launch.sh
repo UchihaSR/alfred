@@ -27,10 +27,8 @@ bookmark() {
 }
 
 choose() {
-   # choice=$(printf "📕 Zathura\n📘 Evince\n📖 Foxit Reader\n📙 Master PDF Editor\n💻 Code\n🎥 MPV\n🌏 Browser" |
-   # $DMENU -p "Open with" | sed "s/\W//g") &&
-   choice=$(printf "Zathura\nEvince\nFoxit Reader\nMaster PDF Editor\nCode\nMPV\nBrowser" |
-      $DMENU -p "Open with") &&
+   choice=$(printf "📕 Zathura\n📘 Evince\n📖 Foxit Reader\n📙 Master PDF Editor\n💻 Code\n🎥 MPV\n🌏 Browser" |
+      $DMENU -p "Open with" | sed "s/\W//g") &&
       case "$choice" in
          Zathura) run zathura "$1" ;;
          Evince) run evince "$1" ;;
