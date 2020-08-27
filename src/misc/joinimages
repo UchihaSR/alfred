@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Usage: join-images COUNT
+
+ffmpeg -pattern_type glob -i "*.png" -filter_complex tile=1x"$1" output.png
